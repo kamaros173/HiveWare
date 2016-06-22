@@ -98,11 +98,26 @@ public class EnemyChaser : MonoBehaviour {
         transform.FindChild("EnemySight").gameObject.SetActive(true);
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            Globals.notFrozen = false;
+            Vector3 contactPoint = other.contacts[0].point;
+            Vector3 centerPoint = other.collider.bounds.center;
+            Vector3 target = new Vector3(centerPoint.x - contactPoint.x, centerPoint.y - contactPoint.y);
+            other.gameObject.SendMessage("HitPlayer", target);
+            //Debug.Log("contact: " + contactPoint.x);
+            //Debug.Log("contact: " + contactPoint.y);
+
+            //Debug.Log("center: " + centerPoint.x);
+            //Debug.Log("center: " + centerPoint.y);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        Debug.Log(other.IsTouching(GetComponent<CircleCollider2D>()));
-        if (other.gameObject.tag == "Player")
+        if( other.gameObject.tag == "Player")
         {
             currentState = Mode.chasing;
             lastPatrolPosition = transform.position;
