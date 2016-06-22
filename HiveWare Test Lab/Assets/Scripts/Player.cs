@@ -11,6 +11,9 @@ public class Player : MonoBehaviour {
     public GameObject shot;
     public Transform shotSpawn;
     public float fireRate;
+    public float pushBackSmooth;
+    public float pushBackDistance;
+    public float pushBackTol;
 
 
     private bool canSwing = true;
@@ -103,14 +106,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if(other.gameObject.tag == "Enemy")
-    //    {
-
-    //    }
-    //}
-
     private IEnumerator Dash()
     {
         if (Globals.notFrozen)
@@ -161,9 +156,34 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private IEnumerator HitPlayer()
+    private void HitPlayer(Vector3 pushBack)
     {
-        return null;
+        StartCoroutine(pushBackPlayer(pushBack));
+    }
+
+    private IEnumerator pushBackPlayer(Vector3 pushBack)
+    {
+        Vector3 target = transform.position + (pushBack * pushBackDistance);
+        RaycastHit2D hit;
+        float oldDis = 0;
+
+        while ((Mathf.Abs(oldDis - Vector3.Distance(transform.position, target)) > pushBackTol))
+        {
+            oldDis = Vector3.Distance(transform.position, target);
+
+            hit = Physics2D.Raycast(transform.position, target, oldDis, Wall);
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.collider.gameObject);
+                transform.position = Vector3.Lerp(transform.position, hit.point, pushBackSmooth * Time.deltaTime);
+            }
+            else
+                transform.position = Vector3.Lerp(transform.position, target, pushBackSmooth * Time.deltaTime);
+
+            yield return null;
+        }
+
+        Globals.notFrozen = true;
     }
 
     private void PlayerCanSwing()

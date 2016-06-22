@@ -26,22 +26,41 @@ public class CameraController : MonoBehaviour {
         Globals.notFrozen = false;
         GameObject.Find("GameController").SendMessage("ClearEnemies");
         Vector3 target = transform.position;
-        if(dir == PlayerDirection.North)
+        Vector3 player = GameObject.Find("Player").transform.position;
+        float xfinal = player.x - target.x;
+        float yfinal = player.y - target.y;
+
+        if(Mathf.Abs(xfinal) > Mathf.Abs(yfinal * (cameraViewWidth / cameraViewHeight)))
         {
-            target.y += cameraViewHeight;
+            if(xfinal > 0)
+                target.x += cameraViewWidth;
+            else
+                target.x -= cameraViewWidth;
         }
-        else if (dir == PlayerDirection.South)
+        else
         {
-            target.y -= cameraViewHeight;
+            if(yfinal > 0)
+                target.y += cameraViewHeight;
+            else
+                target.y -= cameraViewHeight;
         }
-        else if (dir == PlayerDirection.East)
-        {
-            target.x += cameraViewWidth;
-        }
-        else if (dir == PlayerDirection.West)
-        {
-            target.x -= cameraViewWidth;
-        }
+
+        //if(dir == PlayerDirection.North)
+        //{
+        //    target.y += cameraViewHeight;
+        //}
+        //else if (dir == PlayerDirection.South)
+        //{
+        //    target.y -= cameraViewHeight;
+        //}
+        //else if (dir == PlayerDirection.East)
+        //{
+        //    target.x += cameraViewWidth;
+        //}
+        //else if (dir == PlayerDirection.West)
+        //{
+        //    target.x -= cameraViewWidth;
+        //}
 
         StartCoroutine(MoveCoroutine(target));
     }
