@@ -7,13 +7,14 @@ public class Player : MonoBehaviour {
     public float dashDistance;
     public float dashSmooth;
     public float dashTol;
-    public LayerMask Wall;
+    public LayerMask wallLayer;
     public GameObject shot;
     public Transform shotSpawn;
     public float fireRate;
     public float pushBackSmooth;
     public float pushBackDistance;
     public float pushBackTol;
+    public float timeBetweenDamage;
 
 
     private bool canSwing = true;
@@ -142,7 +143,7 @@ public class Player : MonoBehaviour {
             {
                 oldDis = Vector3.Distance(transform.position, target);
 
-                hit = Physics2D.Raycast(transform.position, dir, oldDis, Wall);
+                hit = Physics2D.Raycast(transform.position, dir, oldDis, wallLayer);
                 if (hit.collider != null)
                 {
                     Debug.Log(hit.collider.gameObject);
@@ -158,12 +159,31 @@ public class Player : MonoBehaviour {
 
     private void HitPlayer(Vector3 pushBack)
     {
-        StartCoroutine(pushBackPlayer(pushBack));
+        StartCoroutine(PushBackPlayer(pushBack));
+        StartCoroutine(PlayerIsImmuneToDamage());
     }
 
-    private IEnumerator pushBackPlayer(Vector3 pushBack)
+    private IEnumerator PlayerIsImmuneToDamage()
     {
-        Vector3 target = transform.position + (pushBack * pushBackDistance);
+        float waitTime = Time.time + timeBetweenDamage;
+
+        while(Time.time < waitTime)
+        {
+            yield return null;
+        }
+
+        Globals.playerIsHittable = true;
+    }
+
+    private IEnumerator PushBackPlayer(Vector3 pushBack)
+    {
+
+        while (pushBack.magnitude < pushBackDistance)
+        {
+            pushBack *= 1.1f;
+        }
+
+        Vector3 target = transform.position + pushBack;
         RaycastHit2D hit;
         float oldDis = 0;
 
@@ -171,10 +191,9 @@ public class Player : MonoBehaviour {
         {
             oldDis = Vector3.Distance(transform.position, target);
 
-            hit = Physics2D.Raycast(transform.position, target, oldDis, Wall);
+            hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject);
                 transform.position = Vector3.Lerp(transform.position, hit.point, pushBackSmooth * Time.deltaTime);
             }
             else

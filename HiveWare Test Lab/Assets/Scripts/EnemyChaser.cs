@@ -6,6 +6,8 @@ public class EnemyChaser : MonoBehaviour {
     public float moveSpeed;
     public float chaseSpeed;
     public float rotateSpeed;
+    public float hitRange;
+    public LayerMask playerLayer;
     public Vector3[] patrolPoints;
 
     private Transform player;
@@ -13,6 +15,7 @@ public class EnemyChaser : MonoBehaviour {
     private enum Mode { patrolling, chasing, returning, off};
     private Mode currentState = Mode.patrolling;
     private int patrolPoint = 0;
+    private RaycastHit2D hitPlayer;
 
 	void Start ()
     {
@@ -42,7 +45,18 @@ public class EnemyChaser : MonoBehaviour {
 
     private void Chase()
     {
-        Move(player.position, chaseSpeed);
+        Vector2 dir = player.position - transform.position;
+        hitPlayer = Physics2D.Raycast(transform.position, dir/dir.magnitude, hitRange, playerLayer);
+        Debug.DrawRay(transform.position, dir / dir.magnitude);
+        if (hitPlayer.collider != null /*Vector3.Distance(transform.position, player.position) < hitRange*/) 
+        {
+            Debug.Log("ATTACK PLAYER!!");
+        }
+        else
+        {
+            Debug.Log("MOVE");
+            Move(player.position, chaseSpeed);
+        }
     }
 
     private void ReturningToPatrol()
@@ -98,20 +112,17 @@ public class EnemyChaser : MonoBehaviour {
         transform.FindChild("EnemySight").gameObject.SetActive(true);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && Globals.playerIsHittable)
         {
+            Debug.Log("IN ENEMY");
+            Globals.playerIsHittable = false;
             Globals.notFrozen = false;
             Vector3 contactPoint = other.contacts[0].point;
             Vector3 centerPoint = other.collider.bounds.center;
             Vector3 target = new Vector3(centerPoint.x - contactPoint.x, centerPoint.y - contactPoint.y);
             other.gameObject.SendMessage("HitPlayer", target);
-            //Debug.Log("contact: " + contactPoint.x);
-            //Debug.Log("contact: " + contactPoint.y);
-
-            //Debug.Log("center: " + centerPoint.x);
-            //Debug.Log("center: " + centerPoint.y);
         }
     }
 
