@@ -7,20 +7,13 @@ public class CameraController : MonoBehaviour {
     public float errorTol;
     public float cameraViewHeight;
     public float cameraViewWidth;
-    public float widthToBeSeen;
 
     private Vector3 destination;
 
-	// Use this for initialization
 	void Start () {
-        Camera.main.orthographicSize = widthToBeSeen * Screen.height / Screen.width * 0.5f;
+        // TODO: ACCOUNT FOR DIFFERENT SCREEN RESOLUTIONS
     }
 	
-	// Update is called once per frame
-	void Update () {
-
-    }
-
     private void MoveCamera(PlayerDirection dir)
     {
         Globals.notFrozen = false;
@@ -44,23 +37,6 @@ public class CameraController : MonoBehaviour {
             else
                 target.y -= cameraViewHeight;
         }
-
-        //if(dir == PlayerDirection.North)
-        //{
-        //    target.y += cameraViewHeight;
-        //}
-        //else if (dir == PlayerDirection.South)
-        //{
-        //    target.y -= cameraViewHeight;
-        //}
-        //else if (dir == PlayerDirection.East)
-        //{
-        //    target.x += cameraViewWidth;
-        //}
-        //else if (dir == PlayerDirection.West)
-        //{
-        //    target.x -= cameraViewWidth;
-        //}
 
         StartCoroutine(MoveCoroutine(target));
     }
