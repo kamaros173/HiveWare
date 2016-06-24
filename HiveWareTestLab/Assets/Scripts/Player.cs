@@ -157,9 +157,12 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void HitPlayer(Vector3 pushBack)
+    private void HitPlayer(Vector3 direction)
     {
-        StartCoroutine(PushBackPlayer(pushBack));
+        //CAN ADD DAMAGE HERE
+        Globals.playerIsHittable = false;
+        Globals.notFrozen = false;
+        StartCoroutine(PushBackPlayer(direction));
         StartCoroutine(PlayerIsImmuneToDamage());
     }
 
@@ -175,32 +178,24 @@ public class Player : MonoBehaviour {
         Globals.playerIsHittable = true;
     }
 
-    private IEnumerator PushBackPlayer(Vector3 pushBack)
+    private IEnumerator PushBackPlayer(Vector3 direction)
     {
-
-        while (pushBack.magnitude < pushBackDistance)
-        {
-            pushBack *= 1.1f;
-        }
-
-        Vector3 target = transform.position + pushBack;
+        Vector3 target = transform.position + (direction * pushBackDistance);
         RaycastHit2D hit;
         float oldDis = 0;
 
-        while ((Mathf.Abs(oldDis - Vector3.Distance(transform.position, target)) > pushBackTol))
+        do
         {
             oldDis = Vector3.Distance(transform.position, target);
 
             hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
             if (hit.collider != null)
-            {
-                transform.position = Vector3.Lerp(transform.position, hit.point, pushBackSmooth * Time.deltaTime);
-            }
-            else
-                transform.position = Vector3.Lerp(transform.position, target, pushBackSmooth * Time.deltaTime);
+                target = hit.point;
 
+            transform.position = Vector3.Lerp(transform.position, target, pushBackSmooth * Time.deltaTime);
             yield return null;
-        }
+
+        } while (oldDis > pushBackTol);
 
         Globals.notFrozen = true;
     }

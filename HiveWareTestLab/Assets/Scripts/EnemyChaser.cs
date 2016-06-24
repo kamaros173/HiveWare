@@ -5,25 +5,28 @@ public class EnemyChaser : MonoBehaviour {
 
     public float moveSpeed;
     public float chaseSpeed;
-    public float rotateSpeed;
     public float hitRange;
     public LayerMask playerLayer;
     public LayerMask wallLayer;
     public Vector3[] patrolPoints;
+    public float pushBackDistance;
+    public float pushBackSmooth;
+    public float pushBackTol;
+    public float stunTime;
+    public float timeBetweenDamage;
 
     private Transform player;
     private Vector3 lastPatrolPosition;
     private enum Mode { patrolling, chasing, returning, off};
     private Mode currentState = Mode.patrolling;
     private int patrolPoint = 0;
-    private RaycastHit2D hitPlayer;
+    private bool enemyIsHittable = true;
 
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = patrolPoints[patrolPoint];
 	}
-
 
     void Update ()
     {
@@ -47,23 +50,17 @@ public class EnemyChaser : MonoBehaviour {
     private void Chase()
     {
         Vector2 dir = player.position - transform.position;
-        hitPlayer = Physics2D.Raycast(transform.position, dir/dir.magnitude, hitRange, playerLayer);
-        Debug.DrawRay(transform.position, dir / dir.magnitude);
-        if (hitPlayer.collider != null) 
-        {
-            if(hitPlayer.collider.tag == "Player")
-            {
-                Debug.Log("ATTACK PLAYER!!");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir/dir.magnitude, hitRange, playerLayer);
 
-            }
-            else if(hitPlayer.collider.tag == "PlayerShield")
+        if (hit.collider != null) 
+        {
+            if(hit.collider.tag == "Player")
             {
-                StartCoroutine(KnockBack(-(dir / dir.magnitude)));
+                //IMPLEMENT AN ATTACK
             }
         }
         else
         {
-            Debug.Log("MOVE");
             Move(player.position, chaseSpeed);
         }
     }
@@ -80,9 +77,9 @@ public class EnemyChaser : MonoBehaviour {
 
     private void Patrol()
     {
-        if(transform.position == patrolPoints[patrolPoint])
+        if (transform.position == patrolPoints[patrolPoint])
         {
-            if(++patrolPoint == patrolPoints.Length)
+            if (++patrolPoint == patrolPoints.Length)
             {
                 patrolPoint = 0;
             }
@@ -94,57 +91,76 @@ public class EnemyChaser : MonoBehaviour {
     private void Move(Vector3 target, float speed)
     {
         Vector3 vectorToTarget = target - transform.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, rotateSpeed * Time.deltaTime);
+
+        //THIS FLIPS DEPENDING ON TARGET DIRECTION
+        if(vectorToTarget.x > 0f)
+        {
+            //LOOK RIGHT
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if(vectorToTarget.x < 0f)
+        {
+            //LOOK LEFT
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
+    //CALLED WHEN CAMERA MOVES AWAY FROM SCENE
     private void Reset()
     {
-        //CAN ALSO REVIVE ENEMIES IF DESIRED
         currentState = Mode.off;
         transform.position = patrolPoints[0];
         patrolPoint = 0;
         transform.FindChild("EnemySight").gameObject.SetActive(false);
-
-        Vector3 vectorToTarget = patrolPoints[1] - transform.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = q;
+        Move(patrolPoints[patrolPoint], moveSpeed);
     }
 
+    //CALLED WHEN CAMERA ENTERS ROOM
     private void Load()
     {
         currentState = Mode.patrolling;
         transform.FindChild("EnemySight").gameObject.SetActive(true);
     }
 
+    //If the player keeps beating his face against the enmey
     private void OnCollisionStay2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player" && Globals.playerIsHittable)
         {
-            Debug.Log("IN ENEMY");
-            Globals.playerIsHittable = false;
-            Globals.notFrozen = false;
             Vector3 contactPoint = other.contacts[0].point;
             Vector3 centerPoint = other.collider.bounds.center;
-            Vector3 target = new Vector3(centerPoint.x - contactPoint.x, centerPoint.y - contactPoint.y);
-            other.gameObject.SendMessage("HitPlayer", target);
+            Vector3 direction = Vector3.Normalize(centerPoint - contactPoint);
+            other.gameObject.SendMessage("HitPlayer", direction);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if( other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             currentState = Mode.chasing;
             lastPatrolPosition = transform.position;
         }
-        else if(other.gameObject.tag == "MainCamera")
+        else if (other.gameObject.tag == "PlayerSword" && enemyIsHittable)
         {
-            GameObject.Find("GameController").SendMessage("AddEnemy" ,transform.gameObject);
+            Vector3 direction = Vector3.Normalize(transform.position - player.position);
+            HitEnemy(direction);
+        }
+        else if (other.gameObject.tag == "Projectile")
+        {
+            GameObject.Destroy(other.gameObject);
+            if (enemyIsHittable)
+            {
+                Vector3 direction = Vector3.Normalize(transform.position - player.position);
+                HitEnemy(direction);
+            }           
+            
+        }
+        else if (other.gameObject.tag == "MainCamera")
+        {
+            GameObject.Find("GameController").SendMessage("AddEnemy", transform.gameObject);
             Load();
         }
     }
@@ -156,37 +172,55 @@ public class EnemyChaser : MonoBehaviour {
 
     }
 
-    private IEnumerator KnockBack(Vector3 dir)
+    private void HitEnemy(Vector3 direction)
     {
+        //CAN ADD DAMAGE HERE
+        enemyIsHittable = false;
+        StartCoroutine(PushBackEnemy(direction));
+        StartCoroutine(EnemyIsImmuneToDamage());
+    }
+
+    //FIX
+    private IEnumerator PushBackEnemy(Vector3 direction)
+    {        
         currentState = Mode.off;
+        Vector3 target = transform.position + (direction * pushBackDistance);
         RaycastHit2D hit;
         float oldDis = 0;
-        Vector3 target = dir * 1f;
-        float pushBackTol = 0.5f;
-        float pushBackSmooth = 5f;
 
-        while ((Mathf.Abs(oldDis - Vector3.Distance(transform.position, target)) > pushBackTol))
+        do
         {
             oldDis = Vector3.Distance(transform.position, target);
 
             hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
             if (hit.collider != null)
-            {
-                transform.position = Vector3.Lerp(transform.position, hit.point, pushBackSmooth * Time.deltaTime);
-            }
-            else
-                transform.position = Vector3.Lerp(transform.position, target, pushBackSmooth * Time.deltaTime);
+                target = hit.point;
 
+            transform.position = Vector3.Lerp(transform.position, target, pushBackSmooth * Time.deltaTime);
             yield return null;
-        }
 
-        float stunTime = Time.time + 1.5f;
+        } while (oldDis > pushBackTol);
 
-        while (Time.time < stunTime)
+        float stun = Time.time + stunTime;
+
+        while (Time.time < stun)
         {
             yield return null;
         }
 
+        enemyIsHittable = true;
         currentState = Mode.chasing;
+    }
+
+    private IEnumerator EnemyIsImmuneToDamage()
+    {
+        float waitTime = Time.time + timeBetweenDamage;
+
+        while (Time.time < waitTime)
+        {
+            yield return null;
+        }
+
+        //enemyIsHittable = true;
     }
 }
