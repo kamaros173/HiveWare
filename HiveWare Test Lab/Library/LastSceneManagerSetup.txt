@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/CameronTestArena.unity
-  isLoaded: 1
-  isActive: 1
