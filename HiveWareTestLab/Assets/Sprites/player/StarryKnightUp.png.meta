@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: eac7c95ccfe5d8646b6a30cf3b298fe9
+timeCreated: 1466723358
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: StarryKnightUp_0
+    21300002: StarryKnightUp_1
+    21300004: StarryKnightUp_2
+    21300006: StarryKnightUp_3
+    21300008: StarryKnightUp_4
+    21300010: StarryKnightUp_5
+    21300012: StarryKnightUp_6
+    21300014: StarryKnightUp_7
+    21300016: StarryKnightUp_8
+    21300018: StarryKnightUp_9
+    21300020: StarryKnightUp_10
+    21300022: StarryKnightUp_11
+    21300024: StarryKnightUp_12
+    21300026: StarryKnightUp_13
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: StarryKnightUp_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 105
+        width: 10
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 105
+        width: 10
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_2
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 105
+        width: 11
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_3
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 105
+        width: 11
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_4
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 105
+        width: 11
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_5
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 48
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_6
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 48
+        width: 32
+        height: 36
+      alignment: 9
+      pivot: {x: 0.27439022, y: 0.4783198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.780487, y: 18.780487}
+        - {x: -8.780487, y: 5.780487}
+        - {x: -8.780487, y: -17.219513}
+        - {x: 15.219513, y: -17.219513}
+        - {x: 23.219513, y: -6.219513}
+        - {x: 23.219513, y: 8.780487}
+        - {x: 8.219513, y: 18.780487}
+    - name: StarryKnightUp_7
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 48
+        width: 20
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5682926, y: 0.30031386}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_8
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 35
+        height: 36
+      alignment: 9
+      pivot: {x: 0.7229959, y: 0.47289956}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.304855, y: -15.024384}
+        - {x: -14.304855, y: -17.024384}
+        - {x: 9.695145, y: -17.024384}
+        - {x: 9.695145, y: 18.975616}
+        - {x: -25.304855, y: 18.975616}
+        - {x: -25.304855, y: 1.9756165}
+    - name: StarryKnightUp_9
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2
+        width: 17
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4728997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_10
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 2
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_11
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 2
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_12
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 2
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightUp_13
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 2
+        width: 43
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 18}
+        - {x: -21.5, y: -18}
+        - {x: 3.5, y: -18}
+        - {x: 5.5, y: -11}
+        - {x: 5.5, y: 17}
+        - {x: 1.5, y: 18}
+      - - {x: 21.5, y: 14}
+        - {x: 9.5, y: 14}
+        - {x: 6.5, y: 11}
+        - {x: 6.5, y: -5}
+        - {x: 7.5, y: -11}
+        - {x: 9.5, y: -14}
+        - {x: 12.5, y: -12}
+        - {x: 14.5, y: -14}
+        - {x: 19.5, y: -14}
+        - {x: 21.5, y: -13}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
