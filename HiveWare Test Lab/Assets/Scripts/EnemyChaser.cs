@@ -8,6 +8,7 @@ public class EnemyChaser : MonoBehaviour {
     public float rotateSpeed;
     public float hitRange;
     public LayerMask playerLayer;
+    public LayerMask wallLayer;
     public Vector3[] patrolPoints;
 
     private Transform player;
@@ -48,9 +49,17 @@ public class EnemyChaser : MonoBehaviour {
         Vector2 dir = player.position - transform.position;
         hitPlayer = Physics2D.Raycast(transform.position, dir/dir.magnitude, hitRange, playerLayer);
         Debug.DrawRay(transform.position, dir / dir.magnitude);
-        if (hitPlayer.collider != null /*Vector3.Distance(transform.position, player.position) < hitRange*/) 
+        if (hitPlayer.collider != null) 
         {
-            Debug.Log("ATTACK PLAYER!!");
+            if(hitPlayer.collider.tag == "Player")
+            {
+                Debug.Log("ATTACK PLAYER!!");
+
+            }
+            else if(hitPlayer.collider.tag == "PlayerShield")
+            {
+                StartCoroutine(KnockBack(-(dir / dir.magnitude)));
+            }
         }
         else
         {
@@ -145,5 +154,39 @@ public class EnemyChaser : MonoBehaviour {
         if (other.gameObject.tag == "Player")
             currentState = Mode.returning;
 
+    }
+
+    private IEnumerator KnockBack(Vector3 dir)
+    {
+        currentState = Mode.off;
+        RaycastHit2D hit;
+        float oldDis = 0;
+        Vector3 target = dir * 1f;
+        float pushBackTol = 0.5f;
+        float pushBackSmooth = 5f;
+
+        while ((Mathf.Abs(oldDis - Vector3.Distance(transform.position, target)) > pushBackTol))
+        {
+            oldDis = Vector3.Distance(transform.position, target);
+
+            hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
+            if (hit.collider != null)
+            {
+                transform.position = Vector3.Lerp(transform.position, hit.point, pushBackSmooth * Time.deltaTime);
+            }
+            else
+                transform.position = Vector3.Lerp(transform.position, target, pushBackSmooth * Time.deltaTime);
+
+            yield return null;
+        }
+
+        float stunTime = Time.time + 1.5f;
+
+        while (Time.time < stunTime)
+        {
+            yield return null;
+        }
+
+        currentState = Mode.chasing;
     }
 }
