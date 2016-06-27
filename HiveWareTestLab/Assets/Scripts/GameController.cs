@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
+    
+
     private int playerHealth;
     private int playerEnergy;
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();

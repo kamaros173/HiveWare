@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyChaser : MonoBehaviour {
 
+    public int maxHealth;
     public float moveSpeed;
     public float chaseSpeed;
     public float hitRange;
@@ -21,11 +22,13 @@ public class EnemyChaser : MonoBehaviour {
     private Mode currentState = Mode.patrolling;
     private int patrolPoint = 0;
     private bool enemyIsHittable = true;
+    private int currentHealth;
 
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = patrolPoints[patrolPoint];
+        currentHealth = maxHealth;
 	}
 
     void Update ()
@@ -146,7 +149,7 @@ public class EnemyChaser : MonoBehaviour {
         else if (other.gameObject.tag == "PlayerSword" && enemyIsHittable)
         {
             Vector3 direction = Vector3.Normalize(transform.position - player.position);
-            HitEnemy(direction);
+            HitEnemy(direction, Globals.playerSwordDamage);
         }
         else if (other.gameObject.tag == "Projectile")
         {
@@ -154,7 +157,7 @@ public class EnemyChaser : MonoBehaviour {
             if (enemyIsHittable)
             {
                 Vector3 direction = Vector3.Normalize(transform.position - player.position);
-                HitEnemy(direction);
+                HitEnemy(direction, Globals.playerArrowDamage);
             }           
             
         }
@@ -172,12 +175,21 @@ public class EnemyChaser : MonoBehaviour {
 
     }
 
-    private void HitEnemy(Vector3 direction)
+    private void HitEnemy(Vector3 direction, int damage)
     {
-        //CAN ADD DAMAGE HERE
-        enemyIsHittable = false;
-        StartCoroutine(PushBackEnemy(direction));
-        StartCoroutine(EnemyIsImmuneToDamage());
+        currentHealth -= damage;
+        if(currentHealth <= 0)
+        {
+            currentState = Mode.off;
+            gameObject.SetActive(false);
+            //gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+        }
+        else
+        {
+            enemyIsHittable = false;
+            StartCoroutine(PushBackEnemy(direction));
+            StartCoroutine(EnemyIsImmuneToDamage());
+        }       
     }
 
     //FIX
@@ -185,21 +197,24 @@ public class EnemyChaser : MonoBehaviour {
     {        
         currentState = Mode.off;
         Vector3 target = transform.position + (direction * pushBackDistance);
-        RaycastHit2D hit;
-        float oldDis = 0;
+        Vector3 oldPos;
+        float oldDis = Vector3.Distance(transform.position, target);
+        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
+        if (hit.collider != null)
+        {
+            target = hit.point;
+        }
 
         do
         {
-            oldDis = Vector3.Distance(transform.position, target);
-
-            hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
-            if (hit.collider != null)
-                target = hit.point;
+            oldPos = transform.position;
 
             transform.position = Vector3.Lerp(transform.position, target, pushBackSmooth * Time.deltaTime);
             yield return null;
 
-        } while (oldDis > pushBackTol);
+            oldDis = Vector3.Distance(transform.position, target);
+        } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol) ;
 
         float stun = Time.time + stunTime;
 
