@@ -20,9 +20,17 @@ public class Player : MonoBehaviour {
     private bool canSwing = true;
     private PlayerDirection currentdirection = PlayerDirection.North;
     private float nextFire;
-	
-	// Update is called once per frame
-	void Update () {
+    private Animator animator;
+
+    void Start()
+    {
+        //Get a component reference to the Player's animator component
+        animator = GetComponent<Animator>();
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (Globals.notFrozen)
         {
@@ -32,14 +40,24 @@ public class Player : MonoBehaviour {
                 currentdirection = PlayerDirection.North;
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
-
+                animator.SetTrigger("PlayerWalkUp");
             }
+            else if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                animator.SetTrigger("PlayerIdleUp");
+            }
+          
             else if (Input.GetKey(KeyCode.DownArrow))
             {
                 currentdirection = PlayerDirection.South;
-                transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-                transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+                //transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+                transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
+                animator.SetTrigger("PlayerWalkDown");
 
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                animator.SetTrigger("PlayerIdleUp");
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -59,6 +77,9 @@ public class Player : MonoBehaviour {
             if (Input.GetKey(KeyCode.S))
             {
                 transform.FindChild("Shield").gameObject.SetActive(true);
+                animator.SetBool("PlayerShieldDown", false);
+                animator.SetTrigger("PlayerShieldUp");
+
             }
 
             //SWORD
@@ -66,9 +87,13 @@ public class Player : MonoBehaviour {
             {
                 if (canSwing)
                 {
+                    animator.SetTrigger("SwordSwingUP");
+
+                 
                     canSwing = false;
                     transform.FindChild("SwordPivot").gameObject.SetActive(true);
-                    transform.FindChild("SwordPivot").gameObject.SendMessage("Swing", currentdirection);          
+                    transform.FindChild("SwordPivot").gameObject.SendMessage("Swing", currentdirection);
+                    
                 }
             }
 
@@ -77,6 +102,8 @@ public class Player : MonoBehaviour {
             {
                 nextFire = Time.time + fireRate;
                 Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+                animator.SetTrigger("PlayerShootUp");
+
             }
 
             //DASH
@@ -89,6 +116,8 @@ public class Player : MonoBehaviour {
             if (Input.GetKeyUp(KeyCode.S))
             {
                 transform.FindChild("Shield").gameObject.SetActive(false);
+                animator.SetBool("PlayerShieldDown", true);
+                
             }
         } // Not Frozen
         else // If Frozen

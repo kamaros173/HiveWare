@@ -1,0 +1,293 @@
+fileFormatVersion: 2
+guid: 373bb06fa260887488bd4eabe6a8951b
+timeCreated: 1467067448
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: StarryKnightDown_0
+    21300002: StarryKnightDown_1
+    21300004: StarryKnightDown_2
+    21300006: StarryKnightDown_3
+    21300008: StarryKnightDown_4
+    21300010: StarryKnightDown_5
+    21300012: StarryKnightDown_6
+    21300014: StarryKnightDown_7
+    21300016: StarryKnightDown_8
+    21300018: StarryKnightDown_9
+    21300020: StarryKnightDown_10
+    21300022: StarryKnightDown_11
+    21300024: StarryKnightDown_12
+    21300026: StarryKnightDown_13
+    21300028: StarryKnightDown_14
+    21300030: StarryKnightDown_15
+    21300032: StarryKnightDown_16
+    21300034: StarryKnightDown_17
+    21300036: StarryKnightDown_18
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: StarryKnightDown_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 105
+        width: 10
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 105
+        width: 10
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_2
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 105
+        width: 11
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5029446, y: 0.45692146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_3
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 104
+        width: 11
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47363198}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_4
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 104
+        width: 11
+        height: 37
+      alignment: 9
+      pivot: {x: 0.507773, y: 0.4723086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 104
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_6
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 105
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_7
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 105
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 62
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_9
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 61
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_10
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 62
+        width: 16
+        height: 36
+      alignment: 9
+      pivot: {x: 0.53557825, y: 0.45874447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_11
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 62
+        width: 21
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6429814, y: 0.43481746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 56
+        width: 21
+        height: 42
+      alignment: 9
+      pivot: {x: 0.40708452, y: 0.5585901}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_13
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 62
+        width: 36
+        height: 36
+      alignment: 9
+      pivot: {x: 0.23539989, y: 0.48245895}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.525604, y: 18.631477}
+        - {x: -6.4743958, y: 18.631477}
+        - {x: -8.474396, y: 10.631477}
+        - {x: -8.474396, y: -17.368523}
+        - {x: 13.525604, y: -17.368523}
+        - {x: 14.525604, y: -14.368523}
+        - {x: 27.525604, y: -1.3685226}
+        - {x: 27.525604, y: 10.631477}
+    - name: StarryKnightDown_14
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 19
+        width: 16
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5243902, y: 0.4566395}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_15
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 19
+        width: 16
+        height: 36
+      alignment: 9
+      pivot: {x: 0.53659153, y: 0.45483726}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_16
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 19
+        width: 16
+        height: 36
+      alignment: 9
+      pivot: {x: 0.52596045, y: 0.45506224}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_17
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 19
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDown_18
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 19
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
