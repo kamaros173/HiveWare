@@ -1,0 +1,281 @@
+fileFormatVersion: 2
+guid: ba11907a1673d7e4490ba8c8df915f06
+timeCreated: 1467073726
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: KnightDown_0
+    21300002: KnightDown_1
+    21300004: KnightDown_2
+    21300006: KnightDown_3
+    21300008: KnightDown_4
+    21300010: KnightDown_5
+    21300012: KnightDown_6
+    21300014: KnightDown_7
+    21300016: KnightDown_8
+    21300018: KnightDown_9
+    21300020: KnightDown_10
+    21300022: KnightDown_11
+    21300024: KnightDown_12
+    21300026: KnightDown_13
+    21300028: KnightDown_14
+    21300030: KnightDown_15
+    21300032: KnightDown_16
+    21300034: KnightDown_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: KnightDown_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 105
+        width: 11
+        height: 36
+      alignment: 9
+      pivot: {x: 0.49388036, y: 0.45669112}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 105
+        width: 11
+        height: 35
+      alignment: 9
+      pivot: {x: 0.4991195, y: 0.4419233}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_2
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 104
+        width: 11
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47074622}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_3
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 104
+        width: 11
+        height: 37
+      alignment: 9
+      pivot: {x: 0.49502078, y: 0.47013712}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_4
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 105
+        width: 22
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5167011, y: 0.44226184}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_5
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 105
+        width: 22
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5208761, y: 0.44226184}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_6
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 105
+        width: 23
+        height: 29
+      alignment: 9
+      pivot: {x: 0.4960062, y: 0.5316743}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 62
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_8
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 61
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_9
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 62
+        width: 16
+        height: 36
+      alignment: 9
+      pivot: {x: 0.533082, y: 0.45379004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_10
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 62
+        width: 21
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6404299, y: 0.43234333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_11
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 56
+        width: 20
+        height: 42
+      alignment: 9
+      pivot: {x: 0.42438355, y: 0.5540114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_12
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 62
+        width: 36
+        height: 36
+      alignment: 9
+      pivot: {x: 0.23895603, y: 0.48584005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.397583, y: 18.509758}
+        - {x: -7.602417, y: 18.509758}
+        - {x: -8.602417, y: 15.509758}
+        - {x: -8.602417, y: -17.490242}
+        - {x: 15.397583, y: -17.490242}
+        - {x: 17.397583, y: -16.490242}
+        - {x: 27.397583, y: 1.509758}
+        - {x: 27.397583, y: 12.509758}
+    - name: KnightDown_13
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 19
+        width: 16
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_14
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 19
+        width: 16
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_15
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 19
+        width: 16
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_16
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 19
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_17
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 19
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
