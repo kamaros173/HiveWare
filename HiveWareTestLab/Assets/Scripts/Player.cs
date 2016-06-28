@@ -160,6 +160,13 @@ public class Player : MonoBehaviour {
 
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "EnemyAttack")
+        {
+            Debug.Log("Hit by EnemyAttack");
+        }
+    }
 
     private void OnTriggerExit2D(Collider2D other)
     {
