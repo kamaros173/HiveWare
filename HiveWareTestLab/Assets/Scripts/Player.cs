@@ -83,8 +83,18 @@ public class Player : MonoBehaviour {
             if (Input.GetKey(KeyCode.S))
             {
                 transform.FindChild("Shield").gameObject.SetActive(true);
-                animator.SetBool("PlayerShieldDown", false);
-                animator.SetTrigger("PlayerShieldUp");
+
+                if (Globals.playerDirection == PlayerDirection.North)
+                {
+                    animator.SetBool("PlayerShieldDown", false);
+                    animator.SetTrigger("PlayerShieldUp");
+                }
+                else if (Globals.playerDirection == PlayerDirection.South)
+                {
+                    animator.SetBool("PlayerShieldDown", false);
+                    animator.SetTrigger("PlayerDownShield");
+                }
+               
 
             }
 
