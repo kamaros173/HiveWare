@@ -3,7 +3,6 @@ using System.Collections;
 
 public class EnemyAttackChaser : MonoBehaviour {
 
-    private bool canAttack = true;
     private Transform player;
 
     public float attackSpeedTol;
@@ -23,28 +22,24 @@ public class EnemyAttackChaser : MonoBehaviour {
 
     private IEnumerator Attack()
     {
+        
+        CircleCollider2D cir2d = gameObject.GetComponent<CircleCollider2D>();
+        float remainingTime = Time.time + attackDelay;
 
-
-        if (canAttack)
+        while(remainingTime > Time.time)
         {
-            canAttack = false;
-            CircleCollider2D cir2d = gameObject.GetComponent<CircleCollider2D>();
-            float remainingTime = Time.time + attackDelay;
-
-            while(remainingTime > Time.time)
-            {
-                yield return null;
-            }
-
-            while (cir2d.radius < attackSpeedTol)
-            {
-                cir2d.radius = Mathf.Lerp(cir2d.radius, 1.0f, attackSpeed * Time.deltaTime);
-                yield return null;
-            }
-
-            cir2d.radius = 0.1f;
-            canAttack = true;
+            yield return null;
         }
+
+        while (cir2d.radius < attackSpeedTol)
+        {
+            cir2d.radius = Mathf.Lerp(cir2d.radius, 1.0f, attackSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        cir2d.radius = 0.1f;
+        gameObject.SendMessageUpwards("EnemyCanNowMove");
+    
        
     }
 

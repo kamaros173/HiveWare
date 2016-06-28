@@ -23,20 +23,17 @@ public class EnemyAttackMage : MonoBehaviour {
 
     private IEnumerator Attack()
     {
-        if (canAttack)
+        
+        float remainingTime = Time.time + attackDelay;
+        while (remainingTime > Time.time)
         {
-            canAttack = false;
-            float remainingTime = Time.time + attackDelay;
-            while (remainingTime > Time.time)
-            {
-                yield return null;
-            }
-
-            Vector3 dir = Vector3.Normalize(player.position - transform.position);
-            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-
-            canAttack = true;
+            yield return null;
         }
+
+        Vector3 dir = Vector3.Normalize(player.position - transform.position);
+        Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+
+        gameObject.SendMessageUpwards("EnemyCanNowMove");
 
     }
 }

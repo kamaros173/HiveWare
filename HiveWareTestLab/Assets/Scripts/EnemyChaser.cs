@@ -22,6 +22,7 @@ public class EnemyChaser : MonoBehaviour {
     private Mode currentState = Mode.patrolling;
     private int patrolPoint = 0;
     private bool enemyIsHittable = true;
+    private bool enemyCanMove = true;
     private int currentHealth;
 
 	void Start ()
@@ -33,7 +34,7 @@ public class EnemyChaser : MonoBehaviour {
 
     void Update ()
     {
-        if (Globals.notFrozen)
+        if (Globals.notFrozen && enemyCanMove)
         {
             if (currentState == Mode.chasing)
             {
@@ -59,6 +60,7 @@ public class EnemyChaser : MonoBehaviour {
         {
             if(hit.collider.tag == "Player")
             {
+                enemyCanMove = false;
                 transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer");
             }
         }
@@ -225,5 +227,10 @@ public class EnemyChaser : MonoBehaviour {
     private void StopChase()
     {
         currentState = Mode.returning;
+    }
+
+    private void EnemyCanNowMove()
+    {
+        enemyCanMove = true;
     }
 }
