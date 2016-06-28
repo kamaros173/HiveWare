@@ -9,13 +9,17 @@ public class Player : MonoBehaviour {
     public float dashTol;
     public LayerMask wallLayer;
     public GameObject shot;
+    public GameController gameController;
     public Transform shotSpawn;
     public float fireRate;
     public float pushBackSmooth;
     public float pushBackDistance;
     public float pushBackTol;
     public float timeBetweenDamage;
-
+    public float energyToUseShield;
+    public float energyToUseDash;
+    public float energyToUseArrow;
+    public float energyToUseSword;
 
     private bool canSwing = true;  
     private float nextFire;
@@ -81,26 +85,27 @@ public class Player : MonoBehaviour {
             //SHIELD (CURRENTLY ALLOWING SHIELD, SWORD, AND DASH AT THE SAME TIME)
             if (Input.GetKey(KeyCode.S))
             {
-                transform.FindChild("Shield").gameObject.SetActive(true);
-
-                if (Globals.playerDirection == PlayerDirection.North)
+                if (gameController.DrainPlayerEnergy(energyToUseShield))
                 {
-                    animator.SetBool("PlayerShieldDown", false);
-                    animator.SetTrigger("PlayerShieldUp");
-                }
-                else if (Globals.playerDirection == PlayerDirection.South)
-                {
-                    animator.SetBool("PlayerShieldDown", false);
-                    animator.SetTrigger("PlayerDownShield");
-                }
-               
+                    transform.FindChild("Shield").gameObject.SetActive(true);
 
+                    if (Globals.playerDirection == PlayerDirection.North)
+                    {
+                        animator.SetBool("PlayerShieldDown", false);
+                        animator.SetTrigger("PlayerShieldUp");
+                    }
+                    else if (Globals.playerDirection == PlayerDirection.South)
+                    {
+                        animator.SetBool("PlayerShieldDown", false);
+                        animator.SetTrigger("PlayerDownShield");
+                    }
+                }           
             }
 
             //SWORD
             if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.D))
             {
-                if (canSwing)
+                if (canSwing && gameController.DrainPlayerEnergy(energyToUseSword))
                 {
                     if (Globals.playerDirection == PlayerDirection.North)
                     {
@@ -124,15 +129,18 @@ public class Player : MonoBehaviour {
             if (Input.GetKey(KeyCode.A) && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
-                Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+                if (gameController.DrainPlayerEnergy(energyToUseArrow))
+                {                
+                    Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 
-                if (Globals.playerDirection == PlayerDirection.North)
-                {
-                    animator.SetTrigger("PlayerShootUp");
-                }
-                else if (Globals.playerDirection == PlayerDirection.South)
-                {
-                    animator.SetTrigger("PlayerShootDown");
+                    if (Globals.playerDirection == PlayerDirection.North)
+                    {
+                        animator.SetTrigger("PlayerShootUp");
+                    }
+                    else if (Globals.playerDirection == PlayerDirection.South)
+                    {
+                        animator.SetTrigger("PlayerShootDown");
+                    }
                 }
                 
 
@@ -141,7 +149,10 @@ public class Player : MonoBehaviour {
             //DASH
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                StartCoroutine(Dash());
+                if (gameController.DrainPlayerEnergy(energyToUseDash))
+                {
+                    StartCoroutine(Dash());
+                }
             }
 
             //STOP SHIELD

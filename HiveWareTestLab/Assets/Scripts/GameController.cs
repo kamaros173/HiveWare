@@ -75,10 +75,17 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void DrainPlayerEnergy(float amount)
+    public bool DrainPlayerEnergy(float amount)
     {
         StartCoroutine(DelayEnergyRegen());
+        if((playerEnergy - amount) < 0)
+        {
+            Debug.Log("Not Enough Energy: " + playerEnergy + " left");
+            return false;
+        }
+
         playerEnergy -= amount;
+        return true;
     }
 
     private IEnumerator DelayEnergyRegen()
