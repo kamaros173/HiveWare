@@ -37,10 +37,35 @@ public class Player : MonoBehaviour {
 
         if (Globals.notFrozen)
         {
-            //MOVE
-            if (Input.GetKey(KeyCode.UpArrow))
+
+            if (Input.GetKey(KeyCode.S))
             {
-               Globals.playerDirection  = PlayerDirection.North;
+                if (gameController.DrainPlayerEnergy(energyToUseShield))
+                {
+                    transform.FindChild("Shield").gameObject.SetActive(true);
+
+                    if (Globals.playerDirection == PlayerDirection.North)
+                    {
+                        animator.SetBool("PlayerShieldDown", false);
+                        animator.SetTrigger("PlayerShieldUp");
+                    }
+                    else if (Globals.playerDirection == PlayerDirection.South)
+                    {
+                        animator.SetBool("PlayerShieldDown", false);
+                        animator.SetTrigger("PlayerDownShield");
+                    }
+                    else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
+                    {
+                        animator.SetBool("PlayerShieldDown", false);
+                        animator.SetTrigger("PlayerSideShield");
+                    }
+
+                }
+            }
+            //MOVE
+            else if (Input.GetKey(KeyCode.UpArrow))
+            {
+                Globals.playerDirection = PlayerDirection.North;
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
                 animator.SetTrigger("PlayerWalkUp");
@@ -49,7 +74,7 @@ public class Player : MonoBehaviour {
             {
                 animator.SetTrigger("PlayerIdleUp");
             }
-          
+
             else if (Input.GetKey(KeyCode.DownArrow))
             {
                 Globals.playerDirection = PlayerDirection.South;
@@ -67,43 +92,40 @@ public class Player : MonoBehaviour {
             else if (Input.GetKey(KeyCode.RightArrow))
             {
                 Globals.playerDirection = PlayerDirection.East;
-                transform.rotation = Quaternion.Euler(0f, 0f, 270f);
-                transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+                //transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+                GetComponent<SpriteRenderer>().flipX = false;
+                animator.ResetTrigger("PlayerIdleDown");
+                animator.ResetTrigger("PlayerIdleUp");
+                animator.SetTrigger("PlayerWalkSide");
+                transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
 
             }
-            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
             {
-                animator.SetTrigger("PlayerIdleDown");
+                animator.SetTrigger("PlayerIdleSide");
             }
+
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 Globals.playerDirection = PlayerDirection.West;
-                transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-                transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+                GetComponent<SpriteRenderer>().flipX = true;
+                //transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                animator.ResetTrigger("PlayerIdleDown");
+                animator.ResetTrigger("PlayerIdleUp");
+                animator.SetTrigger("PlayerWalkSide");
+                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
             }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                animator.SetTrigger("PlayerIdleSide");
+            }
+
 
             //SHIELD (CURRENTLY ALLOWING SHIELD, SWORD, AND DASH AT THE SAME TIME)
-            if (Input.GetKey(KeyCode.S))
-            {
-                if (gameController.DrainPlayerEnergy(energyToUseShield))
-                {
-                    transform.FindChild("Shield").gameObject.SetActive(true);
-
-                    if (Globals.playerDirection == PlayerDirection.North)
-                    {
-                        animator.SetBool("PlayerShieldDown", false);
-                        animator.SetTrigger("PlayerShieldUp");
-                    }
-                    else if (Globals.playerDirection == PlayerDirection.South)
-                    {
-                        animator.SetBool("PlayerShieldDown", false);
-                        animator.SetTrigger("PlayerDownShield");
-                    }
-                }           
-            }
+           
 
             //SWORD
-            if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.D))
             {
                 if (canSwing && gameController.DrainPlayerEnergy(energyToUseSword))
                 {
@@ -115,9 +137,14 @@ public class Player : MonoBehaviour {
                         {
                             animator.SetTrigger("SwordSwingDown");
                         }
-                    
+                    else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
+                    {
+                        animator.SetTrigger("SwordSwingSide");
+                    }
 
-                 
+
+
+
                     canSwing = false;
                     transform.FindChild("SwordPivot").gameObject.SetActive(true);
                     transform.FindChild("SwordPivot").gameObject.SendMessage("Swing", Globals.playerDirection);
@@ -126,20 +153,28 @@ public class Player : MonoBehaviour {
             }
 
             //SHOOT
-            if (Input.GetKey(KeyCode.A) && Time.time > nextFire)
+           else if (Input.GetKey(KeyCode.A) && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
                 if (gameController.DrainPlayerEnergy(energyToUseArrow))
                 {                
-                    Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+                    
 
                     if (Globals.playerDirection == PlayerDirection.North)
                     {
+                        Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
                         animator.SetTrigger("PlayerShootUp");
                     }
                     else if (Globals.playerDirection == PlayerDirection.South)
                     {
+                        Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
                         animator.SetTrigger("PlayerShootDown");
+                    }
+                    else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
+                    {
+                        Instantiate(shot, shotSpawn.position, Quaternion.Euler(0f, 0f, 90f));
+
+                        animator.SetTrigger("PlayerShootSide");
                     }
                 }
                 

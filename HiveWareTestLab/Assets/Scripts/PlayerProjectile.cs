@@ -25,12 +25,12 @@ public class PlayerProjectile : MonoBehaviour {
         else if (Globals.playerDirection == PlayerDirection.East)
         {
 
-            shotDirection = Vector2.right;
+            shotDirection = Vector2.down;
         }
         else if (Globals.playerDirection == PlayerDirection.West)
         {
 
-            shotDirection = Vector2.left;
+            shotDirection = Vector2.up;
         }
     }
 

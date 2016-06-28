@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b762813ab52471e46a0f63cb83fc7997
-timeCreated: 1467142806
+timeCreated: 1467144553
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -77,7 +77,7 @@ TextureImporter:
         width: 10
         height: 36
       alignment: 9
-      pivot: {x: 0.7800048, y: 0.45757505}
+      pivot: {x: 0.7500712, y: 0.45294508}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_1
@@ -88,7 +88,7 @@ TextureImporter:
         width: 10
         height: 35
       alignment: 9
-      pivot: {x: 0.7630348, y: 0.46848428}
+      pivot: {x: 0.75215054, y: 0.46551535}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_2
@@ -198,7 +198,7 @@ TextureImporter:
         width: 5
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_12
@@ -209,7 +209,7 @@ TextureImporter:
         width: 9
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_13
@@ -220,7 +220,7 @@ TextureImporter:
         width: 15
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_14
@@ -231,7 +231,7 @@ TextureImporter:
         width: 23
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_15
@@ -242,7 +242,7 @@ TextureImporter:
         width: 52
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_16
@@ -253,7 +253,7 @@ TextureImporter:
         width: 37
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_17
@@ -264,7 +264,7 @@ TextureImporter:
         width: 17
         height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightRight_18

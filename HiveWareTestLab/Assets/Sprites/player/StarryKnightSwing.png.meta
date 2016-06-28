@@ -1,9 +1,22 @@
 fileFormatVersion: 2
 guid: a3c57f170e60dcd4498930766e35c7f3
-timeCreated: 1467056091
+timeCreated: 1467146250
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: StarryKnightSwing_0
+    21300002: StarryKnightSwing_1
+    21300004: StarryKnightSwing_2
+    21300006: StarryKnightSwing_3
+    21300008: StarryKnightSwing_4
+    21300010: StarryKnightSwing_5
+    21300012: StarryKnightSwing_6
+    21300014: StarryKnightSwing_7
+    21300016: StarryKnightSwing_8
+    21300018: StarryKnightSwing_9
+    21300020: StarryKnightSwing_10
+    21300022: StarryKnightSwing_11
+    21300024: StarryKnightSwing_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +39,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,18 +51,169 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: StarryKnightSwing_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 106
+        width: 15
+        height: 34
+      alignment: 9
+      pivot: {x: 0.57057506, y: 0.4822078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 106
+        width: 23
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5854791, y: 0.4822078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 106
+        width: 27
+        height: 37
+      alignment: 9
+      pivot: {x: 0.64843154, y: 0.3365056}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 106
+        width: 43
+        height: 33
+      alignment: 9
+      pivot: {x: 0.41031575, y: 0.3762644}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25.356422, y: 8.583275}
+        - {x: 25.356422, y: 20.583275}
+        - {x: 5.3564224, y: 20.583275}
+        - {x: 1.3564224, y: 19.583275}
+        - {x: -17.643578, y: -3.4167252}
+        - {x: -17.643578, y: -10.416725}
+        - {x: -15.643578, y: -12.416725}
+        - {x: 10.356422, y: -12.416725}
+    - name: StarryKnightSwing_4
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 69
+        width: 52
+        height: 27
+      alignment: 9
+      pivot: {x: 0.33819258, y: 0.46104628}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_5
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 69
+        width: 44
+        height: 27
+      alignment: 9
+      pivot: {x: 0.3988136, y: 0.46627128}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_6
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 65
+        width: 27
+        height: 31
+      alignment: 9
+      pivot: {x: 0.6469427, y: 0.5280919}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 30
+        width: 37
+        height: 27
+      alignment: 9
+      pivot: {x: 0.63557965, y: 0.46030045}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 4
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_9
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_10
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_11
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing_12
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     outline: []
   spritePackingTag: 
   userData: 
