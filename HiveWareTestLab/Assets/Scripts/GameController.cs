@@ -22,5 +22,10 @@ public class GameController : MonoBehaviour {
 
         currentEnemies.Clear();
     }
+
+    private void RemoveEnemy(GameObject enemy)
+    {
+        currentEnemies.Remove(enemy);
+    }
 	
 }
