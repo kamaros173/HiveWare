@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ba11907a1673d7e4490ba8c8df915f06
-timeCreated: 1467073726
+timeCreated: 1467077688
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -22,6 +22,7 @@ TextureImporter:
     21300030: KnightDown_15
     21300032: KnightDown_16
     21300034: KnightDown_17
+    21300036: KnightDown_18
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -273,6 +274,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightDown_18
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 21
+        width: 3
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 0, z: 0, w: 0}
       outline: []
     outline: []
   spritePackingTag: 
