@@ -6,8 +6,6 @@ public class EnemyChaser : MonoBehaviour {
     public int maxHealth;
     public float moveSpeed;
     public float chaseSpeed;
-    //public float attackSpeed;
-    //public float attackSpeedTol;
     public float hitRange;
     public LayerMask playerLayer;
     public LayerMask wallLayer;
@@ -24,7 +22,6 @@ public class EnemyChaser : MonoBehaviour {
     private Mode currentState = Mode.patrolling;
     private int patrolPoint = 0;
     private bool enemyIsHittable = true;
-    //private bool canAttack = true;
     private int currentHealth;
 
 	void Start ()
@@ -138,17 +135,13 @@ public class EnemyChaser : MonoBehaviour {
             Vector3 contactPoint = other.contacts[0].point;
             Vector3 centerPoint = other.collider.bounds.center;
             Vector3 direction = Vector3.Normalize(centerPoint - contactPoint);
+            GameObject.Find("GameController").SendMessage("HurtPlayer", direction);
             other.gameObject.SendMessage("HitPlayer", direction);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //if (other.gameObject.tag == "Player")
-        //{
-        //    currentState = Mode.chasing;
-        //    lastPatrolPosition = transform.position;
-        //}
         if (other.gameObject.tag == "PlayerSword" && enemyIsHittable)
         {
             Vector3 direction = Vector3.Normalize(transform.position - player.position);
@@ -171,15 +164,9 @@ public class EnemyChaser : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        //if (other.gameObject.tag == "Player")
-        //    currentState = Mode.returning;
-
-    }
-
     private void HitEnemy(Vector3 direction, int damage)
     {
+        enemyIsHittable = false;
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
@@ -189,13 +176,11 @@ public class EnemyChaser : MonoBehaviour {
         }
         else
         {
-            enemyIsHittable = false;
             StartCoroutine(PushBackEnemy(direction));
-            //StartCoroutine(EnemyIsImmuneToDamage());
         }       
     }
 
-    //FIX
+    
     private IEnumerator PushBackEnemy(Vector3 direction)
     {        
         currentState = Mode.off;
@@ -226,8 +211,8 @@ public class EnemyChaser : MonoBehaviour {
             yield return null;
         }
 
-        enemyIsHittable = true;
         currentState = Mode.chasing;
+        enemyIsHittable = true;
     }
 
     private void StartChase()
@@ -240,16 +225,4 @@ public class EnemyChaser : MonoBehaviour {
     {
         currentState = Mode.returning;
     }
-
-    //private IEnumerator EnemyIsImmuneToDamage()
-    //{
-    //    float waitTime = Time.time + timeBetweenDamage;
-
-    //    while (Time.time < waitTime)
-    //    {
-    //        yield return null;
-    //    }
-
-    //    //enemyIsHittable = true;
-    //}
 }

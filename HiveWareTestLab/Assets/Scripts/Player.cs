@@ -162,9 +162,11 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "EnemyAttack")
+        if(other.gameObject.tag == "EnemyAttack" && Globals.playerIsHittable)
         {
-            Debug.Log("Hit by EnemyAttack");
+            Globals.notFrozen = false;
+            Globals.playerIsHittable = false;
+            other.gameObject.SendMessage("PlayerHasBeenHit");
         }
     }
 
@@ -228,9 +230,6 @@ public class Player : MonoBehaviour {
 
     private void HitPlayer(Vector3 direction)
     {
-        //CAN ADD DAMAGE HERE
-        Globals.playerIsHittable = false;
-        Globals.notFrozen = false;
         StartCoroutine(PushBackPlayer(direction));
         StartCoroutine(PlayerIsImmuneToDamage());
     }
@@ -249,22 +248,26 @@ public class Player : MonoBehaviour {
 
     private IEnumerator PushBackPlayer(Vector3 direction)
     {
+
         Vector3 target = transform.position + (direction * pushBackDistance);
-        RaycastHit2D hit;
-        float oldDis = 0;
+        Vector3 oldPos;
+        float oldDis = Vector3.Distance(transform.position, target);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
+        if (hit.collider != null)
+        {
+            target = hit.point;
+        }
 
         do
         {
-            oldDis = Vector3.Distance(transform.position, target);
-
-            hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
-            if (hit.collider != null)
-                target = hit.point;
+            oldPos = transform.position;
 
             transform.position = Vector3.Lerp(transform.position, target, pushBackSmooth * Time.deltaTime);
             yield return null;
 
-        } while (oldDis > pushBackTol);
+            oldDis = Vector3.Distance(transform.position, target);
+        } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol);
 
         Globals.notFrozen = true;
     }
