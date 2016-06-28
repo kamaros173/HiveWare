@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
 
 
     private bool canSwing = true;
-    private PlayerDirection currentdirection = PlayerDirection.North;
+   
     private float nextFire;
     private Animator animator;
 
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
             //MOVE
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                currentdirection = PlayerDirection.North;
+               Globals.playerDirection  = PlayerDirection.North;
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
                 animator.SetTrigger("PlayerWalkUp");
@@ -49,26 +49,32 @@ public class Player : MonoBehaviour {
           
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                currentdirection = PlayerDirection.South;
+                Globals.playerDirection = PlayerDirection.South;
                 //transform.rotation = Quaternion.Euler(0f, 0f, 180f);
                 transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
+                animator.ResetTrigger("PlayerIdleUp");
+                animator.SetTrigger("PlayerIdleDown");
                 animator.SetTrigger("PlayerWalkDown");
 
             }
             else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
-                animator.SetTrigger("PlayerIdleUp");
+                animator.SetTrigger("PlayerIdleDown");
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                currentdirection = PlayerDirection.East;
+                Globals.playerDirection = PlayerDirection.East;
                 transform.rotation = Quaternion.Euler(0f, 0f, 270f);
                 transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
 
             }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                animator.SetTrigger("PlayerIdleDown");
+            }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                currentdirection = PlayerDirection.West;
+                Globals.playerDirection = PlayerDirection.West;
                 transform.rotation = Quaternion.Euler(0f, 0f, 90f);
                 transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
             }
@@ -87,12 +93,20 @@ public class Player : MonoBehaviour {
             {
                 if (canSwing)
                 {
-                    animator.SetTrigger("SwordSwingUP");
+                    if (Globals.playerDirection == PlayerDirection.North)
+                    {
+                        animator.SetTrigger("SwordSwingUP");
+                    }
+                    else if (Globals.playerDirection == PlayerDirection.South)
+                        {
+                            animator.SetTrigger("SwordSwingDown");
+                        }
+                    
 
                  
                     canSwing = false;
                     transform.FindChild("SwordPivot").gameObject.SetActive(true);
-                    transform.FindChild("SwordPivot").gameObject.SendMessage("Swing", currentdirection);
+                    transform.FindChild("SwordPivot").gameObject.SendMessage("Swing", Globals.playerDirection);
                     
                 }
             }
@@ -102,7 +116,16 @@ public class Player : MonoBehaviour {
             {
                 nextFire = Time.time + fireRate;
                 Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-                animator.SetTrigger("PlayerShootUp");
+
+                if (Globals.playerDirection == PlayerDirection.North)
+                {
+                    animator.SetTrigger("PlayerShootUp");
+                }
+                else if (Globals.playerDirection == PlayerDirection.South)
+                {
+                    animator.SetTrigger("PlayerShootDown");
+                }
+                
 
             }
 
@@ -132,7 +155,7 @@ public class Player : MonoBehaviour {
     {
         if(other.gameObject.tag == "MainCamera")
         {
-            GameObject.Find("Main Camera").SendMessage("MoveCamera", currentdirection);     
+            GameObject.Find("Main Camera").SendMessage("MoveCamera", Globals.playerDirection);     
         }
     }
 
@@ -145,22 +168,22 @@ public class Player : MonoBehaviour {
             Vector2 dir = Vector3.zero;
 
             //DETERMINE DIRECTION
-            if (currentdirection == PlayerDirection.North)
+            if (Globals.playerDirection == PlayerDirection.North)
             {
                 target = transform.position + Vector3.up * dashDistance;
                 dir = Vector2.up;
             }
-            else if (currentdirection == PlayerDirection.South)
+            else if (Globals.playerDirection == PlayerDirection.South)
             {
                 target = transform.position + Vector3.down * dashDistance;
                 dir = Vector2.down;
             }
-            else if (currentdirection == PlayerDirection.East)
+            else if (Globals.playerDirection == PlayerDirection.East)
             {
                 target = transform.position + Vector3.right * dashDistance;
                 dir = Vector2.right;
             }
-            else if (currentdirection == PlayerDirection.West)
+            else if (Globals.playerDirection == PlayerDirection.West)
             {
                 target = transform.position + Vector3.left * dashDistance;
                 dir = Vector2.left;
