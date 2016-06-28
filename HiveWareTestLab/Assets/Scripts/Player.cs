@@ -17,8 +17,7 @@ public class Player : MonoBehaviour {
     public float timeBetweenDamage;
 
 
-    private bool canSwing = true;
-   
+    private bool canSwing = true;  
     private float nextFire;
     private Animator animator;
 
@@ -167,6 +166,18 @@ public class Player : MonoBehaviour {
             Globals.notFrozen = false;
             Globals.playerIsHittable = false;
             other.gameObject.SendMessage("PlayerHasBeenHit");
+        }
+        else if (other.gameObject.tag == "Projectile")
+        {
+            
+            //GameObject.Destroy(other.gameObject);
+            if (Globals.playerIsHittable)
+            {
+                Globals.notFrozen = false;
+                Globals.playerIsHittable = false;
+                other.gameObject.SendMessage("PlayerHasBeenHit");
+            }
+
         }
     }
 

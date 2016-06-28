@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour {
+public class PlayerProjectile : MonoBehaviour {
 
     public float speed;
     private Vector3 shotDirection;

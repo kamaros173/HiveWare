@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyAttack : MonoBehaviour {
+public class EnemyAttackChaser : MonoBehaviour {
 
     private bool canAttack = true;
     private Transform player;

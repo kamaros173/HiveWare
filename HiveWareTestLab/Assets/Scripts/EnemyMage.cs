@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyChaser : MonoBehaviour {
+public class EnemyMage : MonoBehaviour {
 
     public int maxHealth;
     public float moveSpeed;
@@ -18,20 +18,20 @@ public class EnemyChaser : MonoBehaviour {
 
     private Transform player;
     private Vector3 lastPatrolPosition;
-    private enum Mode { patrolling, chasing, returning, off};
+    private enum Mode { patrolling, chasing, returning, off };
     private Mode currentState = Mode.patrolling;
     private int patrolPoint = 0;
     private bool enemyIsHittable = true;
     private int currentHealth;
 
-	void Start ()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = patrolPoints[patrolPoint];
         currentHealth = maxHealth;
-	}
+    }
 
-    void Update ()
+    void Update()
     {
         if (Globals.notFrozen)
         {
@@ -55,11 +55,11 @@ public class EnemyChaser : MonoBehaviour {
         Vector2 dir = Vector3.Normalize(player.position - transform.position);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
 
-        if (hit.collider != null) 
+        if (hit.collider != null)
         {
-            if(hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player")
             {
-                transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer");
+                transform.FindChild("EnemyAttackMage").SendMessage("AttackPlayer");
             }
         }
         else
@@ -72,7 +72,7 @@ public class EnemyChaser : MonoBehaviour {
     {
         Move(lastPatrolPosition, moveSpeed);
 
-        if(transform.position == lastPatrolPosition)
+        if (transform.position == lastPatrolPosition)
         {
             currentState = Mode.patrolling;
         }
@@ -96,12 +96,12 @@ public class EnemyChaser : MonoBehaviour {
         Vector3 vectorToTarget = target - transform.position;
 
         //THIS FLIPS DEPENDING ON TARGET DIRECTION
-        if(vectorToTarget.x > 0f)
+        if (vectorToTarget.x > 0f)
         {
             //LOOK RIGHT
             GetComponent<SpriteRenderer>().flipX = false;
         }
-        else if(vectorToTarget.x < 0f)
+        else if (vectorToTarget.x < 0f)
         {
             //LOOK LEFT
             GetComponent<SpriteRenderer>().flipX = true;
@@ -116,7 +116,7 @@ public class EnemyChaser : MonoBehaviour {
         currentState = Mode.off;
         transform.position = patrolPoints[0];
         patrolPoint = 0;
-        transform.FindChild("EnemySightChaser").gameObject.SetActive(false);
+        transform.FindChild("EnemySightMage").gameObject.SetActive(false);
         Move(patrolPoints[patrolPoint], moveSpeed);
     }
 
@@ -124,20 +124,19 @@ public class EnemyChaser : MonoBehaviour {
     private void Load()
     {
         currentState = Mode.patrolling;
-        transform.FindChild("EnemySightChaser").gameObject.SetActive(true);
+        transform.FindChild("EnemySightMage").gameObject.SetActive(true);
     }
 
     //If the player keeps beating his face against the enmey
     private void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player" && Globals.playerIsHittable)
+        if (other.gameObject.tag == "Player" && Globals.playerIsHittable)
         {
-            Globals.notFrozen = false;
-            Globals.playerIsHittable = false;
             Vector3 contactPoint = other.contacts[0].point;
             Vector3 centerPoint = other.collider.bounds.center;
             Vector3 direction = Vector3.Normalize(centerPoint - contactPoint);
             GameObject.Find("GameController").SendMessage("HurtPlayer", direction);
+            other.gameObject.SendMessage("HitPlayer", direction);
         }
     }
 
@@ -155,8 +154,8 @@ public class EnemyChaser : MonoBehaviour {
             {
                 Vector3 direction = Vector3.Normalize(transform.position - player.position);
                 HitEnemy(direction, Globals.playerArrowDamage);
-            }           
-            
+            }
+
         }
         else if (other.gameObject.tag == "MainCamera")
         {
@@ -169,7 +168,7 @@ public class EnemyChaser : MonoBehaviour {
     {
         enemyIsHittable = false;
         currentHealth -= damage;
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             currentState = Mode.off;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
@@ -178,17 +177,17 @@ public class EnemyChaser : MonoBehaviour {
         else
         {
             StartCoroutine(PushBackEnemy(direction));
-        }       
+        }
     }
 
-    
+
     private IEnumerator PushBackEnemy(Vector3 direction)
-    {        
+    {
         currentState = Mode.off;
         Vector3 target = transform.position + (direction * pushBackDistance);
         Vector3 oldPos;
         float oldDis = Vector3.Distance(transform.position, target);
-        
+
         RaycastHit2D hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
         if (hit.collider != null)
         {
@@ -203,7 +202,7 @@ public class EnemyChaser : MonoBehaviour {
             yield return null;
 
             oldDis = Vector3.Distance(transform.position, target);
-        } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol) ;
+        } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol);
 
         float stun = Time.time + stunTime;
 
@@ -227,3 +226,4 @@ public class EnemyChaser : MonoBehaviour {
         currentState = Mode.returning;
     }
 }
+
