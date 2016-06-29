@@ -4,9 +4,11 @@ using System.Collections;
 public class EnemyProjectile : MonoBehaviour {
 
     public float speed;
+    public LayerMask Shield;
     private Vector3 shotDirection;
     private float shotDistance;
     private Vector3 player;
+    private RaycastHit2D hit;
 
     // Use this for initialization
     void Start()
@@ -18,12 +20,21 @@ public class EnemyProjectile : MonoBehaviour {
 
     void Update()
     {
+        
         float traveled = speed * Time.deltaTime;
+
+        hit = Physics2D.Raycast(transform.position, shotDirection, traveled, Shield);
+        if(hit.collider != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         transform.Translate(shotDirection * traveled);
         shotDistance -= traveled;
         if(shotDistance < 0)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
         }
     }
 

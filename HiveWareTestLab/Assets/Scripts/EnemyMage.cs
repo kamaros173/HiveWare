@@ -27,7 +27,7 @@ public class EnemyMage : MonoBehaviour {
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.Find("Player").transform;
         transform.position = patrolPoints[patrolPoint];
         currentHealth = maxHealth;
     }
