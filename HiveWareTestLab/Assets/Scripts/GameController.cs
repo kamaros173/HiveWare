@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
+    public Image[] hearts;
+    public Sprite skull;
+    public Sprite heart;
     public int playerHealthMax;
     public float playerEnergyMax;
     public float energyPerSecond;
     public float energyDelay;
+    public Slider energyBar;
+    
 
     private int playerHealth;
     private float playerEnergy;
@@ -26,10 +32,12 @@ public class GameController : MonoBehaviour {
             if (playerEnergy + (energyPerSecond * Time.deltaTime) > playerEnergyMax)
             {
                 playerEnergy = playerEnergyMax;
+                energyBar.value = playerEnergy;
             }
             else
             {
                 playerEnergy += energyPerSecond * Time.deltaTime;
+                energyBar.value = playerEnergy;
             }
         }
     }
@@ -54,7 +62,12 @@ public class GameController : MonoBehaviour {
 
     private void HurtPlayer(Vector3 direction)
     {
+
         playerHealth--;
+
+
+        hearts[playerHealth].sprite = skull;
+
         Debug.Log("Controller Says: Player Hit - " + playerHealth + " hits remaining");
         if(playerHealth <= 0)
         {
@@ -85,6 +98,7 @@ public class GameController : MonoBehaviour {
         }
 
         playerEnergy -= amount;
+        energyBar.value = playerEnergy;
         return true;
     }
 
