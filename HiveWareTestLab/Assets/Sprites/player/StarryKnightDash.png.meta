@@ -1,9 +1,19 @@
 fileFormatVersion: 2
 guid: daefe785dbf1f39408af545e298ce911
-timeCreated: 1467056073
+timeCreated: 1467160171
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: StarryKnightDash_0
+    21300002: StarryKnightDash_1
+    21300004: StarryKnightDash_2
+    21300006: StarryKnightDash_3
+    21300008: StarryKnightDash_4
+    21300010: StarryKnightDash_5
+    21300012: StarryKnightDash_6
+    21300014: StarryKnightDash_7
+    21300016: StarryKnightDash_8
+    21300018: StarryKnightDash_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +36,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,18 +48,128 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: StarryKnightDash_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 110
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 110
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_2
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 110
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_3
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 47
+        width: 15
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 47
+        width: 31
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_5
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 47
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_6
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 47
+        width: 51
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 17
+        width: 70
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_8
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 17
+        width: 51
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightDash_9
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 17
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     outline: []
   spritePackingTag: 
   userData: 
