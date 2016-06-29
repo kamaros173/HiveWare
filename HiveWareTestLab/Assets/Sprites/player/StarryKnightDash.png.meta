@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: daefe785dbf1f39408af545e298ce911
-timeCreated: 1467160171
+timeCreated: 1467161288
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -67,8 +67,8 @@ TextureImporter:
         y: 110
         width: 32
         height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.63916993, y: 0.4410016}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_1
@@ -79,7 +79,7 @@ TextureImporter:
         width: 32
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_2
@@ -90,7 +90,7 @@ TextureImporter:
         width: 32
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_3
@@ -100,8 +100,8 @@ TextureImporter:
         y: 47
         width: 15
         height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.567113, y: 0.4830806}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_4
@@ -111,19 +111,19 @@ TextureImporter:
         y: 47
         width: 31
         height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.56262845, y: 0.44192123}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_5
       rect:
         serializedVersion: 2
-        x: 65
-        y: 47
+        x: 66
+        y: 46
         width: 32
         height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.61684823, y: 0.47510895}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_6
@@ -133,8 +133,8 @@ TextureImporter:
         y: 47
         width: 51
         height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.7738704, y: 0.44278777}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_7
@@ -144,8 +144,8 @@ TextureImporter:
         y: 17
         width: 70
         height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.83537054, y: 0.44006333}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_8
@@ -155,8 +155,8 @@ TextureImporter:
         y: 17
         width: 51
         height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.7746034, y: 0.44041333}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_9
@@ -166,8 +166,8 @@ TextureImporter:
         y: 17
         width: 32
         height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6417613, y: 0.44225854}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []

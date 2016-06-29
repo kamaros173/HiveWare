@@ -221,172 +221,184 @@ public class Player : MonoBehaviour {
                 animator.SetBool("IsShieldUp", false);
                 animator.ResetTrigger("ShieldUp");
             }
+            //DASH
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (gameController.DrainPlayerEnergy(energyToUseDash))
+                {
+                    animator.SetTrigger("Dash");
+                    StartCoroutine(Dash());
+                    
+
+
+                }
+            }
 
 
 
 
 
-            // if (Input.GetKey(KeyCode.S))
-            // {
-            //     if (gameController.DrainPlayerEnergy(energyToUseShield))
-            //     {
-            //         transform.FindChild("Shield").gameObject.SetActive(true);
+                // if (Input.GetKey(KeyCode.S))
+                // {
+                //     if (gameController.DrainPlayerEnergy(energyToUseShield))
+                //     {
+                //         transform.FindChild("Shield").gameObject.SetActive(true);
 
-            //         if (Globals.playerDirection == PlayerDirection.North)
-            //         {
-            //             animator.SetBool("PlayerShieldDown", false);
-            //             animator.SetTrigger("PlayerShieldUp");
+                //         if (Globals.playerDirection == PlayerDirection.North)
+                //         {
+                //             animator.SetBool("PlayerShieldDown", false);
+                //             animator.SetTrigger("PlayerShieldUp");
 
-            //         }
-            //         else if (Globals.playerDirection == PlayerDirection.South)
-            //         {
-            //             animator.SetBool("PlayerShieldDown", false);
-            //             animator.SetTrigger("PlayerDownShield");
-            //         }
-            //         else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
-            //         {
-            //             animator.SetBool("PlayerShieldDown", false);
-            //             animator.SetTrigger("PlayerSideShield");
-            //         }
+                //         }
+                //         else if (Globals.playerDirection == PlayerDirection.South)
+                //         {
+                //             animator.SetBool("PlayerShieldDown", false);
+                //             animator.SetTrigger("PlayerDownShield");
+                //         }
+                //         else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
+                //         {
+                //             animator.SetBool("PlayerShieldDown", false);
+                //             animator.SetTrigger("PlayerSideShield");
+                //         }
 
-            //     }
-            // }
-            // //MOVE
-            // else if (Input.GetKey(KeyCode.UpArrow))
-            // {
-            //     Globals.playerDirection = PlayerDirection.North;
-            //     transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            //     transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
-            //     animator.SetTrigger("PlayerWalkUp");
-            // }
-            // else if (Input.GetKeyUp(KeyCode.UpArrow))
-            // {
-            //     animator.SetTrigger("PlayerIdleUp");
-            // }
+                //     }
+                // }
+                // //MOVE
+                // else if (Input.GetKey(KeyCode.UpArrow))
+                // {
+                //     Globals.playerDirection = PlayerDirection.North;
+                //     transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //     transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+                //     animator.SetTrigger("PlayerWalkUp");
+                // }
+                // else if (Input.GetKeyUp(KeyCode.UpArrow))
+                // {
+                //     animator.SetTrigger("PlayerIdleUp");
+                // }
 
-            // else if (Input.GetKey(KeyCode.DownArrow))
-            // {
-            //     Globals.playerDirection = PlayerDirection.South;
-            //     //transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-            //     transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
-            //     animator.ResetTrigger("PlayerIdleUp");
-            //     animator.SetTrigger("PlayerIdleDown");
-            //     animator.SetTrigger("PlayerWalkDown");
+                // else if (Input.GetKey(KeyCode.DownArrow))
+                // {
+                //     Globals.playerDirection = PlayerDirection.South;
+                //     //transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+                //     transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
+                //     animator.ResetTrigger("PlayerIdleUp");
+                //     animator.SetTrigger("PlayerIdleDown");
+                //     animator.SetTrigger("PlayerWalkDown");
 
-            // }
-            // else if (Input.GetKeyUp(KeyCode.DownArrow))
-            // {
-            //     animator.SetTrigger("PlayerIdleDown");
-            // }
-            // else if (Input.GetKey(KeyCode.RightArrow))
-            // {
-            //     Globals.playerDirection = PlayerDirection.East;
-            //     //transform.rotation = Quaternion.Euler(0f, 0f, 270f);
-            //     GetComponent<SpriteRenderer>().flipX = false;
-            //     animator.ResetTrigger("PlayerIdleDown");
-            //     animator.ResetTrigger("PlayerIdleUp");
-            //     animator.SetTrigger("PlayerWalkSide");
-            //     transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                // }
+                // else if (Input.GetKeyUp(KeyCode.DownArrow))
+                // {
+                //     animator.SetTrigger("PlayerIdleDown");
+                // }
+                // else if (Input.GetKey(KeyCode.RightArrow))
+                // {
+                //     Globals.playerDirection = PlayerDirection.East;
+                //     //transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+                //     GetComponent<SpriteRenderer>().flipX = false;
+                //     animator.ResetTrigger("PlayerIdleDown");
+                //     animator.ResetTrigger("PlayerIdleUp");
+                //     animator.SetTrigger("PlayerWalkSide");
+                //     transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
 
-            // }
-            // else if (Input.GetKeyUp(KeyCode.RightArrow))
-            // {
-            //     animator.SetTrigger("PlayerIdleSide");
-            // }
+                // }
+                // else if (Input.GetKeyUp(KeyCode.RightArrow))
+                // {
+                //     animator.SetTrigger("PlayerIdleSide");
+                // }
 
-            // else if (Input.GetKey(KeyCode.LeftArrow))
-            // {
-            //     Globals.playerDirection = PlayerDirection.West;
-            //     GetComponent<SpriteRenderer>().flipX = true;
-            //     //transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-            //     animator.ResetTrigger("PlayerIdleDown");
-            //     animator.ResetTrigger("PlayerIdleUp");
-            //     animator.SetTrigger("PlayerWalkSide");
-            //     transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-            // }
-            // else if (Input.GetKeyUp(KeyCode.LeftArrow))
-            // {
-            //     animator.SetTrigger("PlayerIdleSide");
-            // }
-
-
-            // //SHIELD (CURRENTLY ALLOWING SHIELD, SWORD, AND DASH AT THE SAME TIME)
+                // else if (Input.GetKey(KeyCode.LeftArrow))
+                // {
+                //     Globals.playerDirection = PlayerDirection.West;
+                //     GetComponent<SpriteRenderer>().flipX = true;
+                //     //transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                //     animator.ResetTrigger("PlayerIdleDown");
+                //     animator.ResetTrigger("PlayerIdleUp");
+                //     animator.SetTrigger("PlayerWalkSide");
+                //     transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+                // }
+                // else if (Input.GetKeyUp(KeyCode.LeftArrow))
+                // {
+                //     animator.SetTrigger("PlayerIdleSide");
+                // }
 
 
-            // //SWORD
-            // else if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.D))
-            // {
-            //     if (canSwing && gameController.DrainPlayerEnergy(energyToUseSword))
-            //     {
-            //         if (Globals.playerDirection == PlayerDirection.North)
-            //         {
-            //             animator.SetTrigger("SwordSwingUP");
-            //         }
-            //         else if (Globals.playerDirection == PlayerDirection.South)
-            //             {
-            //                 animator.SetTrigger("SwordSwingDown");
-            //             }
-            //         else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
-            //         {
-            //             animator.SetTrigger("SwordSwingSide");
-            //         }
+                // //SHIELD (CURRENTLY ALLOWING SHIELD, SWORD, AND DASH AT THE SAME TIME)
+
+
+                // //SWORD
+                // else if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.D))
+                // {
+                //     if (canSwing && gameController.DrainPlayerEnergy(energyToUseSword))
+                //     {
+                //         if (Globals.playerDirection == PlayerDirection.North)
+                //         {
+                //             animator.SetTrigger("SwordSwingUP");
+                //         }
+                //         else if (Globals.playerDirection == PlayerDirection.South)
+                //             {
+                //                 animator.SetTrigger("SwordSwingDown");
+                //             }
+                //         else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
+                //         {
+                //             animator.SetTrigger("SwordSwingSide");
+                //         }
 
 
 
 
-            //         canSwing = false;
-            //         transform.FindChild("SwordPivot").gameObject.SetActive(true);
-            //         transform.FindChild("SwordPivot").gameObject.SendMessage("Swing", Globals.playerDirection);
+                //         canSwing = false;
+                //         transform.FindChild("SwordPivot").gameObject.SetActive(true);
+                //         transform.FindChild("SwordPivot").gameObject.SendMessage("Swing", Globals.playerDirection);
 
-            //     }
-            // }
+                //     }
+                // }
 
-            // //SHOOT
-            //else if (Input.GetKey(KeyCode.A) && Time.time > nextFire)
-            // {
-            //     nextFire = Time.time + fireRate;
-            //     if (gameController.DrainPlayerEnergy(energyToUseArrow))
-            //     {                
-
-
-            //         if (Globals.playerDirection == PlayerDirection.North)
-            //         {
-            //             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-            //             animator.SetTrigger("PlayerShootUp");
-            //         }
-            //         else if (Globals.playerDirection == PlayerDirection.South)
-            //         {
-            //             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-            //             animator.SetTrigger("PlayerShootDown");
-            //         }
-            //         else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
-            //         {
-            //             Instantiate(shot, shotSpawn.position, Quaternion.Euler(0f, 0f, 90f));
-
-            //             animator.SetTrigger("PlayerShootSide");
-            //         }
-            //     }
+                // //SHOOT
+                //else if (Input.GetKey(KeyCode.A) && Time.time > nextFire)
+                // {
+                //     nextFire = Time.time + fireRate;
+                //     if (gameController.DrainPlayerEnergy(energyToUseArrow))
+                //     {                
 
 
-            // }
+                //         if (Globals.playerDirection == PlayerDirection.North)
+                //         {
+                //             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+                //             animator.SetTrigger("PlayerShootUp");
+                //         }
+                //         else if (Globals.playerDirection == PlayerDirection.South)
+                //         {
+                //             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+                //             animator.SetTrigger("PlayerShootDown");
+                //         }
+                //         else if (Globals.playerDirection == PlayerDirection.East || Globals.playerDirection == PlayerDirection.West)
+                //         {
+                //             Instantiate(shot, shotSpawn.position, Quaternion.Euler(0f, 0f, 90f));
 
-            // //DASH
-            // if (Input.GetKeyDown(KeyCode.Space))
-            // {
-            //     if (gameController.DrainPlayerEnergy(energyToUseDash))
-            //     {
-            //         StartCoroutine(Dash());
-            //     }
-            // }
+                //             animator.SetTrigger("PlayerShootSide");
+                //         }
+                //     }
 
-            // //STOP SHIELD
-            // if (Input.GetKeyUp(KeyCode.S))
-            // {
-            //     transform.FindChild("Shield").gameObject.SetActive(false);
-            //     animator.SetBool("PlayerShieldDown", true);
 
-            // }
-        } // Not Frozen
+                // }
+
+                // //DASH
+                // if (Input.GetKeyDown(KeyCode.Space))
+                // {
+                //     if (gameController.DrainPlayerEnergy(energyToUseDash))
+                //     {
+                //         StartCoroutine(Dash());
+                //     }
+                // }
+
+                // //STOP SHIELD
+                // if (Input.GetKeyUp(KeyCode.S))
+                // {
+                //     transform.FindChild("Shield").gameObject.SetActive(false);
+                //     animator.SetBool("PlayerShieldDown", true);
+
+                // }
+            } // Not Frozen
 
         else // If Frozen
         {
