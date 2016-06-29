@@ -101,30 +101,32 @@ public class Player : MonoBehaviour {
                     }
                 }
             }
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S)) //SHIELD
             {
                 if (gameController.DrainPlayerEnergy(energyToUseShield))
                 {
-                    transform.FindChild("Shield").gameObject.SetActive(true);
-
                     if (Globals.playerDirection == PlayerDirection.North)
                     {
+                        //transform.FindChild("ShieldNorth").gameObject.SetActive(true);
                         animator.SetBool("IsShieldUp", true);
                         animator.SetTrigger("ShieldUp");
 
                     }
                     else if (Globals.playerDirection == PlayerDirection.South)
                     {
+                        //transform.FindChild("ShieldSouth").gameObject.SetActive(true);
                         animator.SetBool("IsShieldUp", true);
                         animator.SetTrigger("ShieldUp");
                     }
                     else if (Globals.playerDirection == PlayerDirection.East)
                     {
+                        //transform.FindChild("ShieldEast").gameObject.SetActive(true);
                         animator.SetBool("IsShieldUp", true);
                         animator.SetTrigger("ShieldUp");
                     }
                     else if (Globals.playerDirection == PlayerDirection.West)
                     {
+                        //transform.FindChild("ShieldWest").gameObject.SetActive(true);
                         animator.SetBool("IsShieldUp", true);
                         animator.SetTrigger("ShieldUp");
                     }
@@ -390,43 +392,12 @@ public class Player : MonoBehaviour {
 
         else // If Frozen
         {
-            transform.FindChild("Shield").gameObject.SetActive(false);
+            //transform.FindChild("Shield").gameObject.SetActive(false);
             animator.SetBool("IsShieldUp", false);
 
         }
 
         }
-    
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.tag == "EnemyAttack" && Globals.playerIsHittable)
-        {
-            Globals.notFrozen = false;
-            Globals.playerIsHittable = false;
-            other.gameObject.SendMessage("PlayerHasBeenHit");
-        }
-        else if (other.gameObject.tag == "Projectile")
-        {
-            
-            //GameObject.Destroy(other.gameObject);
-            if (Globals.playerIsHittable)
-            {
-                Globals.notFrozen = false;
-                Globals.playerIsHittable = false;
-                other.gameObject.SendMessage("PlayerHasBeenHit");
-            }
-
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.gameObject.tag == "MainCamera")
-        {
-            GameObject.Find("Main Camera").SendMessage("MoveCamera", Globals.playerDirection);     
-        }
-    }
 
     private IEnumerator Dash()
     {

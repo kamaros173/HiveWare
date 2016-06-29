@@ -7,7 +7,7 @@ public class PlayerShield : MonoBehaviour {
     {
         if (other.gameObject.tag == "Projectile")
         {
-            //Stop projectiles
+            Destroy(other.gameObject);
         }
     }
 }

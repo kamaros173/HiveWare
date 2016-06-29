@@ -58,7 +58,7 @@ public class EnemyMage : MonoBehaviour {
 
         if (hit.collider != null)
         {
-            if (hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player" || hit.collider.tag == "PlayerShield")
             {
                 enemyCanMove = false;
                 transform.FindChild("EnemyAttackMage").SendMessage("AttackPlayer");
