@@ -65,8 +65,12 @@ public class GameController : MonoBehaviour {
 
         playerHealth--;
 
+        if (playerHealth>0)
+        {
+            hearts[playerHealth].sprite = skull;
+        }
 
-        hearts[playerHealth].sprite = skull;
+   
 
         Debug.Log("Controller Says: Player Hit - " + playerHealth + " hits remaining");
         if(playerHealth <= 0)
