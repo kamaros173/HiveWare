@@ -42,19 +42,7 @@ public class Player : MonoBehaviour {
 
         if (Globals.notFrozen)
         {
-            ////moveX = Input.GetAxis("Horizontal");
-            ////moveY = Input.GetAxis("Vertical");
-            ////if (moveX!=0&&moveY!=0)
-            ////{
-            ////    moveX = 0;
-            ////}
-            ////animator.SetFloat("MoveX", moveX);
-            ////animator.SetFloat("MoveY", moveY);
-
-            ////Vector3 movement = new Vector3(moveSpeed * moveX, moveSpeed * moveY, 0);
-            ////movement *= Time.deltaTime;
-            ////transform.Translate(movement);
-            // //SWORD
+            //SWORD HAS HIGHEST PRIORITY
             if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.D))
             {
                 if (canSwing && gameController.DrainPlayerEnergy(energyToUseSword))
