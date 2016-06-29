@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour {
 
         playerHealth--;
 
-        if (playerHealth>0)
+        if (playerHealth>=0)
         {
             hearts[playerHealth].sprite = skull;
         }
