@@ -69,7 +69,7 @@ public class Player : MonoBehaviour {
 
                 }
             }
-            else if (Input.GetKey(KeyCode.A) && Time.time > nextFire) //SHOOT
+            else if (Input.GetKeyUp(KeyCode.A) && Time.time > nextFire) //SHOOT
             {
                 nextFire = Time.time + fireRate;
                 if (gameController.DrainPlayerEnergy(energyToUseArrow))
@@ -247,7 +247,7 @@ public class Player : MonoBehaviour {
             canMove = true;
             animator.SetBool("IsShieldUp", false);
             animator.ResetTrigger("ShieldUp");
-            shieldDirection.SetActive(false);
+            //shieldDirection.SetActive(false);
         }
     }
 
