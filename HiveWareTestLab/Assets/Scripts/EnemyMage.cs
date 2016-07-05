@@ -25,11 +25,14 @@ public class EnemyMage : MonoBehaviour {
     private bool enemyCanMove = true;
     private int currentHealth;
 
+    private Animator animator;
+
     void Start()
     {
         player = GameObject.Find("Player").transform;
         transform.position = patrolPoints[patrolPoint];
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -61,7 +64,13 @@ public class EnemyMage : MonoBehaviour {
             if (hit.collider.tag == "Player" || hit.collider.tag == "PlayerShield")
             {
                 enemyCanMove = false;
-                transform.FindChild("EnemyAttackMage").SendMessage("AttackPlayer");
+
+                if (currentState != Mode.off)
+                {
+                    transform.FindChild("EnemyAttackMage").SendMessage("AttackPlayer");
+                    animator.SetTrigger("Attack");
+                }
+                
             }
         }
         else
@@ -174,7 +183,9 @@ public class EnemyMage : MonoBehaviour {
         {
             currentState = Mode.off;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            animator.SetTrigger("Death");
+            transform.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
         {
@@ -219,13 +230,21 @@ public class EnemyMage : MonoBehaviour {
 
     private void StartChase()
     {
-        currentState = Mode.chasing;
-        lastPatrolPosition = transform.position;
+        if(currentState!=Mode.off)
+        {
+            currentState = Mode.chasing;
+            lastPatrolPosition = transform.position;
+        }
+        
     }
 
     private void StopChase()
     {
-        currentState = Mode.returning;
+        if (currentState != Mode.off)
+        {
+            currentState = Mode.returning;
+        }
+        
     }
 
     private void EnemyCanNowMove()

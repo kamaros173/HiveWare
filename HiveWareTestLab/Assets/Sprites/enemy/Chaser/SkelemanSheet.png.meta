@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: f227a011389255b4584698a97c2699a3
+timeCreated: 1467756437
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SkelemanSheet_0
+    21300002: SkelemanSheet_1
+    21300004: SkelemanSheet_2
+    21300006: SkelemanSheet_3
+    21300008: SkelemanSheet_4
+    21300010: SkelemanSheet_5
+    21300012: SkelemanSheet_6
+    21300014: SkelemanSheet_7
+    21300016: SkelemanSheet_8
+    21300018: SkelemanSheet_9
+    21300020: SkelemanSheet_10
+    21300022: SkelemanSheet_12
+    21300024: SkelemanSheet_13
+    21300026: SkelemanSheet_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SkelemanSheet_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 103
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.36740875, y: 0.44208217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 103
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.3705275, y: 0.4416102}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 103
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.40915233, y: 0.44514054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_3
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 103
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.4143438, y: 0.44675404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 103
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.41174814, y: 0.443527}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 103
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.41174847, y: 0.44836757}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_6
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 55
+        width: 16
+        height: 44
+      alignment: 9
+      pivot: {x: 0.75788647, y: 0.39562035}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_7
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 57
+        width: 20
+        height: 45
+      alignment: 9
+      pivot: {x: 0.42854577, y: 0.36272633}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_8
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 57
+        width: 29
+        height: 37
+      alignment: 9
+      pivot: {x: 0.2965885, y: 0.44299874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_9
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 57
+        width: 28
+        height: 37
+      alignment: 9
+      pivot: {x: 0.3092804, y: 0.44574118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_10
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 24
+        height: 35
+      alignment: 9
+      pivot: {x: 0.35711142, y: 0.4401228}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_12
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2
+        width: 32
+        height: 35
+      alignment: 9
+      pivot: {x: 0.32860827, y: 0.4407202}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13.484535, y: -15.425207}
+        - {x: 21.484535, y: -7.425207}
+        - {x: 21.484535, y: 10.574793}
+        - {x: 13.484535, y: 19.574793}
+        - {x: -10.515465, y: 19.574793}
+        - {x: -10.515465, y: -15.425207}
+        - {x: -2.5154648, y: -15.425207}
+        - {x: -1.5154648, y: -12.425207}
+        - {x: 2.4845352, y: -15.425207}
+    - name: SkelemanSheet_13
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 3
+        width: 29
+        height: 25
+      alignment: 9
+      pivot: {x: 0.46428576, y: 0.29857177}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SkelemanSheet_14
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 3
+        width: 29
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,273 @@
+fileFormatVersion: 2
+guid: 2387d288fc013b948bcee9c3c9895ce6
+timeCreated: 1467760598
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: WizardSheet_0
+    21300002: WizardSheet_1
+    21300004: WizardSheet_2
+    21300006: WizardSheet_3
+    21300008: WizardSheet_4
+    21300010: WizardSheet_5
+    21300012: WizardSheet_6
+    21300014: WizardSheet_7
+    21300016: WizardSheet_8
+    21300018: WizardSheet_9
+    21300020: WizardSheet_10
+    21300022: WizardSheet_11
+    21300024: WizardSheet_12
+    21300026: WizardSheet_13
+    21300028: WizardSheet_14
+    21300030: WizardSheet_15
+    21300032: WizardSheet_16
+    21300034: WizardSheet_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: WizardSheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 104
+        width: 19
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 104
+        width: 19
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_2
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 104
+        width: 23
+        height: 38
+      alignment: 9
+      pivot: {x: 0.4151996, y: 0.434333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 104
+        width: 25
+        height: 38
+      alignment: 9
+      pivot: {x: 0.38000703, y: 0.43374434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_4
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 104
+        width: 26
+        height: 38
+      alignment: 9
+      pivot: {x: 0.40601143, y: 0.4343798}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_5
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 104
+        width: 25
+        height: 38
+      alignment: 9
+      pivot: {x: 0.3810492, y: 0.43406656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 48
+        width: 23
+        height: 38
+      alignment: 9
+      pivot: {x: 0.41743684, y: 0.4349801}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_7
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 48
+        width: 19
+        height: 40
+      alignment: 9
+      pivot: {x: 0.45200408, y: 0.41065598}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_8
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 48
+        width: 20
+        height: 46
+      alignment: 9
+      pivot: {x: 0.42524606, y: 0.35915905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_9
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 48
+        width: 18
+        height: 54
+      alignment: 9
+      pivot: {x: 0.47364467, y: 0.30416602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_10
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 74
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_11
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 48
+        width: 9
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_12
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 62
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_13
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 49
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 17
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5039903, y: 0.4425735}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_15
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_16
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1
+        width: 27
+        height: 22
+      alignment: 9
+      pivot: {x: 0.49606606, y: 0.4299928}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WizardSheet_17
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1
+        width: 34
+        height: 12
+      alignment: 9
+      pivot: {x: 0.43181297, y: 0.4452041}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
