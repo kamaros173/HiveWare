@@ -19,11 +19,13 @@ public class GameController : MonoBehaviour {
     private float playerEnergy;
     private bool isEnergyDelayed = false;
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
+    private GameObject player;
 
     void Start()
     {
         playerHealth = playerHealthMax;
         playerEnergy = playerEnergyMax;
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -121,14 +123,25 @@ public class GameController : MonoBehaviour {
     {
         Debug.Log("Player fell in hole");
         StartCoroutine(PlayerFalling(center));
-        
+        StartCoroutine(PlayerFallSpin());        
     }
 
     private IEnumerator PlayerFalling(Vector3 center)
     {
         while(Vector3.Distance(center, GameObject.Find("Player").transform.position) > 0.05f){
-            GameObject.Find("Player").transform.position = Vector3.Lerp(GameObject.Find("Player").transform.position, center, Time.deltaTime);
+            GameObject.Find("Player").transform.position = Vector3.Lerp(GameObject.Find("Player").transform.position, center, 2f*Time.deltaTime);
             yield return null;
+        }
+    }
+
+    private IEnumerator PlayerFallSpin()
+    {
+        while(player.transform.localScale.y > 0.05)
+        {
+            player.transform.localScale = Vector3.Lerp(player.transform.localScale, Vector3.zero, Time.deltaTime);
+            player.transform.Rotate(0f,0f,5f);
+            yield return null;
+
         }
     }
 	
