@@ -70,8 +70,6 @@ public class GameController : MonoBehaviour {
             hearts[playerHealth].sprite = skull;
         }
 
-   
-
         Debug.Log("Controller Says: Player Hit - " + playerHealth + " hits remaining");
         if(playerHealth <= 0)
         {
@@ -117,6 +115,21 @@ public class GameController : MonoBehaviour {
         }
 
         isEnergyDelayed = false;
+    }
+
+    private void PlayerInHole(Vector3 center)
+    {
+        Debug.Log("Player fell in hole");
+        StartCoroutine(PlayerFalling(center));
+        
+    }
+
+    private IEnumerator PlayerFalling(Vector3 center)
+    {
+        while(Vector3.Distance(center, GameObject.Find("Player").transform.position) > 0.05f){
+            GameObject.Find("Player").transform.position = Vector3.Lerp(GameObject.Find("Player").transform.position, center, Time.deltaTime);
+            yield return null;
+        }
     }
 	
 }

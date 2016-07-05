@@ -33,6 +33,7 @@ public class Player : MonoBehaviour {
     void Start()
     {
         //Get a component reference to the Player's animator component
+        shieldDirection = transform.FindChild("ShieldNorth").gameObject;
         animator = GetComponent<Animator>();
 
     }
@@ -247,7 +248,7 @@ public class Player : MonoBehaviour {
             canMove = true;
             animator.SetBool("IsShieldUp", false);
             animator.ResetTrigger("ShieldUp");
-            //shieldDirection.SetActive(false);
+            shieldDirection.SetActive(false);
         }
     }
 
@@ -303,8 +304,8 @@ public class Player : MonoBehaviour {
 
     private void HitPlayer(Vector3 direction)
     {
-        StartCoroutine(PushBackPlayer(direction));
         StartCoroutine(PlayerIsImmuneToDamage());
+        StartCoroutine(PushBackPlayer(direction));       
     }
 
     private IEnumerator PlayerIsImmuneToDamage()
@@ -326,11 +327,14 @@ public class Player : MonoBehaviour {
         Vector3 oldPos;
         float oldDis = Vector3.Distance(transform.position, target);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
-        if (hit.collider != null)
-        {
-            target = hit.point;
-        }
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
+        //Debug.DrawLine(transform.position, target, Color.red, 5f);
+        //if (hit.collider != null)
+        //{
+        //    target = hit.point;
+        //    Debug.Log("Target Changed: " + target);
+        //}
+        //Debug.DrawLine(transform.position, target, Color.blue, 5f);
 
         do
         {
@@ -340,6 +344,7 @@ public class Player : MonoBehaviour {
             yield return null;
 
             oldDis = Vector3.Distance(transform.position, target);
+
         } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol);
 
         Globals.notFrozen = true;

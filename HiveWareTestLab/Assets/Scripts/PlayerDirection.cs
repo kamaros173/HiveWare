@@ -4,6 +4,4 @@
     South,
     East,
     West
-    
-
 }
