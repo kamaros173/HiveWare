@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 309dc3189a920ed4ba0fd20303e303af
+timeCreated: 1467768047
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: RightWalk_0
+    21300002: RightWalk_1
+    21300004: RightWalk_2
+    21300006: RightWalk_3
+    21300008: RightWalk_4
+    21300010: RightWalk_5
+    21300012: RightWalk_6
+    21300014: RightWalk_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: RightWalk_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 105
+        width: 10
+        height: 36
+      alignment: 9
+      pivot: {x: 0.65641403, y: 0.45655143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RightWalk_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 105
+        width: 10
+        height: 36
+      alignment: 9
+      pivot: {x: 0.6510208, y: 0.45673943}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RightWalk_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 105
+        width: 14
+        height: 34
+      alignment: 9
+      pivot: {x: 0.6089578, y: 0.48342964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RightWalk_3
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 105
+        width: 17
+        height: 33
+      alignment: 9
+      pivot: {x: 0.6148834, y: 0.4704086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RightWalk_4
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 105
+        width: 14
+        height: 34
+      alignment: 9
+      pivot: {x: 0.6085009, y: 0.48244834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RightWalk_5
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 105
+        width: 17
+        height: 33
+      alignment: 9
+      pivot: {x: 0.6762947, y: 0.46896085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RightWalk_6
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 105
+        width: 14
+        height: 34
+      alignment: 9
+      pivot: {x: 0.60568184, y: 0.48326334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RightWalk_7
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 105
+        width: 16
+        height: 33
+      alignment: 9
+      pivot: {x: 0.6556816, y: 0.46951687}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
