@@ -9,7 +9,6 @@ public class Player : MonoBehaviour {
     public float dashTol;
     public LayerMask wallLayer;
     public GameObject shot;
-    public GameController gameController;
     public Transform shotSpawn;
     public float fireRate;
     public float pushBackSmooth;
@@ -29,10 +28,12 @@ public class Player : MonoBehaviour {
     private float moveY;
     private bool isWalking = false;
     private GameObject shieldDirection;
+    private GameController gameController;
 
     void Start()
     {
         //Get a component reference to the Player's animator component
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         shieldDirection = transform.FindChild("ShieldNorth").gameObject;
         animator = GetComponent<Animator>();
 
