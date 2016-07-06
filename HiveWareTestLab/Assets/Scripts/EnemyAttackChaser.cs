@@ -8,16 +8,23 @@ public class EnemyAttackChaser : MonoBehaviour {
     public float attackSpeedTol;
     public float attackSpeed;
     public float attackDelay;
+    
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+       
 
     }
 
     private void AttackPlayer()
     {
+        
         StartCoroutine(Attack());
+        
+
+
     }
 
     private IEnumerator Attack()
