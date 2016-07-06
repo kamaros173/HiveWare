@@ -307,6 +307,10 @@ public class Player : MonoBehaviour {
         StartCoroutine(PlayerIsImmuneToDamage());
         StartCoroutine(PushBackPlayer(direction));       
     }
+    private void PlayerDeath()
+    {
+        animator.SetTrigger("Death");
+    }
 
     private IEnumerator PlayerIsImmuneToDamage()
     {
