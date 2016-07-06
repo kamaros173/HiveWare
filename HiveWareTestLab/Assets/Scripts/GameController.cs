@@ -76,6 +76,7 @@ public class GameController : MonoBehaviour {
         if(playerHealth <= 0)
         {
             GameObject.Find("Player").SendMessage("PlayerDeath");
+            Globals.notFrozen = false;
             Debug.Log("Controller Says: Player has Died");
         }
         else
