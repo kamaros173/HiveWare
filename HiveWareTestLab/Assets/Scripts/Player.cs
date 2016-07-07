@@ -47,8 +47,14 @@ public class Player : MonoBehaviour {
             //SWORD HAS HIGHEST PRIORITY
             if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.D))
             {
+                
                 if (canSwing && gameController.DrainPlayerEnergy(energyToUseSword))
                 {
+                    shieldDirection.SetActive(false);
+                    canMove = false;
+                    animator.SetBool("CanWalk", false);
+                    animator.SetBool("IsSwinging", true);
+
                     if (Globals.playerDirection == PlayerDirection.North)
                     {
                         animator.SetTrigger("Swing");
@@ -71,13 +77,16 @@ public class Player : MonoBehaviour {
 
                 }
             }
-            else if (Input.GetKeyUp(KeyCode.A) && Time.time > nextFire) //SHOOT
+            else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A)) && Time.time > nextFire) //SHOOT
             {
-                nextFire = Time.time + fireRate;
-                if (gameController.DrainPlayerEnergy(energyToUseArrow))
+                
+                if (gameController.DrainPlayerEnergy(energyToUseArrow)&&canSwing)
                 {
-
-
+                    nextFire = Time.time + fireRate;
+                    shieldDirection.SetActive(false);
+                    canMove = false;
+                    animator.SetBool("CanWalk", false);
+                    animator.SetBool("IsShooting", true);
                     if (Globals.playerDirection == PlayerDirection.North)
                     {
                         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -104,7 +113,7 @@ public class Player : MonoBehaviour {
             }
             else if (Input.GetKey(KeyCode.S)) //SHIELD
             {
-                if (gameController.DrainPlayerEnergy(energyToUseShield))
+                if (gameController.DrainPlayerEnergy(energyToUseShield)&&canSwing)
                 {
                     canMove = false;
                     animator.SetBool("CanWalk", false);
@@ -136,6 +145,9 @@ public class Player : MonoBehaviour {
             {
                 if (gameController.DrainPlayerEnergy(energyToUseDash))
                 {
+                    canMove = false;
+                    animator.SetBool("CanWalk", false);
+                    animator.SetBool("IsDashing", true);
                     animator.SetTrigger("Dash");
                     StartCoroutine(Dash());
                 }
@@ -150,15 +162,22 @@ public class Player : MonoBehaviour {
                 animator.SetBool("IsShieldUp", false);
                 animator.ResetTrigger("ShieldUp");
                 shieldDirection.SetActive(false);
-
             }
-
+         
+            if (Input.GetKeyUp(KeyCode.A)) //stop shooting
+            {
+                canMove = true;
+                animator.SetBool("CanWalk", true);
+                animator.ResetTrigger("Shoot");
+                animator.SetBool("IsShooting", false);
+            }
+          
 
             //MOVEMENT
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 if (isWalking == false)
-                {                   
+                {
                     isWalking = true;
                     animator.SetBool("IsWalking", true);
                 }
@@ -300,6 +319,11 @@ public class Player : MonoBehaviour {
 
                 yield return null;
             }
+            canMove = true;
+            animator.SetBool("CanWalk", true);
+            animator.ResetTrigger("Dash");
+            animator.SetBool("IsDashing", false);
+
         }
     }
 
@@ -310,8 +334,11 @@ public class Player : MonoBehaviour {
     }
     private void PlayerDeath()
     {
+
         animator.SetTrigger("Death");
+        animator.SetBool("IsDead", true);
     }
+   
 
     private IEnumerator PlayerIsImmuneToDamage()
     {
@@ -359,6 +386,14 @@ public class Player : MonoBehaviour {
     {
         transform.FindChild("SwordPivot").gameObject.SetActive(false);
         canSwing = true;
+
+        if (!Input.GetKeyDown(KeyCode.D) && !Input.GetKey(KeyCode.D))//swing stop
+        {
+            canMove = true;
+            animator.SetBool("CanWalk", true);
+            animator.ResetTrigger("Swing");
+            animator.SetBool("IsSwinging", false);
+        }
     }
 }
 
