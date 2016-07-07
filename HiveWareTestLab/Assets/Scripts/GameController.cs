@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
     private GameObject player;
 
+
     void Start()
     {
         playerHealth = playerHealthMax;
@@ -64,24 +65,26 @@ public class GameController : MonoBehaviour {
 
     private void HurtPlayer(Vector3 direction)
     {
-
-        playerHealth--;
-
-        if (playerHealth>=0)
+        if (!Globals.isPlayerDead)
         {
-            hearts[playerHealth].sprite = skull;
-        }
 
-        Debug.Log("Controller Says: Player Hit - " + playerHealth + " hits remaining");
-        if(playerHealth <= 0)
-        {
-            GameObject.Find("Player").SendMessage("PlayerDeath");
-            Globals.notFrozen = false;
-            Debug.Log("Controller Says: Player has Died");
-        }
-        else
-        {           
-           GameObject.Find("Player").SendMessage("HitPlayer", direction);
+
+            playerHealth--;
+
+            if (playerHealth >= 0)
+            {
+                hearts[playerHealth].sprite = skull;
+            }
+            if (playerHealth <= 0)
+            {
+                Globals.notFrozen = false;
+                Globals.isPlayerDead = true;
+                GameObject.Find("Player").SendMessage("PlayerDeath");
+            }
+            else
+            {
+                GameObject.Find("Player").SendMessage("HitPlayer", direction);
+            }
         }
     }
 
@@ -144,6 +147,13 @@ public class GameController : MonoBehaviour {
             player.transform.Rotate(0f,0f,5f);
             yield return null;
 
+        }
+    }
+    private void UnfreezePlayer()
+    {
+        if (!Globals.isPlayerDead)
+        {
+            Globals.notFrozen = true;
         }
     }
 	
