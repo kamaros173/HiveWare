@@ -343,12 +343,29 @@ public class Player : MonoBehaviour {
     private IEnumerator PlayerIsImmuneToDamage()
     {
         float waitTime = Time.time + timeBetweenDamage;
-
-        while(Time.time < waitTime)
+        Color toColor = Color.red;
+        Color fromColor = Color.white;
+        float severity = 0f;
+        SpriteRenderer damagedsprite = transform.GetComponent<SpriteRenderer>();
+        while (Time.time < waitTime)
         {
-            yield return null;
+            if (!Globals.isPlayerDead)
+            {
+                damagedsprite.color = Color.Lerp(fromColor, toColor, severity);
+                severity += 0.05f;
+                if (severity >= 0.9f)
+                {
+                    Color temp = fromColor;
+                    fromColor = toColor;
+                    toColor = temp;
+                    severity = 0f;
+                }
+
+                yield return null;
+            }  
         }
 
+        damagedsprite.color = Color.white;
         Globals.playerIsHittable = true;
     }
 
@@ -358,16 +375,6 @@ public class Player : MonoBehaviour {
         Vector3 target = transform.position + (direction * pushBackDistance);
         Vector3 oldPos;
         float oldDis = Vector3.Distance(transform.position, target);
-
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, target, oldDis, wallLayer);
-        //Debug.DrawLine(transform.position, target, Color.red, 5f);
-        //if (hit.collider != null)
-        //{
-        //    target = hit.point;
-        //    Debug.Log("Target Changed: " + target);
-        //}
-        //Debug.DrawLine(transform.position, target, Color.blue, 5f);
-
         do
         {
             oldPos = transform.position;
@@ -379,7 +386,8 @@ public class Player : MonoBehaviour {
 
         } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol);
 
-        Globals.notFrozen = true;
+        GameObject.Find("GameController").SendMessage("UnfreezePlayer");
+
     }
 
     private void PlayerCanSwing()
