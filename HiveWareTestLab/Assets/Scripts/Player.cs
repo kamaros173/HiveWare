@@ -185,9 +185,11 @@ public class Player : MonoBehaviour {
                 if (canMove)
                 {                                     
                     Globals.playerDirection = PlayerDirection.North;
+
                     moveX = 0;
                     moveY = 1;
-                    
+
+                    GetComponent<SpriteRenderer>().flipX = false;
                     animator.SetTrigger("Walking");
                     animator.SetFloat("MoveX", moveX);
                     animator.SetFloat("MoveY", moveY);
@@ -209,6 +211,7 @@ public class Player : MonoBehaviour {
                     moveX = 0;
                     moveY = -1;
 
+                    GetComponent<SpriteRenderer>().flipX = false;
                     animator.SetTrigger("Walking");
                     animator.SetFloat("MoveX", moveX);
                     animator.SetFloat("MoveY", moveY);

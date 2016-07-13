@@ -3,18 +3,24 @@ using System.Collections;
 
 public class Hole : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private GameObject gc;
 
-    private void PlayerHasBeenHit()
+    private void Start()
     {
-        GameObject.Find("GameController").SendMessage("PlayerInHole", transform.position);
+        gc = GameObject.Find("GameController");
+    }
+
+	private void PlayerHasBeenHit()
+    {
+        gc.SendMessage("PlayerInHole", transform.position);
+    }
+
+    private void EnemyHasBeenHit(Transform enemy)
+    {
+        Transform[] temp = new Transform[2];
+        temp[0] = transform;
+        temp[1] = enemy;
+
+        gc.SendMessage("EnemyInHole", temp);
     }
 }

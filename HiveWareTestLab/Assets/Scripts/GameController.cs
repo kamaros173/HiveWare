@@ -149,6 +149,34 @@ public class GameController : MonoBehaviour {
 
         }
     }
+
+    private void EnemyInHole(Transform[] points)
+    {
+        StartCoroutine(EnemyFalling(points));
+        StartCoroutine(EnemyFallSpin(points));
+    }
+
+    private IEnumerator EnemyFalling(Transform[] points)
+    {
+        while (Vector3.Distance(points[0].position, points[1].position) > 0.05f)
+        {
+            points[1].position = Vector3.Lerp(points[1].position, points[0].position, 2f * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    private IEnumerator EnemyFallSpin(Transform[] points)
+    {
+        while (points[1].transform.localScale.y > 0.05)
+        {
+            points[1].transform.localScale = Vector3.Lerp(points[1].transform.localScale, Vector3.zero, Time.deltaTime);
+            points[1].transform.Rotate(0f, 0f, 5f);
+            yield return null;
+        }
+
+        Destroy(points[1].gameObject);
+    }
+
     private void UnfreezePlayer()
     {
         if (!Globals.isPlayerDead)

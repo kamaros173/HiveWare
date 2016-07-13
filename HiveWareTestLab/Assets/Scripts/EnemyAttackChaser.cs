@@ -9,27 +9,18 @@ public class EnemyAttackChaser : MonoBehaviour {
     public float attackSpeed;
     public float attackDelay;
     
-
-
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-       
-
     }
 
     private void AttackPlayer()
-    {
-        
+    {        
         StartCoroutine(Attack());
-        
-
-
     }
 
     private IEnumerator Attack()
-    {
-        
+    {       
         CircleCollider2D cir2d = gameObject.GetComponent<CircleCollider2D>();
         float remainingTime = Time.time + attackDelay;
 
@@ -45,9 +36,7 @@ public class EnemyAttackChaser : MonoBehaviour {
         }
 
         cir2d.radius = 0.1f;
-        gameObject.SendMessageUpwards("EnemyCanNowMove");
-    
-       
+        gameObject.SendMessageUpwards("EnemyCanNowMove");       
     }
 
     private void PlayerHasBeenHit()

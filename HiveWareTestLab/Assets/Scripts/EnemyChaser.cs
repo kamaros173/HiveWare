@@ -9,25 +9,27 @@ public class EnemyChaser : MonoBehaviour {
     public float hitRange;
     public LayerMask playerLayer;
     public LayerMask wallLayer;
+    public LayerMask floorLayer;
     public Vector3[] patrolPoints;
     public float pushBackDistance;
     public float pushBackSmooth;
     public float pushBackTol;
     public float stunTime;
     public float timeBetweenDamage;
+    public float playerArrowMultiplyer;
 
     private Transform player;
     private Vector3 lastPatrolPosition;
-    private enum Mode { patrolling, chasing, returning, off};
+    private enum Mode { patrolling, chasing, returning, off, hurt};
     private Mode currentState = Mode.patrolling;
     private int patrolPoint = 0;
     private bool enemyIsHittable = true;
     private bool enemyCanMove = true;
     private int currentHealth;
+    private RaycastHit2D raycastToPlayer;
+    private float currentStunTime;
 
     private Animator animator;
-
-
 
     void Start ()
     {
@@ -59,11 +61,11 @@ public class EnemyChaser : MonoBehaviour {
     private void Chase()
     {
         Vector2 dir = Vector3.Normalize(player.position - transform.position);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
+        RaycastHit2D raycastToPlayer = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
 
-        if (hit.collider != null) 
+        if (raycastToPlayer.collider != null) 
         {
-            if(hit.collider.tag == "Player")
+            if(raycastToPlayer.collider.tag == "Player")
             {
                 enemyCanMove = false;
 
@@ -71,9 +73,7 @@ public class EnemyChaser : MonoBehaviour {
                 {
                     transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer");
                     animator.SetTrigger("Attack");
-                }
-                
-
+                }              
             }
         }
         else
@@ -108,9 +108,10 @@ public class EnemyChaser : MonoBehaviour {
     private void Move(Vector3 target, float speed)
     {
         Vector3 vectorToTarget = target - transform.position;
+        //Vector2 dir = Vector3.Normalize(vectorToTarget - transform.position);
 
         //THIS FLIPS DEPENDING ON TARGET DIRECTION
-        if(vectorToTarget.x > 0f)
+        if (vectorToTarget.x > 0f)
         {
             //LOOK RIGHT
             GetComponent<SpriteRenderer>().flipX = false;
@@ -121,7 +122,19 @@ public class EnemyChaser : MonoBehaviour {
             GetComponent<SpriteRenderer>().flipX = true;
         }
 
+        //RaycastHit2D raycastToPlayer = Physics2D.Raycast(transform.position, dir, 1f, floorLayer);
+        //if (raycastToPlayer.collider != null)
+        //{
+        //    Vector2 hitDirection = raycastToPlayer.point.normalized;
+        //    raycastToPlayer.collider.bounds.center
+        //}
+        //else
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        //}
+
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
     }
 
     //CALLED WHEN CAMERA MOVES AWAY FROM SCENE
@@ -144,7 +157,7 @@ public class EnemyChaser : MonoBehaviour {
     //If the player keeps beating his face against the enmey
     private void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player" && Globals.playerIsHittable)
+        if(other.gameObject.tag == "Player" && Globals.playerIsHittable && currentState != Mode.off)
         {
             Globals.notFrozen = false;
             Globals.playerIsHittable = false;
@@ -160,6 +173,7 @@ public class EnemyChaser : MonoBehaviour {
         if (other.gameObject.tag == "PlayerSword" && enemyIsHittable)
         {
             Vector3 direction = Vector3.Normalize(transform.position - player.position);
+            currentStunTime = stunTime;
             HitEnemy(direction, Globals.playerSwordDamage);
         }
         else if (other.gameObject.tag == "Projectile")
@@ -167,8 +181,9 @@ public class EnemyChaser : MonoBehaviour {
             GameObject.Destroy(other.gameObject);
             if (enemyIsHittable)
             {
-                Vector3 direction = Vector3.Normalize(transform.position - player.position);
-                HitEnemy(direction, Globals.playerArrowDamage);
+                //Vector3 direction = Vector3.Normalize(transform.position - player.position);
+                currentStunTime = 0f;
+                HitEnemy(Vector3.zero, (int)((float)Globals.playerArrowDamage * playerArrowMultiplyer));
             }           
             
         }
@@ -179,21 +194,36 @@ public class EnemyChaser : MonoBehaviour {
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Hole" && currentState != Mode.off)
+        {
+            if (Vector3.Distance(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), other.transform.position) < 0.5f)
+            {
+                currentState = Mode.off;
+                other.gameObject.SendMessage("EnemyHasBeenHit", transform);
+            }          
+        }
+    }
+
     private void HitEnemy(Vector3 direction, int damage)
     {
+        
         enemyIsHittable = false;
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
             currentState = Mode.off;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
-            //gameObject.SetActive(false);
+            
             animator.SetTrigger("Death");
             transform.GetComponent<BoxCollider2D>().enabled = false;
+            transform.FindChild("EnemyAttackChaser").gameObject.SetActive(false);
            
         }
         else
         {
+            currentState = Mode.hurt;
             StartCoroutine(PushBackEnemy(direction));
         }       
     }
@@ -222,7 +252,7 @@ public class EnemyChaser : MonoBehaviour {
             oldDis = Vector3.Distance(transform.position, target);
         } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol) ;
 
-        float stun = Time.time + stunTime;
+        float stun = Time.time + currentStunTime;
 
         while (Time.time < stun)
         {
