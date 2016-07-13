@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: 8a61b5084032447488045596df67a6d9
+timeCreated: 1468377587
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: StarryKnightSwing 3 3_0
+    21300002: StarryKnightSwing 3 3_1
+    21300004: StarryKnightSwing 3 3_2
+    21300006: StarryKnightSwing 3 3_3
+    21300008: StarryKnightSwing 3 3_4
+    21300010: StarryKnightSwing 3 3_5
+    21300012: StarryKnightSwing 3 3_6
+    21300014: StarryKnightSwing 3 3_7
+    21300016: StarryKnightSwing 3 3_8
+    21300018: StarryKnightSwing 3 3_9
+    21300020: StarryKnightSwing 3 3_10
+    21300022: StarryKnightSwing 3 3_11
+    21300024: StarryKnightSwing 3 3_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: StarryKnightSwing 3 3_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 106
+        width: 15
+        height: 34
+      alignment: 9
+      pivot: {x: 0.22994055, y: 0.4837532}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing 3 3_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 106
+        width: 23
+        height: 34
+      alignment: 9
+      pivot: {x: 0.3719086, y: 0.48646095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing 3 3_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 106
+        width: 27
+        height: 35
+      alignment: 9
+      pivot: {x: 0.16924569, y: 0.4842176}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing 3 3_3
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 110
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing 3 3_4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 66
+        width: 42
+        height: 34
+      alignment: 9
+      pivot: {x: 0.07754519, y: 0.3892057}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5.743103, y: 20.767006}
+        - {x: 5.743103, y: 18.767006}
+        - {x: 14.743103, y: 16.767006}
+        - {x: 12.743103, y: 15.767006}
+        - {x: -1.256897, y: 7.767006}
+        - {x: -3.256897, y: 1.7670059}
+        - {x: -3.256897, y: -13.232994}
+        - {x: 23.743103, y: -13.232994}
+        - {x: 38.743103, y: 0.7670059}
+        - {x: 38.743103, y: 14.767006}
+        - {x: 32.743103, y: 20.767006}
+    - name: StarryKnightSwing 3 3_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 66
+        width: 45
+        height: 34
+      alignment: 9
+      pivot: {x: 0.096564226, y: 0.40024972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.3453903, y: 20.39151}
+        - {x: -4.3453903, y: -13.60849}
+        - {x: 36.65461, y: -13.60849}
+        - {x: 40.65461, y: -10.60849}
+        - {x: 40.65461, y: 14.39151}
+        - {x: 37.65461, y: 20.39151}
+    - name: StarryKnightSwing 3 3_6
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 63
+        width: 45
+        height: 37
+      alignment: 9
+      pivot: {x: 0.437933, y: 0.44068888}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3.7069855, y: 20.694511}
+        - {x: -19.706985, y: -0.3054886}
+        - {x: -19.706985, y: -13.305489}
+        - {x: -12.706985, y: -16.305489}
+        - {x: 25.293015, y: -16.305489}
+        - {x: 25.293015, y: 20.694511}
+    - name: StarryKnightSwing 3 3_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 4
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing 3 3_8
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 26
+        width: 48
+        height: 35
+      alignment: 9
+      pivot: {x: 0.41271815, y: 0.35749927}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.1895294, y: 22.487526}
+        - {x: -19.81047, y: 3.487526}
+        - {x: -19.81047, y: -12.512474}
+        - {x: 28.18953, y: -12.512474}
+        - {x: 28.18953, y: 22.487526}
+    - name: StarryKnightSwing 3 3_9
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing 3 3_10
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing 3 3_11
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: StarryKnightSwing 3 3_12
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
