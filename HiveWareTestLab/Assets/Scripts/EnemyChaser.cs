@@ -20,7 +20,7 @@ public class EnemyChaser : MonoBehaviour {
 
     private Transform player;
     private Vector3 lastPatrolPosition;
-    private enum Mode { patrolling, chasing, returning, off, hurt};
+    private enum Mode { patrolling, chasing, returning, off};
     private Mode currentState = Mode.patrolling;
     private int patrolPoint = 0;
     private bool enemyIsHittable = true;
@@ -207,8 +207,7 @@ public class EnemyChaser : MonoBehaviour {
     }
 
     private void HitEnemy(Vector3 direction, int damage)
-    {
-        
+    {        
         enemyIsHittable = false;
         currentHealth -= damage;
         if(currentHealth <= 0)
@@ -218,12 +217,10 @@ public class EnemyChaser : MonoBehaviour {
             
             animator.SetTrigger("Death");
             transform.GetComponent<BoxCollider2D>().enabled = false;
-            transform.FindChild("EnemyAttackChaser").gameObject.SetActive(false);
-           
+            transform.FindChild("EnemyAttackChaser").gameObject.SetActive(false);         
         }
         else
         {
-            currentState = Mode.hurt;
             StartCoroutine(PushBackEnemy(direction));
         }       
     }

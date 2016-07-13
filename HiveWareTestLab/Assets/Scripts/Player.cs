@@ -141,7 +141,7 @@ public class Player : MonoBehaviour {
                     shieldDirection.SetActive(true);
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Space)) //DASH
             {
                 if (gameController.DrainPlayerEnergy(energyToUseDash))
                 {
