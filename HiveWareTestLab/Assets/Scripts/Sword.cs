@@ -10,9 +10,20 @@ public class Sword : MonoBehaviour {
     public float endDelay;
 
     private Vector3 start;
+    private float totalDegrees;
     private float remainingDegrees;
     private float degreesTraveled;
     private float mySpeed;
+    private BoxCollider2D sword;
+    private Vector2 boxOffset;
+    private Vector2 boxSize;
+
+    private void Start()
+    {
+        sword = transform.FindChild("Sword").GetComponent<BoxCollider2D>();
+        boxOffset = sword.offset;
+        boxSize = sword.size;
+    }
 
     public void Swing(PlayerDirection dir)
     {        
@@ -42,13 +53,33 @@ public class Sword : MonoBehaviour {
             mySpeed = -speed;
         }
 
-        remainingDegrees = Mathf.Abs(startAngle) + Mathf.Abs(endAngle);
+        totalDegrees = Mathf.Abs(startAngle) + Mathf.Abs(endAngle);
+        remainingDegrees = totalDegrees;
         yield return new WaitForSeconds(startDelay);
         while (remainingDegrees > tol)
         {
             degreesTraveled = mySpeed * Time.deltaTime;
             transform.RotateAround(transform.position, Vector3.forward, degreesTraveled);
             remainingDegrees -= Mathf.Abs(degreesTraveled);
+            if (remainingDegrees <= tol)
+            {
+                sword.size = boxSize;
+                sword.offset = boxOffset;
+
+            }
+            else if ((totalDegrees/remainingDegrees) < 2f)
+            {
+                sword.size = new Vector2(boxSize.x, boxSize.y * (totalDegrees / remainingDegrees));
+                sword.offset = new Vector2(boxOffset.x, boxOffset.y * (totalDegrees / remainingDegrees));
+
+            }         
+            else
+            {
+                sword.size = new Vector2(boxSize.x, boxSize.y * (totalDegrees / (totalDegrees - remainingDegrees)));
+                sword.offset = new Vector2(boxOffset.x, boxOffset.y * (totalDegrees / (totalDegrees - remainingDegrees)));
+
+            }
+
             yield return null;
         }
         
