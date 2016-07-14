@@ -29,6 +29,7 @@ public class EnemyChaser : MonoBehaviour {
     private RaycastHit2D raycastToPlayer;
     private float currentStunTime;
     private Animator animator;
+    private bool isAttacking = false;
 
     void Start ()
     {
@@ -40,7 +41,7 @@ public class EnemyChaser : MonoBehaviour {
 
     void Update ()
     {
-        if (Globals.notFrozen && enemyCanMove)
+        if (Globals.notFrozen && enemyCanMove && !isAttacking)
         {
             if (currentState == Mode.chasing)
             {
@@ -67,6 +68,7 @@ public class EnemyChaser : MonoBehaviour {
             //if(raycastToPlayer.collider.tag == "Player")
             //{               
             enemyCanMove = false;
+            isAttacking = true;
             transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer", animator);
             //animator.SetTrigger("Attack");                           
             //}
@@ -300,5 +302,6 @@ public class EnemyChaser : MonoBehaviour {
     private void EnemyCanNowMove()
     {
         enemyCanMove = true;
+        isAttacking = false;
     }
 }

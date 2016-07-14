@@ -40,7 +40,6 @@ public class Player : MonoBehaviour {
         shieldDirection = transform.FindChild("ShieldNorth").gameObject;
         animator = GetComponent<Animator>();
         nextFire = Time.time;
-
     }
 
     // Update is called once per frame
@@ -155,7 +154,7 @@ public class Player : MonoBehaviour {
             //MOVEMENT DIRECTION
             if (!isDashing)
             {
-                if (Input.GetKey(KeyCode.UpArrow) && Globals.playerDirection != PlayerDirection.North)
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
                     Globals.playerDirection = PlayerDirection.North;
                     if (!isSwinging)
@@ -167,9 +166,23 @@ public class Player : MonoBehaviour {
                         shieldDirection = transform.FindChild("ShieldNorth").gameObject;
                         if (isShielding)
                             shieldDirection.SetActive(true);
+
+                        //MOVEMENT
+                        if (!isShooting && !isShielding)
+                        {
+                            if (isWalking == false)
+                            {
+                                isWalking = true;
+                                animator.SetBool("IsWalking", true);
+                            }
+
+                            animator.SetTrigger("Walking");
+                            transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+                        }
+
                     }                                                                     
                 }
-                else if (Input.GetKey(KeyCode.DownArrow) && Globals.playerDirection != PlayerDirection.South)
+                else if (Input.GetKey(KeyCode.DownArrow))
                 {
                     Globals.playerDirection = PlayerDirection.South;
                     if (!isSwinging)
@@ -181,9 +194,22 @@ public class Player : MonoBehaviour {
                         shieldDirection = transform.FindChild("ShieldSouth").gameObject;
                         if (isShielding)
                             shieldDirection.SetActive(true);
+
+                        //MOVEMENT
+                        if (!isShooting && !isShielding)
+                        {                         
+                            if (isWalking == false)
+                            {
+                                isWalking = true;
+                                animator.SetBool("IsWalking", true);
+                            }
+
+                            animator.SetTrigger("Walking");
+                            transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);                           
+                        }
                     }             
                 }
-                else if (Input.GetKey(KeyCode.RightArrow) && Globals.playerDirection != PlayerDirection.East)
+                else if (Input.GetKey(KeyCode.RightArrow))
                 {
                     Globals.playerDirection = PlayerDirection.East;
                     if (!isSwinging)
@@ -195,9 +221,23 @@ public class Player : MonoBehaviour {
                         shieldDirection = transform.FindChild("ShieldEast").gameObject;
                         if (isShielding)
                             shieldDirection.SetActive(true);
+
+                        //MOVEMENT
+                        if (!isShooting && !isShielding)
+                        {
+                            if (isWalking == false)
+                            {
+                                isWalking = true;
+                                animator.SetBool("IsWalking", true);
+                            }
+
+                            animator.SetTrigger("Walking");
+                            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                        }
+
                     }
                 }
-                else if (Input.GetKey(KeyCode.LeftArrow) && Globals.playerDirection != PlayerDirection.West)
+                else if (Input.GetKey(KeyCode.LeftArrow))
                 {
                     Globals.playerDirection = PlayerDirection.West;
                     if (!isSwinging)
@@ -209,58 +249,71 @@ public class Player : MonoBehaviour {
                         shieldDirection = transform.FindChild("ShieldWest").gameObject;
                         if (isShielding)
                             shieldDirection.SetActive(true);
+
+                        //MOVEMENT
+                        if (!isShooting && !isShielding)
+                        {
+                            if (isWalking == false)
+                            {
+                                isWalking = true;
+                                animator.SetBool("IsWalking", true);
+                            }
+
+                            animator.SetTrigger("Walking");
+                            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+                        }
                     }                              
                 }
 
+                ////MOVEMENT
+                //if (!isShooting && !isShielding && !isSwinging)
+                //{
+                //    if (Input.GetKey(KeyCode.UpArrow) && Globals.playerDirection == PlayerDirection.North)
+                //    {
+                //        if (isWalking == false)
+                //        {
+                //            isWalking = true;
+                //            animator.SetBool("IsWalking", true);
+                //        }
 
-                //MOVEMENT
-                if (!isShooting && !isShielding && !isSwinging)
-                {
-                    if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        if (isWalking == false)
-                        {
-                            isWalking = true;
-                            animator.SetBool("IsWalking", true);
-                        }
+                //        animator.SetTrigger("Walking");
+                //        transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+                //    }
+                //    else if (Input.GetKey(KeyCode.DownArrow) && Globals.playerDirection == PlayerDirection.South)
+                //    {
+                //        if (isWalking == false)
+                //        {
+                //            isWalking = true;
+                //            animator.SetBool("IsWalking", true);
+                //        }
 
-                        animator.SetTrigger("Walking");
-                        transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
-                    }
-                    else if (Input.GetKey(KeyCode.DownArrow))
-                    {
-                        if (isWalking == false)
-                        {
-                            isWalking = true;
-                            animator.SetBool("IsWalking", true);
-                        }
+                //        animator.SetTrigger("Walking");
+                //        transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
+                //    }
+                //    else if (Input.GetKey(KeyCode.RightArrow) && Globals.playerDirection == PlayerDirection.East)
+                //    {
+                //        if (isWalking == false)
+                //        {
+                //            isWalking = true;
+                //            animator.SetBool("IsWalking", true);
+                //        }
 
-                        animator.SetTrigger("Walking");
-                        transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
-                    }
-                    else if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        if (isWalking == false)
-                        {
-                            isWalking = true;
-                            animator.SetBool("IsWalking", true);
-                        }
+                //        animator.SetTrigger("Walking");
+                //        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                //    }
+                //    else if (Input.GetKey(KeyCode.LeftArrow) && Globals.playerDirection == PlayerDirection.West)
+                //    {
+                //        if (isWalking == false)
+                //        {
+                //            isWalking = true;
+                //            animator.SetBool("IsWalking", true);
+                //        }
 
-                        animator.SetTrigger("Walking");
-                        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-                    }
-                    else if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        if (isWalking == false)
-                        {
-                            isWalking = true;
-                            animator.SetBool("IsWalking", true);
-                        }
+                //        animator.SetTrigger("Walking");
+                //        transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+                //    }
+                //}
 
-                        animator.SetTrigger("Walking");
-                        transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-                    }
-                }
             }
         }
         else //IF GLOBALS.NOTFROZEN = FALSE
@@ -318,13 +371,13 @@ public class Player : MonoBehaviour {
                 transform.position = Vector3.Lerp(transform.position, target, dashSmooth * Time.deltaTime);
 
             yield return null;
-        }
-        isDashing = false;
+        }       
         animator.SetBool("CanWalk", true);
         animator.ResetTrigger("Dash");
         animator.SetBool("IsDashing", false);
+        isDashing = false;
 
-        
+
     }
 
     private void HitPlayer(Vector3 direction)
