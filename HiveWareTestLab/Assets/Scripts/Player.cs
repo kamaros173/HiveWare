@@ -271,6 +271,7 @@ public class Player : MonoBehaviour {
             isShielding = false;
             isWalking = false;
             animator.SetBool("IsShieldUp", false);
+            animator.SetBool("IsWalking", false);
             animator.ResetTrigger("ShieldUp");
             shieldDirection.SetActive(false);
         }
@@ -427,5 +428,10 @@ public class Player : MonoBehaviour {
         animator.ResetTrigger("Swing");
         animator.SetBool("IsSwinging", false);
         //}
+    }
+
+    public bool isPlayerDashing()
+    {
+        return isDashing;
     }
 }

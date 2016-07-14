@@ -28,7 +28,6 @@ public class EnemyChaser : MonoBehaviour {
     private int currentHealth;
     private RaycastHit2D raycastToPlayer;
     private float currentStunTime;
-
     private Animator animator;
 
     void Start ()
@@ -65,16 +64,12 @@ public class EnemyChaser : MonoBehaviour {
 
         if (raycastToPlayer.collider != null) 
         {
-            if(raycastToPlayer.collider.tag == "Player")
-            {
-                enemyCanMove = false;
-
-                if(currentState != Mode.off)
-                {
-                    transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer");
-                    animator.SetTrigger("Attack");
-                }              
-            }
+            //if(raycastToPlayer.collider.tag == "Player")
+            //{               
+            enemyCanMove = false;
+            transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer", animator);
+            //animator.SetTrigger("Attack");                           
+            //}
         }
         else
         {
@@ -108,30 +103,24 @@ public class EnemyChaser : MonoBehaviour {
     private void Move(Vector3 target, float speed)
     {
         Vector3 vectorToTarget = target - transform.position;
-        //Vector2 dir = Vector3.Normalize(vectorToTarget - transform.position);
 
-        //THIS FLIPS DEPENDING ON TARGET DIRECTION
         if (vectorToTarget.x > 0f)
-        {
-            //LOOK RIGHT
+        {// LOOK RIGHT
             GetComponent<SpriteRenderer>().flipX = false;
         }
         else if(vectorToTarget.x < 0f)
-        {
-            //LOOK LEFT
+        {// LOOK LEFT
             GetComponent<SpriteRenderer>().flipX = true;
         }
 
-        //RaycastHit2D raycastToPlayer = Physics2D.Raycast(transform.position, dir, 1f, floorLayer);
-        //if (raycastToPlayer.collider != null)
-        //{
-        //    Vector2 hitDirection = raycastToPlayer.point.normalized;
-        //    raycastToPlayer.collider.bounds.center
-        //}
-        //else
-        //{
-        //    transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        //}
+        if (vectorToTarget.y > 0f)
+        {// ABOVE TARGET
+            GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
+        else
+        {// BELOW TARGET
+            GetComponent<SpriteRenderer>().sortingOrder = -1;
+        }
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
@@ -179,7 +168,7 @@ public class EnemyChaser : MonoBehaviour {
         else if (other.gameObject.tag == "Projectile")
         {
             GameObject.Destroy(other.gameObject);
-            if (enemyIsHittable)
+            if (enemyIsHittable && playerArrowMultiplyer != 0)
             {
                 //Vector3 direction = Vector3.Normalize(transform.position - player.position);
                 currentStunTime = 0f;
@@ -213,6 +202,7 @@ public class EnemyChaser : MonoBehaviour {
         if(currentHealth <= 0)
         {
             currentState = Mode.off;
+            GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
             
             animator.SetTrigger("Death");
@@ -221,14 +211,45 @@ public class EnemyChaser : MonoBehaviour {
         }
         else
         {
+            currentState = Mode.chasing;
+            StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
         }       
     }
 
-    
+    private IEnumerator EnemyIsImmuneToDamage()
+    {
+        float waitTime = Time.time + timeBetweenDamage;
+        Color toColor = Color.red;
+        Color fromColor = Color.white;
+        float severity = 0f;
+        SpriteRenderer damagedsprite = transform.GetComponent<SpriteRenderer>();
+        while (Time.time < waitTime)
+        {
+            if (currentState != Mode.off)
+            {
+                damagedsprite.color = Color.Lerp(fromColor, toColor, severity);
+                severity += 0.05f;
+                if (severity >= 0.9f)
+                {
+                    Color temp = fromColor;
+                    fromColor = toColor;
+                    toColor = temp;
+                    severity = 0f;
+                }
+
+                yield return null;
+            }
+        }
+
+        damagedsprite.color = Color.white;
+        enemyIsHittable = true;
+    }
+
+
     private IEnumerator PushBackEnemy(Vector3 direction)
-    {        
-        currentState = Mode.off;
+    {
+        enemyCanMove = false;
         Vector3 target = transform.position + (direction * pushBackDistance);
         Vector3 oldPos;
         float oldDis = Vector3.Distance(transform.position, target);
@@ -249,15 +270,13 @@ public class EnemyChaser : MonoBehaviour {
             oldDis = Vector3.Distance(transform.position, target);
         } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol) ;
 
-        float stun = Time.time + currentStunTime;
 
+        float stun = Time.time + currentStunTime;
         while (Time.time < stun)
         {
             yield return null;
         }
-
-        currentState = Mode.chasing;
-        enemyIsHittable = true;
+        enemyCanMove = true;
     }
 
     private void StartChase()
@@ -275,8 +294,7 @@ public class EnemyChaser : MonoBehaviour {
         if (currentState != Mode.off)
         {
             currentState = Mode.returning;
-        }
-        
+        }       
     }
 
     private void EnemyCanNowMove()

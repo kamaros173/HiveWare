@@ -3,6 +3,13 @@ using System.Collections;
 
 public class PlayerHitBox : MonoBehaviour {
 
+    private bool playerInHole = false;
+    private Player parent; 
+
+    private void Start()
+    {
+        parent = transform.parent.GetComponent<Player>();
+    }
 	private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "EnemyAttack" && Globals.playerIsHittable)
@@ -28,11 +35,23 @@ public class PlayerHitBox : MonoBehaviour {
             Globals.playerIsHittable = false;
             other.gameObject.SendMessage("PlayerHasBeenHit");
         }
-        else if (other.gameObject.tag == "Hole")
+        else if (other.gameObject.tag == "Hole" && !parent.isPlayerDashing() && !playerInHole)
         {
             Globals.notFrozen = false;
             Globals.playerIsHittable = false;
             other.gameObject.SendMessage("PlayerHasBeenHit");
+            playerInHole = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Hole" && !parent.isPlayerDashing() && !playerInHole)
+        {
+            Globals.notFrozen = false;
+            Globals.playerIsHittable = false;
+            other.gameObject.SendMessage("PlayerHasBeenHit");
+            playerInHole = true;
         }
     }
 
@@ -41,6 +60,7 @@ public class PlayerHitBox : MonoBehaviour {
         if (other.gameObject.tag == "MainCamera")
         {
             GameObject.Find("Main Camera").SendMessage("MoveCamera", Globals.playerDirection);
+
         }
     }
 }
