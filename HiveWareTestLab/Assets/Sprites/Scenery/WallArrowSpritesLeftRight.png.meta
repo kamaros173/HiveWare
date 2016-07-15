@@ -1,0 +1,297 @@
+fileFormatVersion: 2
+guid: 809aaa608d4eab34c85e037d04cf9df6
+timeCreated: 1468549562
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: WallArrowSpritesLeftRight_0
+    21300002: WallArrowSpritesLeftRight_1
+    21300004: WallArrowSpritesLeftRight_2
+    21300006: WallArrowSpritesLeftRight_3
+    21300008: WallArrowSpritesLeftRight_4
+    21300010: WallArrowSpritesLeftRight_5
+    21300012: WallArrowSpritesLeftRight_6
+    21300014: WallArrowSpritesLeftRight_7
+    21300016: WallArrowSpritesLeftRight_8
+    21300018: WallArrowSpritesLeftRight_9
+    21300020: WallArrowSpritesLeftRight_10
+    21300022: WallArrowSpritesLeftRight_11
+    21300024: WallArrowSpritesLeftRight_12
+    21300026: WallArrowSpritesLeftRight_13
+    21300028: WallArrowSpritesLeftRight_14
+    21300030: WallArrowSpritesLeftRight_15
+    21300032: WallArrowSpritesLeftRight_16
+    21300034: WallArrowSpritesLeftRight_17
+    21300036: WallArrowSpritesLeftRight_18
+    21300038: WallArrowSpritesLeftRight_19
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: WallArrowSpritesLeftRight_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 122
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 122
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 110
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 110
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_4
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 98
+        width: 28
+        height: 9
+      alignment: 9
+      pivot: {x: 0.22822298, y: 0.47831896}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_5
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 98
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_6
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 86
+        width: 20
+        height: 9
+      alignment: 9
+      pivot: {x: 0.28536567, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_7
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 86
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_8
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 74
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_9
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 74
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_10
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 62
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_11
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 62
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 50
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_13
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 50
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_14
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 38
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_15
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 38
+        width: 28
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_16
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 26
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_17
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 26
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_18
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 4
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallArrowSpritesLeftRight_19
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 4
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
