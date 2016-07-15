@@ -190,12 +190,10 @@ public class EnemyChaser : MonoBehaviour {
     {
         if (other.gameObject.tag == "Hole" && currentState != Mode.off)
         {
-            Debug.Log("Stepped on Hole");
-            if (Vector3.Distance(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), other.transform.position) < 0.5f)
-            {
-                currentState = Mode.off;
-                other.gameObject.SendMessage("EnemyHasBeenHit", transform);
-            }          
+            
+            currentState = Mode.off;
+            other.gameObject.SendMessage("EnemyHasBeenHit", transform);
+                      
         }
     }
 
