@@ -63,6 +63,6 @@ public class EnemyAttackChaserBig : MonoBehaviour {
 
     private void PlayerHasBeenHit()
     {
-        GameObject.Find("GameController").SendMessage("HurtPlayer", Vector3.Normalize(player.position - transform.position));
+        GameObject.Find("GameController").SendMessage("HurtPlayer", Vector3.Normalize(player.position - transform.parent.transform.position));
     }
 }

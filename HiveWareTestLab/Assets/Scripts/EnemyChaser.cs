@@ -17,6 +17,7 @@ public class EnemyChaser : MonoBehaviour {
     public float stunTime;
     public float timeBetweenDamage;
     public float playerArrowMultiplyer;
+    public bool doNotAddToGC;
 
     private Transform player;
     private Vector3 lastPatrolPosition;
@@ -178,7 +179,7 @@ public class EnemyChaser : MonoBehaviour {
             }           
             
         }
-        else if (other.gameObject.tag == "MainCamera")
+        else if (other.gameObject.tag == "MainCamera" && doNotAddToGC)
         {
             GameObject.Find("GameController").SendMessage("AddEnemy", transform.gameObject);
             Load();
@@ -189,6 +190,7 @@ public class EnemyChaser : MonoBehaviour {
     {
         if (other.gameObject.tag == "Hole" && currentState != Mode.off)
         {
+            Debug.Log("Stepped on Hole");
             if (Vector3.Distance(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), other.transform.position) < 0.5f)
             {
                 currentState = Mode.off;

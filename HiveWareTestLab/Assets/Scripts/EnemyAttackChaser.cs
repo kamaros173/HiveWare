@@ -38,6 +38,7 @@ public class EnemyAttackChaser : MonoBehaviour {
             yield return null;
         }
 
+        cir2d.enabled = true;
         while (cir2d.radius < attackDistance)
         {
             //cir2d.radius = Mathf.Lerp(cir2d.radius, attackDistance, attackSpeed * Time.deltaTime);
@@ -45,6 +46,7 @@ public class EnemyAttackChaser : MonoBehaviour {
             yield return null;
         }
         cir2d.radius = 0.1f;
+        cir2d.enabled = false;
 
         remainingTime = Time.time + afterAttackDelay;
         while (remainingTime > Time.time)
