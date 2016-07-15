@@ -2,14 +2,7 @@
 using System.Collections;
 
 public class ArrowHole : MonoBehaviour {
-    [HideInInspector] public enum wallDirection
-    {
-        North,
-        South,
-        East,
-        West
-    }
-    public wallDirection directionToShoot;
+    
     public float timeBetweenShots;
     public GameObject shot;
 
@@ -21,22 +14,7 @@ public class ArrowHole : MonoBehaviour {
         if (nextShot < Time.time)
         {
             nextShot = Time.time + timeBetweenShots;
-            if (Globals.playerDirection == PlayerDirection.North)
-            {
-                Instantiate(shot, transform.position, transform.rotation);
-            }
-            else if (Globals.playerDirection == PlayerDirection.South)
-            {
-                Instantiate(shot, transform.position, transform.rotation);
-            }
-            else if (Globals.playerDirection == PlayerDirection.East)
-            {
-                Instantiate(shot, transform.position, transform.rotation);
-            }
-            else if (Globals.playerDirection == PlayerDirection.West)
-            {
-                Instantiate(shot, transform.position, transform.rotation);
-            }
+            Instantiate(shot, transform.position, transform.rotation);
         }
     }
 }
