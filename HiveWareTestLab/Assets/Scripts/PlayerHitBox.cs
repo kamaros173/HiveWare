@@ -42,6 +42,10 @@ public class PlayerHitBox : MonoBehaviour {
             other.gameObject.SendMessage("PlayerHasBeenHit");
             playerInHole = true;
         }
+        else if (other.gameObject.tag == "Trigger")
+        {
+            other.gameObject.SendMessage("PlayerHasBeenHit");
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)

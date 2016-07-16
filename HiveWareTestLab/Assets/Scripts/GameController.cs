@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
     public float energyPerSecond;
     public float energyDelay;
     public Slider energyBar;
+    public GameObject playerPrefab;
   
 
     private int playerHealth;
@@ -20,7 +21,7 @@ public class GameController : MonoBehaviour {
     private bool isEnergyDelayed = false;
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
     private GameObject player;
-
+    private GameObject checkpoint;
 
 
     void Start()
@@ -28,7 +29,7 @@ public class GameController : MonoBehaviour {
         playerHealth = playerHealthMax;
         playerEnergy = playerEnergyMax;
         player = GameObject.Find("Player");
-
+        checkpoint = GameObject.Find("Checkpoint");
     }
 
     void Update()
@@ -69,8 +70,6 @@ public class GameController : MonoBehaviour {
     {
         if (!Globals.isPlayerDead)
         {
-
-
             playerHealth--;
 
             if (playerHealth >= 0)
@@ -82,6 +81,7 @@ public class GameController : MonoBehaviour {
                 Globals.notFrozen = false;
                 Globals.isPlayerDead = true;
                 GameObject.Find("Player").SendMessage("PlayerDeath");
+                PlayerHasDied();
             }
             else
             {
@@ -130,7 +130,7 @@ public class GameController : MonoBehaviour {
     {
         Debug.Log("Player fell in hole");
         StartCoroutine(PlayerFalling(center));
-        StartCoroutine(PlayerFallSpin());        
+        StartCoroutine(PlayerFallSpin());       
     }
 
     private IEnumerator PlayerFalling(Vector3 center)
@@ -185,6 +185,26 @@ public class GameController : MonoBehaviour {
         {
             Globals.notFrozen = true;
         }
+    }
+
+    private void PlayerHasDied()
+    {
+        //Load UI SCREEN WITH OPTIONS
+        respawnAtCheckpoint();
+    }
+
+    private void respawnAtCheckpoint()
+    {
+        foreach (Image health in hearts)
+        {
+            health.sprite = heart;
+        }
+        playerHealth = playerHealthMax;
+        playerEnergy = playerEnergyMax;
+        isEnergyDelayed = false;
+        player.SendMessage("Reset");
+        player.transform.position = checkpoint.transform.position;
+        Camera.main.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y, Camera.main.transform.position.z);
     }
 
 }

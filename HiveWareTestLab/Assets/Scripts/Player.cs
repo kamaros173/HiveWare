@@ -487,4 +487,27 @@ public class Player : MonoBehaviour {
     {
         return isDashing;
     }
+
+    public void Reset()
+    {
+        isSwinging = false;
+        isShooting = false;
+        isShielding = false;
+        isDashing = false;
+        isWalking = false;
+        animator.ResetTrigger("Death");
+        animator.SetBool("IsDead", false);
+        animator.SetBool("IsDashing", false);
+        animator.SetBool("IsShooting", false);
+        animator.SetBool("IsSwinging", false);
+        animator.SetBool("IsShieldUp", false);
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("CanWalk", true);
+        transform.FindChild("SwordPivot").gameObject.SetActive(false);
+        shieldDirection.SetActive(false);
+        Globals.isPlayerDead = false;
+        Globals.notFrozen = true;
+        Globals.playerIsHittable = true;
+
+    }
 }
