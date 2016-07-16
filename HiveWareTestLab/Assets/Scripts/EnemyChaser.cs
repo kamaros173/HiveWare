@@ -179,7 +179,7 @@ public class EnemyChaser : MonoBehaviour {
             }           
             
         }
-        else if (other.gameObject.tag == "MainCamera" && doNotAddToGC)
+        else if (other.gameObject.tag == "MainCamera" && !doNotAddToGC)
         {
             GameObject.Find("GameController").SendMessage("AddEnemy", transform.gameObject);
             Load();

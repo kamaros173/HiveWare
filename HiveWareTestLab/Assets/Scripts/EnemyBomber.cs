@@ -138,7 +138,7 @@ public class EnemyBomber : MonoBehaviour {
             GameObject.Destroy(other.gameObject);
             StartCoroutine(Explode());
         }
-        else if (other.gameObject.tag == "MainCamera" && doNotAddToGC)
+        else if (other.gameObject.tag == "MainCamera" && !doNotAddToGC)
         {
             GameObject.Find("GameController").SendMessage("AddEnemy", transform.gameObject);
             Load();

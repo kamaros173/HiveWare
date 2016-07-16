@@ -4,11 +4,14 @@ using System.Collections;
 public class WallProjectile : MonoBehaviour {
 
     public float speed;
+    public float WallImmuneTime;
 
     void Update()
     {
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
-        //transform.Translate(shotDirection * speed * Time.deltaTime);
+        if (Globals.notFrozen)
+        {
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+        }
     }
 
     private void PlayerHasBeenHit()
