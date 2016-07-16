@@ -13,18 +13,14 @@ public class GameController : MonoBehaviour {
     public float energyPerSecond;
     public float energyDelay;
     public Slider energyBar;
-    public int songOneSize;
-    public int songTwoSize;
-    public int songThreeSize;   
+  
 
     private int playerHealth;
     private float playerEnergy;
     private bool isEnergyDelayed = false;
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
     private GameObject player;
-    public int songOneCurrent;
-    public int songTwoCurrent;
-    public int songThreeCurrent;
+
 
 
     void Start()
@@ -193,33 +189,4 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void PhaseOneSong(int note)
-    {
-        if(note == songOneCurrent)
-        {
-            //do nothing
-        }
-        else if (note == ++songOneCurrent)
-        {
-            //Correct
-            if(songOneCurrent == songOneSize)
-            {
-                //Finish
-            }
-        }
-        else
-        {
-            songOneCurrent = 0;
-        }
-    }
-
-    private void PhaseTwoSong(int note)
-    {
-
-    }
-
-    private void PhaseThreeSong(int note)
-    {
-
-    }	
 }
