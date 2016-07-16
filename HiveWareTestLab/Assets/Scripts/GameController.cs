@@ -28,9 +28,7 @@ public class GameController : MonoBehaviour {
         playerHealth = playerHealthMax;
         playerEnergy = playerEnergyMax;
         player = GameObject.Find("Player");
-        songOneCurrent = 0;
-        songTwoCurrent = 0;
-        songThreeCurrent = 0;
+
     }
 
     void Update()
