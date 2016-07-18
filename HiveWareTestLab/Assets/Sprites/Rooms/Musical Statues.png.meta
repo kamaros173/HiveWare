@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2a545f9dec9ec4042a245821735b7663
-timeCreated: 1468550007
+timeCreated: 1468878954
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -63,8 +63,8 @@ TextureImporter:
         y: 105
         width: 13
         height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Musical Statues_1
@@ -74,8 +74,8 @@ TextureImporter:
         y: 105
         width: 12
         height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Musical Statues_2
@@ -85,8 +85,8 @@ TextureImporter:
         y: 105
         width: 23
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Musical Statues_3
@@ -96,8 +96,8 @@ TextureImporter:
         y: 105
         width: 13
         height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Musical Statues_4
@@ -107,8 +107,8 @@ TextureImporter:
         y: 105
         width: 12
         height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Musical Statues_5
@@ -118,8 +118,8 @@ TextureImporter:
         y: 68
         width: 16
         height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []
