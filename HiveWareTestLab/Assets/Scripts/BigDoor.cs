@@ -26,6 +26,7 @@ public class BigDoor : MonoBehaviour {
             else if (statues[currentLock] == statue)
             {
                 //Play Correct Sound
+                statues[currentLock].SendMessage("Correct");
 
                 currentLock++;
                 if (currentLock == statues.Length)
@@ -40,6 +41,10 @@ public class BigDoor : MonoBehaviour {
             else
             {
                 //Play Wrong Sound
+                foreach(GameObject s in statues)
+                {
+                    s.SendMessage("Wrong");
+                }
                 currentLock = 0;
             }
         }
