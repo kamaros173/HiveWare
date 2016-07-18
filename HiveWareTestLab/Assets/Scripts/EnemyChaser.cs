@@ -62,17 +62,13 @@ public class EnemyChaser : MonoBehaviour {
     private void Chase()
     {
         Vector2 dir = Vector3.Normalize(player.position - transform.position);
-        RaycastHit2D raycastToPlayer = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
+        raycastToPlayer = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
 
         if (raycastToPlayer.collider != null) 
-        {
-            //if(raycastToPlayer.collider.tag == "Player")
-            //{               
+        {                        
             enemyCanMove = false;
             isAttacking = true;
             transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer", animator);
-            //animator.SetTrigger("Attack");                           
-            //}
         }
         else
         {
@@ -189,11 +185,9 @@ public class EnemyChaser : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Hole" && currentState != Mode.off)
-        {
-            
+        {           
             currentState = Mode.off;
-            other.gameObject.SendMessage("EnemyHasBeenHit", transform);
-                      
+            other.gameObject.SendMessage("EnemyHasBeenHit", transform);                     
         }
     }
 

@@ -15,7 +15,7 @@ public class EnemyProjectile : MonoBehaviour {
     {
         player = GameObject.Find("Player").transform.position;
         shotDirection = Vector3.Normalize(player - transform.position);
-        shotDistance = Vector3.Distance(player, transform.position);
+        shotDistance = 2f*Vector3.Distance(player, transform.position);
     }
 
     void Update()

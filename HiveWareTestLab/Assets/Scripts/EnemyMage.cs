@@ -9,12 +9,17 @@ public class EnemyMage : MonoBehaviour {
     public float hitRange;
     public LayerMask playerLayer;
     public LayerMask wallLayer;
+    public LayerMask floorLayer;
     public Vector3[] patrolPoints;
+    public Transform shotSpawn;
     public float pushBackDistance;
     public float pushBackSmooth;
     public float pushBackTol;
     public float stunTime;
     public float timeBetweenDamage;
+    public float playerArrowMultiplyer;
+    public bool doNotAddToGC;
+    public bool Upgraded;
 
     private Transform player;
     private Vector3 lastPatrolPosition;
@@ -24,8 +29,10 @@ public class EnemyMage : MonoBehaviour {
     private bool enemyIsHittable = true;
     private bool enemyCanMove = true;
     private int currentHealth;
-
+    private RaycastHit2D raycastToPlayer;
+    private float currentStunTime;
     private Animator animator;
+    private bool isAttacking = false;
 
     void Start()
     {
@@ -37,7 +44,7 @@ public class EnemyMage : MonoBehaviour {
 
     void Update()
     {
-        if (Globals.notFrozen && enemyCanMove)
+        if (Globals.notFrozen && enemyCanMove && !isAttacking)
         {
             if (currentState == Mode.chasing)
             {
@@ -57,21 +64,13 @@ public class EnemyMage : MonoBehaviour {
     private void Chase()
     {
         Vector2 dir = Vector3.Normalize(player.position - transform.position);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
+        raycastToPlayer = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
 
-        if (hit.collider != null)
-        {
-            if (hit.collider.tag == "Player" || hit.collider.tag == "PlayerShield")
-            {
-                enemyCanMove = false;
-
-                if (currentState != Mode.off)
-                {
-                    transform.FindChild("EnemyAttackMage").SendMessage("AttackPlayer");
-                    animator.SetTrigger("Attack");
-                }
-                
-            }
+        if (raycastToPlayer.collider != null)
+        {         
+            enemyCanMove = false;
+            isAttacking = true;
+            transform.FindChild("EnemyAttackMage").SendMessage("AttackPlayer", animator);
         }
         else
         {
@@ -106,16 +105,24 @@ public class EnemyMage : MonoBehaviour {
     {
         Vector3 vectorToTarget = target - transform.position;
 
-        //THIS FLIPS DEPENDING ON TARGET DIRECTION
         if (vectorToTarget.x > 0f)
-        {
-            //LOOK RIGHT
+        {// LOOK RIGHT
             GetComponent<SpriteRenderer>().flipX = false;
+            shotSpawn.localPosition = new Vector3(0.5f, 1.5f, 0);
         }
         else if (vectorToTarget.x < 0f)
-        {
-            //LOOK LEFT
+        {// LOOK LEFT
             GetComponent<SpriteRenderer>().flipX = true;
+            shotSpawn.localPosition = new Vector3(-0.5f, 1.5f, 0);
+        }
+
+        if (vectorToTarget.y > 0f)
+        {// ABOVE TARGET
+            GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
+        else
+        {// BELOW TARGET
+            GetComponent<SpriteRenderer>().sortingOrder = -1;
         }
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
@@ -141,13 +148,14 @@ public class EnemyMage : MonoBehaviour {
     //If the player keeps beating his face against the enmey
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" && Globals.playerIsHittable)
+        if (other.gameObject.tag == "Player" && Globals.playerIsHittable && currentState != Mode.off)
         {
+            Globals.notFrozen = false;
+            Globals.playerIsHittable = false;
             Vector3 contactPoint = other.contacts[0].point;
             Vector3 centerPoint = other.collider.bounds.center;
             Vector3 direction = Vector3.Normalize(centerPoint - contactPoint);
             GameObject.Find("GameController").SendMessage("HurtPlayer", direction);
-            other.gameObject.SendMessage("HitPlayer", direction);
         }
     }
 
@@ -156,22 +164,33 @@ public class EnemyMage : MonoBehaviour {
         if (other.gameObject.tag == "PlayerSword" && enemyIsHittable)
         {
             Vector3 direction = Vector3.Normalize(transform.position - player.position);
+            currentStunTime = stunTime;
             HitEnemy(direction, Globals.playerSwordDamage);
         }
         else if (other.gameObject.tag == "Projectile")
         {
             GameObject.Destroy(other.gameObject);
-            if (enemyIsHittable)
+            if (enemyIsHittable && playerArrowMultiplyer != 0)
             {
-                Vector3 direction = Vector3.Normalize(transform.position - player.position);
-                HitEnemy(direction, Globals.playerArrowDamage);
+                currentStunTime = stunTime;
+                Vector3 direction = 0.25f * Vector3.Normalize(transform.position - player.position);
+                HitEnemy(direction, (int)((float)Globals.playerArrowDamage * playerArrowMultiplyer));
             }
 
         }
-        else if (other.gameObject.tag == "MainCamera")
+        else if (other.gameObject.tag == "MainCamera" && !doNotAddToGC)
         {
             GameObject.Find("GameController").SendMessage("AddEnemy", transform.gameObject);
             Load();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Hole" && currentState != Mode.off)
+        {
+            currentState = Mode.off;
+            other.gameObject.SendMessage("EnemyHasBeenHit", transform);
         }
     }
 
@@ -182,21 +201,57 @@ public class EnemyMage : MonoBehaviour {
         if (currentHealth <= 0)
         {
             currentState = Mode.off;
+            GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
-            //gameObject.SetActive(false);
+
             animator.SetTrigger("Death");
+            if(Upgraded)
+                transform.FindChild("EnemyAttackMage").SendMessage("DeathAttack");
+            else
+                transform.FindChild("EnemyAttackMage").gameObject.SetActive(false);
+
             transform.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
         {
+            currentState = Mode.chasing;
+            StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
         }
     }
 
+    private IEnumerator EnemyIsImmuneToDamage()
+    {
+        float waitTime = Time.time + timeBetweenDamage;
+        Color toColor = Color.red;
+        Color fromColor = Color.white;
+        float severity = 0f;
+        SpriteRenderer damagedsprite = transform.GetComponent<SpriteRenderer>();
+        while (Time.time < waitTime)
+        {
+            if (currentState != Mode.off)
+            {
+                damagedsprite.color = Color.Lerp(fromColor, toColor, severity);
+                severity += 0.05f;
+                if (severity >= 0.9f)
+                {
+                    Color temp = fromColor;
+                    fromColor = toColor;
+                    toColor = temp;
+                    severity = 0f;
+                }
+
+                yield return null;
+            }
+        }
+
+        damagedsprite.color = Color.white;
+        enemyIsHittable = true;
+    }
 
     private IEnumerator PushBackEnemy(Vector3 direction)
     {
-        currentState = Mode.off;
+        enemyCanMove = false;
         Vector3 target = transform.position + (direction * pushBackDistance);
         Vector3 oldPos;
         float oldDis = Vector3.Distance(transform.position, target);
@@ -217,15 +272,13 @@ public class EnemyMage : MonoBehaviour {
             oldDis = Vector3.Distance(transform.position, target);
         } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol);
 
-        float stun = Time.time + stunTime;
 
+        float stun = Time.time + currentStunTime;
         while (Time.time < stun)
         {
             yield return null;
         }
-
-        currentState = Mode.chasing;
-        enemyIsHittable = true;
+        enemyCanMove = true;
     }
 
     private void StartChase()
@@ -250,6 +303,7 @@ public class EnemyMage : MonoBehaviour {
     private void EnemyCanNowMove()
     {
         enemyCanMove = true;
+        isAttacking = false;
     }
 }
 

@@ -6,16 +6,32 @@ public class EnemyAttackMage : MonoBehaviour {
     public float attackDelay;
     public GameObject shot;
     public Transform shotSpawn;
+    public float beforeAttackDelay;
+    public int deathAttackAmount;
 
-    private void AttackPlayer()
+    private int deathAttackAngle;
+
+    private void Start()
     {
-        StartCoroutine(Attack());
+        deathAttackAngle = 360 / deathAttackAmount;
     }
 
-    private IEnumerator Attack()
+    private void AttackPlayer(Animator animator)
     {
-        
-        float remainingTime = Time.time + attackDelay;
+        StartCoroutine(Attack(animator));
+    }
+
+    private IEnumerator Attack(Animator animator)
+    {
+
+        float remainingTime = Time.time + beforeAttackDelay;
+        while (remainingTime > Time.time)
+        {
+            yield return null;
+        }
+        animator.SetTrigger("Attack");
+
+        remainingTime = Time.time + attackDelay;
         while (remainingTime > Time.time)
         {
             yield return null;
@@ -24,5 +40,14 @@ public class EnemyAttackMage : MonoBehaviour {
         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
         gameObject.SendMessageUpwards("EnemyCanNowMove");
 
+    }
+
+    private void DeathAttack()
+    {
+        for(int i = 0; i < deathAttackAmount; i++)
+        {
+            Instantiate(shot, shotSpawn.position, Quaternion.Euler(0f, 0f, i * deathAttackAngle));       
+        }
+        gameObject.SetActive(false);
     }
 }
