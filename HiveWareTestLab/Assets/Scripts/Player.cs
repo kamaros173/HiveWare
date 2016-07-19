@@ -19,8 +19,19 @@ public class Player : MonoBehaviour {
     public float energyToUseDash;
     public float energyToUseArrow;
     public float energyToUseSword;
+    public AudioClip walkClip;
+    public AudioClip SwordClip;
+    public AudioClip DashClip;
+    public AudioClip ShieldClip;
+    public AudioClip ShootClip;
+    public AudioClip HurtClip;
 
-  
+
+
+
+
+
+
     private float nextFire;
     private Animator animator;
     private GameObject shieldDirection;
