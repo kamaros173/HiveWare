@@ -208,6 +208,7 @@ public class EnemyChaser : MonoBehaviour {
         }
         else
         {
+            currentState = Mode.chasing;
             StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
         }       

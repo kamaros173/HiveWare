@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
             if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.D))
             {//SWORD
                 //////Should we only allow on press down and also allow to reset on pressdown?
-                if (gameController.DrainPlayerEnergy(energyToUseSword) && !isSwinging && !isShooting && !isDashing)
+                if (!isSwinging && !isShooting && !isDashing && gameController.DrainPlayerEnergy(energyToUseSword))
                 {
                     isSwinging = true;
                     isShielding = false;
@@ -62,14 +62,13 @@ public class Player : MonoBehaviour {
    
                     swordPivot.SetActive(true);
                     swordPivot.SendMessage("Swing", Globals.playerDirection);
-
                 }
             }
             else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A)) && Time.time > nextFire)
             {//SHOOT
                 //////Should we allow the player to interrupt swing to shoot?
                 //////Fix Shoot rotation
-                if (gameController.DrainPlayerEnergy(energyToUseArrow) && !isSwinging && !isDashing)
+                if (!isSwinging && !isDashing && gameController.DrainPlayerEnergy(energyToUseArrow))
                 {
                     isShooting = true;
                     isShielding = false;
@@ -97,10 +96,17 @@ public class Player : MonoBehaviour {
                         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
                     }
                 }
+                else
+                {
+                    isShooting = false;
+                    animator.SetBool("CanWalk", true);
+                    animator.ResetTrigger("Shoot");
+                    animator.SetBool("IsShooting", false);
+                }
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {// DASH
-                if (gameController.DrainPlayerEnergy(energyToUseDash) && !isSwinging && !isShooting && !isDashing)
+                if (!isSwinging && !isShooting && !isDashing && gameController.DrainPlayerEnergy(energyToUseDash))
                 {
                     isDashing = true;
                     isShielding = false;
@@ -114,15 +120,29 @@ public class Player : MonoBehaviour {
             }
             else if (Input.GetKey(KeyCode.S))
             {// SHIELD
-                if (gameController.DrainPlayerEnergy(energyToUseShield) && !isSwinging && !isShooting && !isDashing && !isShielding)
+                if (!isSwinging && !isShooting && !isDashing)
                 {
-                    isShielding = true;
-                    isWalking = false;
-                    animator.SetBool("CanWalk", false);
-                    animator.SetBool("IsShieldUp", true);
-                    animator.SetTrigger("ShieldUp");
-                    shieldDirection.SetActive(true);
-                }
+                    if (gameController.DrainPlayerEnergy(energyToUseShield))
+                    {
+                        if (!isShielding)
+                        {
+                            isShielding = true;
+                            isWalking = false;
+                            animator.SetBool("CanWalk", false);
+                            animator.SetBool("IsShieldUp", true);
+                            animator.SetTrigger("ShieldUp");
+                            shieldDirection.SetActive(true);
+                        }
+                    }
+                    else
+                    {
+                        isShielding = false;
+                        animator.SetBool("CanWalk", true);
+                        animator.SetBool("IsShieldUp", false);
+                        animator.ResetTrigger("ShieldUp");
+                        shieldDirection.SetActive(false);
+                    }
+                }               
             }
 
             //KEYUPS

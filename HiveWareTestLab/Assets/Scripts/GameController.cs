@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
     private GameObject player;
     private GameObject checkpoint;
+    private float delayedTime;
 
 
     void Start()
@@ -30,11 +31,14 @@ public class GameController : MonoBehaviour {
         playerEnergy = playerEnergyMax;
         player = GameObject.Find("Player");
         checkpoint = GameObject.Find("Checkpoint");
+        delayedTime = 0f;
     }
 
     void Update()
     {
-        if(!isEnergyDelayed){
+        if (delayedTime <= 0f)
+        {
+            delayedTime = 0f;
             if (playerEnergy + (energyPerSecond * Time.deltaTime) > playerEnergyMax)
             {
                 playerEnergy = playerEnergyMax;
@@ -45,6 +49,14 @@ public class GameController : MonoBehaviour {
                 playerEnergy += energyPerSecond * Time.deltaTime;
                 energyBar.value = playerEnergy;
             }
+        }
+        else if(delayedTime > energyDelay)
+        {
+            delayedTime = energyDelay;
+        }
+        else
+        {
+            delayedTime -= Time.deltaTime;
         }
     }
 
@@ -101,7 +113,8 @@ public class GameController : MonoBehaviour {
 
     public bool DrainPlayerEnergy(float amount)
     {
-        StartCoroutine(DelayEnergyRegen());
+        //StartCoroutine(DelayEnergyRegen());
+        delayedTime += energyDelay;
         if((playerEnergy - amount) < 0)
         {
             Debug.Log("Not Enough Energy: " + playerEnergy + " left");
@@ -113,18 +126,18 @@ public class GameController : MonoBehaviour {
         return true;
     }
 
-    private IEnumerator DelayEnergyRegen()
-    {
-        isEnergyDelayed = true;
-        float remaining = Time.time + energyDelay;
+    //private IEnumerator DelayEnergyRegen()
+    //{
+    //    isEnergyDelayed = true;
+    //    float remaining = Time.time + energyDelay;
 
-        while(remaining > Time.time)
-        {
-            yield return null;
-        }
+    //    while(remaining > Time.time)
+    //    {
+    //        yield return null;
+    //    }
 
-        isEnergyDelayed = false;
-    }
+    //    isEnergyDelayed = false;
+    //}
 
     private void PlayerInHole(Vector3 center)
     {

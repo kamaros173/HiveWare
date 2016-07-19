@@ -239,10 +239,9 @@ public class EnemyMage : MonoBehaviour {
                     fromColor = toColor;
                     toColor = temp;
                     severity = 0f;
-                }
-
-                yield return null;
+                }               
             }
+            yield return null;
         }
 
         damagedsprite.color = Color.white;
