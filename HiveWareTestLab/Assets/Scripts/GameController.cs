@@ -276,7 +276,7 @@ public class GameController : MonoBehaviour {
     public void GoToMainMenu()
     {
         player.SendMessage("Reset");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("CameronTestArenaV2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameDungeonV6");
     }
 
 }

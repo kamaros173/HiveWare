@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ba11907a1673d7e4490ba8c8df915f06
-timeCreated: 1467077688
+timeCreated: 1468965709
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -77,7 +77,7 @@ TextureImporter:
         width: 11
         height: 36
       alignment: 9
-      pivot: {x: 0.49388036, y: 0.45669112}
+      pivot: {x: 0.5, y: 0.4575702}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: KnightDown_1
@@ -88,7 +88,7 @@ TextureImporter:
         width: 11
         height: 35
       alignment: 9
-      pivot: {x: 0.4991195, y: 0.4419233}
+      pivot: {x: 0.48542196, y: 0.011437988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: KnightDown_2
