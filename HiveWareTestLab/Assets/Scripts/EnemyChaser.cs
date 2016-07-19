@@ -18,6 +18,10 @@ public class EnemyChaser : MonoBehaviour {
     public float timeBetweenDamage;
     public float playerArrowMultiplyer;
     public bool doNotAddToGC;
+    public AudioClip hitClip;
+    public AudioClip deathClip;
+    public AudioClip shieldDeflectClip;
+    
 
     private Transform player;
     private Vector3 lastPatrolPosition;
@@ -31,6 +35,7 @@ public class EnemyChaser : MonoBehaviour {
     private float currentStunTime;
     private Animator animator;
     private bool isAttacking = false;
+    private SoundManager soundmanager;
 
     void Start ()
     {
@@ -169,9 +174,12 @@ public class EnemyChaser : MonoBehaviour {
             GameObject.Destroy(other.gameObject);
             if (enemyIsHittable && playerArrowMultiplyer != 0)
             {
-                //Vector3 direction = Vector3.Normalize(transform.position - player.position);
                 currentStunTime = 0f;
                 HitEnemy(Vector3.zero, (int)((float)Globals.playerArrowDamage * playerArrowMultiplyer));
+            }
+            else if(playerArrowMultiplyer == 0)
+            {
+                soundmanager.RandomizeSfx(shieldDeflectClip, 1f);
             }           
             
         }
@@ -198,19 +206,23 @@ public class EnemyChaser : MonoBehaviour {
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
+            soundmanager.PlaySingle(hitClip, 1f);
             currentState = Mode.off;
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
             
             animator.SetTrigger("Death");
+            soundmanager.PlaySingle(deathClip, 1f);
             transform.GetComponent<BoxCollider2D>().enabled = false;
             transform.FindChild("EnemyAttackChaser").gameObject.SetActive(false);         
         }
         else
         {
+
             currentState = Mode.chasing;
             StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
+            soundmanager.PlaySingle(hitClip, 1f);
         }       
     }
 
