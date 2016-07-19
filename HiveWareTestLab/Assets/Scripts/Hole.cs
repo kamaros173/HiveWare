@@ -17,10 +17,12 @@ public class Hole : MonoBehaviour {
 
     private void EnemyHasBeenHit(Transform enemy)
     {
+        Debug.Log("EnemyHasBeenHitEnter");
         Transform[] temp = new Transform[2];
         temp[0] = transform;
         temp[1] = enemy;
-
+        Debug.Log("EnemyHasBeenHitEnter");
         gc.SendMessage("EnemyInHole", temp);
+        Debug.Log("EnemyHasBeenHitEnter");
     }
 }

@@ -67,4 +67,9 @@ public class PlayerHitBox : MonoBehaviour {
 
         }
     }
+
+    private void Reset()
+    {
+        playerInHole = false;
+    }
 }

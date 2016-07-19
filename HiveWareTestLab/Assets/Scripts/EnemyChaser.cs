@@ -185,9 +185,13 @@ public class EnemyChaser : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Hole" && currentState != Mode.off)
-        {           
+        {
+            Debug.Log("OnTriggerStay2D");
             currentState = Mode.off;
-            other.gameObject.SendMessage("EnemyHasBeenHit", transform);                     
+            GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
+            other.gameObject.SendMessage("EnemyHasBeenHit", transform);
+            Debug.Log("OnTriggerStay2D");
+
         }
     }
 
@@ -207,7 +211,6 @@ public class EnemyChaser : MonoBehaviour {
         }
         else
         {
-            currentState = Mode.chasing;
             StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
         }       
@@ -264,7 +267,7 @@ public class EnemyChaser : MonoBehaviour {
             yield return null;
 
             oldDis = Vector3.Distance(transform.position, target);
-        } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol) ;
+        } while ((oldDis > pushBackTol) && Vector3.Distance(transform.position, oldPos) > pushBackTol && currentState != Mode.off) ;
 
 
         float stun = Time.time + currentStunTime;

@@ -128,44 +128,46 @@ public class GameController : MonoBehaviour {
 
     private void PlayerInHole(Vector3 center)
     {
-        Debug.Log("Player fell in hole");
-        StartCoroutine(PlayerFalling(center));
-        StartCoroutine(PlayerFallSpin());       
+        StartCoroutine(PlayerFallSpin(center));       
     }
 
-    private IEnumerator PlayerFalling(Vector3 center)
-    {
-        while(Vector3.Distance(center, GameObject.Find("Player").transform.position) > 0.05f){
-            GameObject.Find("Player").transform.position = Vector3.Lerp(GameObject.Find("Player").transform.position, center, 2f*Time.deltaTime);
-            yield return null;
-        }
-    }
+    //private IEnumerator PlayerFalling(Vector3 center)
+    //{
+    //    while(Vector3.Distance(center, GameObject.Find("Player").transform.position) > 0.05f){
+    //        GameObject.Find("Player").transform.position = Vector3.Lerp(GameObject.Find("Player").transform.position, center, 2f*Time.deltaTime);
+    //        yield return null;
+    //    }
+    //}
 
-    private IEnumerator PlayerFallSpin()
+    private IEnumerator PlayerFallSpin(Vector3 center)
     {
         while(player.transform.localScale.y > 0.05)
         {
             player.transform.localScale = Vector3.Lerp(player.transform.localScale, Vector3.zero, Time.deltaTime);
             player.transform.Rotate(0f,0f,5f);
+            player.transform.position = Vector3.Lerp(player.transform.position, center, 2f * Time.deltaTime);
             yield return null;
-
         }
+
+        respawnAtCheckpoint();
     }
 
     private void EnemyInHole(Transform[] points)
     {
-        StartCoroutine(EnemyFalling(points));
+        //StartCoroutine(EnemyFalling(points));
         StartCoroutine(EnemyFallSpin(points));
     }
 
-    private IEnumerator EnemyFalling(Transform[] points)
-    {
-        while (Vector3.Distance(points[0].position, points[1].position) > 0.05f)
-        {
-            points[1].position = Vector3.Lerp(points[1].position, points[0].position, 2f * Time.deltaTime);
-            yield return null;
-        }
-    }
+    //private IEnumerator EnemyFalling(Transform[] points)
+    //{
+    //    Debug.Log("EnemyFalling");
+    //    while (Vector3.Distance(points[0].position, points[1].position) > 0.05f)
+    //    {
+    //        points[1].position = Vector3.Lerp(points[1].position, points[0].position, 2f * Time.deltaTime);
+    //        yield return null;
+    //    }
+    //    Debug.Log("EnemyFalling");
+    //}
 
     private IEnumerator EnemyFallSpin(Transform[] points)
     {
@@ -173,6 +175,7 @@ public class GameController : MonoBehaviour {
         {
             points[1].transform.localScale = Vector3.Lerp(points[1].transform.localScale, Vector3.zero, Time.deltaTime);
             points[1].transform.Rotate(0f, 0f, 5f);
+            points[1].position = Vector3.Lerp(points[1].position, points[0].position, 2f * Time.deltaTime);
             yield return null;
         }
 
@@ -204,6 +207,8 @@ public class GameController : MonoBehaviour {
         isEnergyDelayed = false;
         player.SendMessage("Reset");
         player.transform.position = checkpoint.transform.position;
+        player.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        player.transform.localScale = new Vector3(1f, 0.75f, 1f);
         Camera.main.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y, Camera.main.transform.position.z);
     }
 

@@ -508,6 +508,7 @@ public class Player : MonoBehaviour {
         Globals.isPlayerDead = false;
         Globals.notFrozen = true;
         Globals.playerIsHittable = true;
+        transform.FindChild("PlayerHitBox").SendMessage("Reset");
 
     }
 }
