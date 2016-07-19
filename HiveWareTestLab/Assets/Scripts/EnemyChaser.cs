@@ -186,12 +186,9 @@ public class EnemyChaser : MonoBehaviour {
     {
         if (other.gameObject.tag == "Hole" && currentState != Mode.off)
         {
-            Debug.Log("OnTriggerStay2D");
             currentState = Mode.off;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
             other.gameObject.SendMessage("EnemyHasBeenHit", transform);
-            Debug.Log("OnTriggerStay2D");
-
         }
     }
 
@@ -219,14 +216,16 @@ public class EnemyChaser : MonoBehaviour {
     private IEnumerator EnemyIsImmuneToDamage()
     {
         float waitTime = Time.time + timeBetweenDamage;
-        Color toColor = Color.red;
-        Color fromColor = Color.white;
-        float severity = 0f;
         SpriteRenderer damagedsprite = transform.GetComponent<SpriteRenderer>();
+        Color original = damagedsprite.color;
+        Color toColor = Color.red;
+        Color fromColor = damagedsprite.color;
+        float severity = 0f;
+        
         while (Time.time < waitTime)
         {
-            if (currentState != Mode.off)
-            {
+            //if (currentState != Mode.off)
+            //{
                 damagedsprite.color = Color.Lerp(fromColor, toColor, severity);
                 severity += 0.05f;
                 if (severity >= 0.9f)
@@ -237,11 +236,12 @@ public class EnemyChaser : MonoBehaviour {
                     severity = 0f;
                 }
 
-                yield return null;
-            }
+
+            //}
+            yield return null;
         }
 
-        damagedsprite.color = Color.white;
+        damagedsprite.color = original;
         enemyIsHittable = true;
     }
 
