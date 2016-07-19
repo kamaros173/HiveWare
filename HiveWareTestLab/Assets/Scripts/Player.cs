@@ -19,34 +19,32 @@ public class Player : MonoBehaviour {
     public float energyToUseDash;
     public float energyToUseArrow;
     public float energyToUseSword;
-    public AudioClip walkClip;
+    public AudioClip WalkClip;
     public AudioClip SwordClip;
     public AudioClip DashClip;
     public AudioClip ShieldClip;
     public AudioClip ShootClip;
     public AudioClip HurtClip;
-
-
-
-
-
-
+    public AudioClip deathClip;
 
     private float nextFire;
     private Animator animator;
     private GameObject shieldDirection;
     private GameObject swordPivot;
     private GameController gameController;
+    private SoundManager soundManager;
     private bool isSwinging = false;
     private bool isShooting = false;
     private bool isShielding = false;
     private bool isDashing = false;
     private bool isWalking = false;
+    private float lastWalkSound = 0f;
 
     void Start()
     {
         //Get a component reference to the Player's animator component
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         swordPivot = transform.FindChild("SwordPivot").gameObject;
         shieldDirection = transform.FindChild("ShieldNorth").gameObject;
         animator = GetComponent<Animator>();
@@ -73,6 +71,7 @@ public class Player : MonoBehaviour {
    
                     swordPivot.SetActive(true);
                     swordPivot.SendMessage("Swing", Globals.playerDirection);
+                    soundManager.RandomizeSfx(SwordClip, 0.85f);
                 }
             }
             else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A)) && Time.time > nextFire)
@@ -90,6 +89,7 @@ public class Player : MonoBehaviour {
                     animator.SetBool("CanWalk", false);
                     animator.SetBool("IsShooting", true);
                     animator.SetTrigger("Shoot");
+                    soundManager.RandomizeSfx(ShootClip, 1f);
                     if (Globals.playerDirection == PlayerDirection.North)
                     {
                         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -127,6 +127,7 @@ public class Player : MonoBehaviour {
                     animator.SetBool("IsDashing", true);
                     animator.SetTrigger("Dash");
                     StartCoroutine(Dash());
+                    soundManager.RandomizeSfx(DashClip, 1f);
                 }
             }
             else if (Input.GetKey(KeyCode.S))
@@ -143,6 +144,7 @@ public class Player : MonoBehaviour {
                             animator.SetBool("IsShieldUp", true);
                             animator.SetTrigger("ShieldUp");
                             shieldDirection.SetActive(true);
+                            soundManager.PlaySingle(ShieldClip, 1f);
                         }
                     }
                     else
@@ -209,6 +211,11 @@ public class Player : MonoBehaviour {
 
                             animator.SetTrigger("Walking");
                             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+                            if (Time.time > lastWalkSound)
+                            {
+                                soundManager.RandomizeSfx(WalkClip, 0.5f);
+                                lastWalkSound = Time.time + 0.25f;
+                            }
                         }
 
                     }                                                                     
@@ -236,7 +243,12 @@ public class Player : MonoBehaviour {
                             }
 
                             animator.SetTrigger("Walking");
-                            transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);                           
+                            transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
+                            if (Time.time > lastWalkSound)
+                            {
+                                soundManager.RandomizeSfx(WalkClip, 0.5f);
+                                lastWalkSound = Time.time + 0.25f;
+                            }
                         }
                     }             
                 }
@@ -264,6 +276,11 @@ public class Player : MonoBehaviour {
 
                             animator.SetTrigger("Walking");
                             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                            if (Time.time > lastWalkSound)
+                            {
+                                soundManager.RandomizeSfx(WalkClip, 0.5f);
+                                lastWalkSound = Time.time + 0.25f;
+                            }
                         }
 
                     }
@@ -292,6 +309,11 @@ public class Player : MonoBehaviour {
 
                             animator.SetTrigger("Walking");
                             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+                            if (Time.time > lastWalkSound)
+                            {
+                                soundManager.RandomizeSfx(WalkClip, 0.5f);
+                                lastWalkSound = Time.time + 0.25f;
+                            }
                         }
                     }                              
                 }
@@ -414,7 +436,8 @@ public class Player : MonoBehaviour {
     private void HitPlayer(Vector3 direction)
     {
         StartCoroutine(PlayerIsImmuneToDamage());
-        StartCoroutine(PushBackPlayer(direction));       
+        StartCoroutine(PushBackPlayer(direction));
+        soundManager.RandomizeSfx(HurtClip, 1f);       
     }
     
     private IEnumerator PlayerIsImmuneToDamage()
@@ -471,6 +494,7 @@ public class Player : MonoBehaviour {
     {
         animator.SetTrigger("Death");
         animator.SetBool("IsDead", true);
+        soundManager.PlaySingle(deathClip, 1f);
     }
 
     private void PlayerCanSwing()

@@ -5,15 +5,18 @@ public class BigDoor : MonoBehaviour {
 
     public GameObject[] statues;
     public Sprite sprite;
+    public AudioClip openClip;
 
     private int currentLock;
     private bool locked;
+    private SoundManager soundManager;
 
 	// Use this for initialization
 	private void Start () {
         currentLock = 0;
         locked = true;
-	}
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+    }
 	
     public void UnlockDoor(GameObject statue)
     {
@@ -38,6 +41,7 @@ public class BigDoor : MonoBehaviour {
                     locked = false;
                     GetComponent<SpriteRenderer>().sprite = sprite;
                     GetComponent<BoxCollider2D>().enabled = false;
+                    soundManager.PlaySingle(openClip, 1f);
                 }
             }
             else

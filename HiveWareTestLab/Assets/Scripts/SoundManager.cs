@@ -13,16 +13,17 @@ public class SoundManager : MonoBehaviour {
 	
 	}
 	
-	public void PlaySingle(AudioClip clip)
+	public void PlaySingle(AudioClip clip, float pitch)
     {
+        efxSource.pitch = pitch;
         efxSource.clip = clip;
         efxSource.Play();
     }
 
-    public void RandomizeSfx(AudioClip clip)
+    public void RandomizeSfx(AudioClip clip, float pitch)
     {
         float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-        efxSource.pitch = randomPitch;
+        efxSource.pitch = randomPitch * pitch;
         efxSource.clip = clip;
         efxSource.Play();
     }

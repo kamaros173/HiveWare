@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
     public float energyPerSecond;
     public float energyDelay;
     public Slider energyBar;
-    //public GameObject playerPrefab;
+    public AudioClip playerFallClip;
   
     private int playerHealth;
     private float playerEnergy;
@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
     private GameObject player;
     private GameObject checkpoint;
     private GameObject[] pauseObjects;
+    private SoundManager soundManager;
     private float delayedTime;
     private GameObject deathMenu;
 
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour {
         deathMenu = GameObject.Find("DeathMenu");
         deathMenu.SetActive(false);
         HidePaused();
+        soundManager = GameObject.Find("SoundMananger").GetComponent<SoundManager>();
 
     }
 
@@ -155,7 +157,8 @@ public class GameController : MonoBehaviour {
 
     private void PlayerInHole(Vector3 center)
     {
-        StartCoroutine(PlayerFallSpin(center));       
+        StartCoroutine(PlayerFallSpin(center));
+        soundManager.PlaySingle(playerFallClip, 1f);       
     }
 
     //private IEnumerator PlayerFalling(Vector3 center)

@@ -5,13 +5,17 @@ public class MusicStatue : MonoBehaviour {
 
     public BigDoor door;
     public Color unactiveColor;
+    public AudioClip rightClip;
+    public AudioClip wrongClip;
 
     private SpriteRenderer sprite;
     private GameObject player;
+    private SoundManager soundManager;
 
     private void Start()
     {
         sprite = transform.GetComponent<SpriteRenderer>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         sprite.color = unactiveColor;
         player = GameObject.Find("Player");
     }
@@ -40,10 +44,12 @@ public class MusicStatue : MonoBehaviour {
     private void Correct()
     {
         sprite.color = Color.white;
+        soundManager.PlaySingle(rightClip, 1f);
     }
 
     private void Wrong()
     {
         sprite.color = unactiveColor;
+        soundManager.PlaySingle(wrongClip, 1f);
     }
 }
