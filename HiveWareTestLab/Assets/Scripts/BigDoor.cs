@@ -4,6 +4,7 @@ using System.Collections;
 public class BigDoor : MonoBehaviour {
 
     public GameObject[] statues;
+    public Sprite sprite;
 
     private int currentLock;
     private bool locked;
@@ -35,6 +36,7 @@ public class BigDoor : MonoBehaviour {
                     //Play Victory Sound
 
                     locked = false;
+                    GetComponent<SpriteRenderer>().sprite = sprite;
                     GetComponent<BoxCollider2D>().enabled = false;
                 }
             }

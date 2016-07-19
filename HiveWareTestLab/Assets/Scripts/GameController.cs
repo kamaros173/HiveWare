@@ -13,25 +13,34 @@ public class GameController : MonoBehaviour {
     public float energyPerSecond;
     public float energyDelay;
     public Slider energyBar;
-    public GameObject playerPrefab;
+    //public GameObject playerPrefab;
   
-
     private int playerHealth;
     private float playerEnergy;
     private bool isEnergyDelayed = false;
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
     private GameObject player;
     private GameObject checkpoint;
+    private GameObject[] pauseObjects;
     private float delayedTime;
+    private GameObject deathMenu;
 
 
     void Start()
     {
+        Debug.Log("Start");
         playerHealth = playerHealthMax;
         playerEnergy = playerEnergyMax;
         player = GameObject.Find("Player");
         checkpoint = GameObject.Find("Checkpoint");
         delayedTime = 0f;
+
+        Time.timeScale = 1;
+        pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        deathMenu = GameObject.Find("DeathMenu");
+        deathMenu.SetActive(false);
+        HidePaused();
+
     }
 
     void Update()
@@ -57,6 +66,11 @@ public class GameController : MonoBehaviour {
         else
         {
             delayedTime -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseControl();
         }
     }
 
@@ -162,7 +176,7 @@ public class GameController : MonoBehaviour {
             yield return null;
         }
 
-        respawnAtCheckpoint();
+        PlayerHasDied();
     }
 
     private void EnemyInHole(Transform[] points)
@@ -205,12 +219,14 @@ public class GameController : MonoBehaviour {
 
     private void PlayerHasDied()
     {
-        //Load UI SCREEN WITH OPTIONS
-        respawnAtCheckpoint();
+
+        deathMenu.SetActive(true);
+        //respawnAtCheckpoint();
     }
 
-    private void respawnAtCheckpoint()
+    public void respawnAtCheckpoint()
     {
+        deathMenu.SetActive(false);
         foreach (Image health in hearts)
         {
             health.sprite = heart;
@@ -223,6 +239,41 @@ public class GameController : MonoBehaviour {
         player.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         player.transform.localScale = new Vector3(1f, 0.75f, 1f);
         Camera.main.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y, Camera.main.transform.position.z);
+    }
+
+    public void ShowPaused()
+    {
+        foreach (GameObject g in pauseObjects)
+            g.SetActive(true);
+    }
+
+    public void HidePaused()
+    {
+        foreach (GameObject g in pauseObjects)
+            g.SetActive(false);
+    }
+
+    public void PauseControl()
+    {
+        if (GameObject.Find("StartScreen") == null)
+        {
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+                ShowPaused();
+            }
+            else if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+                HidePaused();
+            }
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        player.SendMessage("Reset");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CameronTestArenaV2");
     }
 
 }
