@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour {
         deathMenu = GameObject.Find("DeathMenu");
         deathMenu.SetActive(false);
         HidePaused();
-        soundManager = GameObject.Find("SoundMananger").GetComponent<SoundManager>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
     }
 
