@@ -43,6 +43,7 @@ public class EnemyChaser : MonoBehaviour {
         transform.position = patrolPoints[patrolPoint];
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     void Update ()
