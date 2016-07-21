@@ -7,7 +7,13 @@ public class Checkpoint : MonoBehaviour {
 	
     private void PlayerHasBeenHit()
     {
-        checkpoint.position = transform.position;
+        if(checkpoint.position != transform.position)
+        {
+            checkpoint.position = transform.position;
+            GameObject.Find("GameController").SendMessage("ClearDeadEnemies");
+        }
+
+        GameObject.Find("GameController").SendMessage("HealPlayer");
     }
 	
 }

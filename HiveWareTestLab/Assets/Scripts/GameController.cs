@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
     private float playerEnergy;
     private bool isEnergyDelayed = false;
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
+    private HashSet<GameObject> deadEnemies = new HashSet<GameObject>();
     private GameObject player;
     private GameObject checkpoint;
     private GameObject[] pauseObjects;
@@ -120,16 +121,16 @@ public class GameController : MonoBehaviour {
 
     private void HealPlayer()
     {
-        playerHealth++;
-        if(playerHealth > playerHealthMax)
+
+        playerHealth = playerHealthMax;
+        foreach(Image h in hearts)
         {
-            playerHealth = playerHealthMax;
-        }
+            h.sprite = heart;
+        }       
     }
 
     public bool DrainPlayerEnergy(float amount)
     {
-        //StartCoroutine(DelayEnergyRegen());
         delayedTime += energyDelay;
         if((playerEnergy - amount) < 0)
         {
@@ -142,32 +143,11 @@ public class GameController : MonoBehaviour {
         return true;
     }
 
-    //private IEnumerator DelayEnergyRegen()
-    //{
-    //    isEnergyDelayed = true;
-    //    float remaining = Time.time + energyDelay;
-
-    //    while(remaining > Time.time)
-    //    {
-    //        yield return null;
-    //    }
-
-    //    isEnergyDelayed = false;
-    //}
-
     private void PlayerInHole(Vector3 center)
     {
         StartCoroutine(PlayerFallSpin(center));
         soundManager.PlaySingle(playerFallClip, 1f);       
     }
-
-    //private IEnumerator PlayerFalling(Vector3 center)
-    //{
-    //    while(Vector3.Distance(center, GameObject.Find("Player").transform.position) > 0.05f){
-    //        GameObject.Find("Player").transform.position = Vector3.Lerp(GameObject.Find("Player").transform.position, center, 2f*Time.deltaTime);
-    //        yield return null;
-    //    }
-    //}
 
     private IEnumerator PlayerFallSpin(Vector3 center)
     {
@@ -184,20 +164,8 @@ public class GameController : MonoBehaviour {
 
     private void EnemyInHole(Transform[] points)
     {
-        //StartCoroutine(EnemyFalling(points));
         StartCoroutine(EnemyFallSpin(points));
     }
-
-    //private IEnumerator EnemyFalling(Transform[] points)
-    //{
-    //    Debug.Log("EnemyFalling");
-    //    while (Vector3.Distance(points[0].position, points[1].position) > 0.05f)
-    //    {
-    //        points[1].position = Vector3.Lerp(points[1].position, points[0].position, 2f * Time.deltaTime);
-    //        yield return null;
-    //    }
-    //    Debug.Log("EnemyFalling");
-    //}
 
     private IEnumerator EnemyFallSpin(Transform[] points)
     {
@@ -209,7 +177,9 @@ public class GameController : MonoBehaviour {
             yield return null;
         }
 
-        Destroy(points[1].gameObject);
+        AddDeadEnemyToList(points[1].gameObject);
+        points[1].gameObject.SetActive(false);
+        //Destroy(points[1].gameObject);
     }
 
     private void UnfreezePlayer()
@@ -222,9 +192,7 @@ public class GameController : MonoBehaviour {
 
     private void PlayerHasDied()
     {
-
         deathMenu.SetActive(true);
-        //respawnAtCheckpoint();
     }
 
     public void respawnAtCheckpoint()
@@ -242,6 +210,7 @@ public class GameController : MonoBehaviour {
         player.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         player.transform.localScale = new Vector3(1f, 0.75f, 1f);
         Camera.main.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y, Camera.main.transform.position.z);
+        ReviveDeadEnemies();
     }
 
     public void ShowPaused()
@@ -277,6 +246,27 @@ public class GameController : MonoBehaviour {
     {
         player.SendMessage("Reset");
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameDungeonV6");
+    }
+
+    public void AddDeadEnemyToList(GameObject enemy)
+    {
+        deadEnemies.Add(enemy);
+    }
+
+    public void ReviveDeadEnemies()
+    {
+        foreach(GameObject enemy in deadEnemies)
+        {
+            enemy.SetActive(true);
+            enemy.SendMessage("Reset");
+        }
+
+        ClearDeadEnemies();
+    }
+
+    public void ClearDeadEnemies()
+    {
+        deadEnemies.Clear();
     }
 
 }

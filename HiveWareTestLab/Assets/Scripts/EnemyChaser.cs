@@ -148,8 +148,23 @@ public class EnemyChaser : MonoBehaviour {
         transform.FindChild("EnemySightChaser").gameObject.SetActive(true);
     }
 
-    //If the player keeps beating his face against the enmey
-    private void OnCollisionStay2D(Collision2D other)
+    private void Resurrect()
+    {
+        currentHealth = maxHealth;
+        patrolPoint = 0;
+        animator.SetTrigger("Resurrect");
+        transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        transform.localScale = new Vector3(1f, 0.75f, 1f);
+        transform.position = patrolPoints[0];
+        lastPatrolPosition = patrolPoints[0];
+        currentState = Mode.patrolling;
+        enemyIsHittable = true;
+        enemyCanMove = true;
+        isAttacking = false;
+}
+
+//If the player keeps beating his face against the enmey
+private void OnCollisionStay2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player" && Globals.playerIsHittable && currentState != Mode.off)
         {
@@ -211,10 +226,12 @@ public class EnemyChaser : MonoBehaviour {
             currentState = Mode.off;
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
+            GameObject.Find("GameController").SendMessage("AddDeadEnemyToList", transform.gameObject);
             
             animator.SetTrigger("Death");
             soundmanager.PlaySingle(deathClip, 1f);
             transform.GetComponent<BoxCollider2D>().enabled = false;
+            
             transform.FindChild("EnemyAttackChaser").gameObject.SetActive(false);         
         }
         else
