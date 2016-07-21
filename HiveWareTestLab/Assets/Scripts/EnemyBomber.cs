@@ -108,7 +108,7 @@ public class EnemyBomber : MonoBehaviour {
         currentState = Mode.off;
         transform.position = patrolPoints[0];
         patrolPoint = 0;
-        transform.FindChild("EnemySightBomber").gameObject.SetActive(false);
+        transform.FindChild("EnemySightChaser").gameObject.SetActive(false);
         Move(patrolPoints[patrolPoint], moveSpeed);
     }
 
@@ -116,7 +116,23 @@ public class EnemyBomber : MonoBehaviour {
     private void Load()
     {
         currentState = Mode.patrolling;
-        transform.FindChild("EnemySightBomber").gameObject.SetActive(true);
+        transform.FindChild("EnemySightChaser").gameObject.SetActive(true);
+    }
+
+    private void Resurrect()
+    {
+        patrolPoint = 0;
+        animator.ResetTrigger("Death");
+        animator.SetTrigger("Resurrect");
+        transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        transform.localScale = new Vector3(1f, 0.75f, 1f);
+        transform.position = patrolPoints[0];
+        lastPatrolPosition = patrolPoints[0];
+        currentState = Mode.patrolling;
+        enemyCanMove = true;
+        transform.FindChild("EnemyAttackChaser").gameObject.SetActive(true);
+        transform.GetComponent<BoxCollider2D>().enabled = true;
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -159,6 +175,7 @@ public class EnemyBomber : MonoBehaviour {
 
     private IEnumerator Explode()
     {
+
         enemyCanMove = false;
         float waitTime = Time.time + explosionDelay;
         Color toColor = Color.red;
@@ -185,9 +202,12 @@ public class EnemyBomber : MonoBehaviour {
 
     private void EnemyCanNowMove()
     {
+        animator.ResetTrigger("Resurrect");
         animator.SetTrigger("Death");
         GetComponent<SpriteRenderer>().sortingOrder = -1;
-        GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);       
+        GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
+        GameObject.Find("GameController").SendMessage("AddDeadEnemyToList", transform.gameObject);
+        animator.ResetTrigger("Resurrect");
         transform.GetComponent<BoxCollider2D>().enabled = false;
         transform.FindChild("EnemyAttackChaser").gameObject.SetActive(false);
     }

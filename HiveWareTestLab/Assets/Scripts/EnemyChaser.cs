@@ -152,6 +152,7 @@ public class EnemyChaser : MonoBehaviour {
     {
         currentHealth = maxHealth;
         patrolPoint = 0;
+        animator.ResetTrigger("Death");
         animator.SetTrigger("Resurrect");
         transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         transform.localScale = new Vector3(1f, 0.75f, 1f);
@@ -161,7 +162,9 @@ public class EnemyChaser : MonoBehaviour {
         enemyIsHittable = true;
         enemyCanMove = true;
         isAttacking = false;
-}
+        transform.FindChild("EnemyAttackChaser").gameObject.SetActive(true);
+        transform.GetComponent<BoxCollider2D>().enabled = true;
+    }
 
 //If the player keeps beating his face against the enmey
 private void OnCollisionStay2D(Collision2D other)
@@ -227,7 +230,8 @@ private void OnCollisionStay2D(Collision2D other)
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
             GameObject.Find("GameController").SendMessage("AddDeadEnemyToList", transform.gameObject);
-            
+
+            animator.ResetTrigger("Resurrect");
             animator.SetTrigger("Death");
             soundmanager.PlaySingle(deathClip, 1f);
             transform.GetComponent<BoxCollider2D>().enabled = false;

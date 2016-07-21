@@ -145,6 +145,24 @@ public class EnemyMage : MonoBehaviour {
         transform.FindChild("EnemySightMage").gameObject.SetActive(true);
     }
 
+    private void Resurrect()
+    {
+        currentHealth = maxHealth;
+        patrolPoint = 0;
+        animator.ResetTrigger("Death");
+        animator.SetTrigger("Resurrect");
+        transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        transform.localScale = new Vector3(1f, 0.75f, 1f);
+        transform.position = patrolPoints[0];
+        lastPatrolPosition = patrolPoints[0];
+        currentState = Mode.patrolling;
+        enemyIsHittable = true;
+        enemyCanMove = true;
+        isAttacking = false;
+        transform.FindChild("EnemyAttackMage").gameObject.SetActive(true);
+        transform.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
     //If the player keeps beating his face against the enmey
     private void OnCollisionStay2D(Collision2D other)
     {
@@ -203,7 +221,9 @@ public class EnemyMage : MonoBehaviour {
             currentState = Mode.off;
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
+            GameObject.Find("GameController").SendMessage("AddDeadEnemyToList", transform.gameObject);
 
+            animator.ResetTrigger("Resurrect");
             animator.SetTrigger("Death");
             if(Upgraded)
                 transform.FindChild("EnemyAttackMage").SendMessage("DeathAttack");

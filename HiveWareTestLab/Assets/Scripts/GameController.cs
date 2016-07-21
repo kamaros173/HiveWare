@@ -164,6 +164,7 @@ public class GameController : MonoBehaviour {
 
     private void EnemyInHole(Transform[] points)
     {
+        AddDeadEnemyToList(points[1].gameObject);
         StartCoroutine(EnemyFallSpin(points));
     }
 
@@ -176,10 +177,8 @@ public class GameController : MonoBehaviour {
             points[1].position = Vector3.Lerp(points[1].position, points[0].position, 2f * Time.deltaTime);
             yield return null;
         }
-
-        AddDeadEnemyToList(points[1].gameObject);
+       
         points[1].gameObject.SetActive(false);
-        //Destroy(points[1].gameObject);
     }
 
     private void UnfreezePlayer()
@@ -258,7 +257,7 @@ public class GameController : MonoBehaviour {
         foreach(GameObject enemy in deadEnemies)
         {
             enemy.SetActive(true);
-            enemy.SendMessage("Reset");
+            enemy.SendMessage("Resurrect");
         }
 
         ClearDeadEnemies();
