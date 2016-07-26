@@ -20,13 +20,12 @@ public class EnemyChaser : MonoBehaviour {
     public bool doNotAddToGC;
     public AudioClip hitClip;
     public AudioClip deathClip;
-    public AudioClip shieldDeflectClip;
     
 
     private Transform player;
     private Vector3 lastPatrolPosition;
     private enum Mode { patrolling, chasing, returning, off};
-    private Mode currentState = Mode.patrolling;
+    private Mode currentState = Mode.off;
     private int patrolPoint = 0;
     private bool enemyIsHittable = true;
     private bool enemyCanMove = true;
@@ -195,12 +194,7 @@ private void OnCollisionStay2D(Collision2D other)
             {
                 currentStunTime = 0f;
                 HitEnemy(Vector3.zero, (int)((float)Globals.playerArrowDamage * playerArrowMultiplyer));
-            }
-            else if(playerArrowMultiplyer == 0)
-            {
-                soundmanager.RandomizeSfx(shieldDeflectClip, 1f);
-            }           
-            
+            }                      
         }
         else if (other.gameObject.tag == "MainCamera" && !doNotAddToGC)
         {
@@ -225,7 +219,6 @@ private void OnCollisionStay2D(Collision2D other)
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
-            soundmanager.PlaySingle(hitClip, 1f);
             currentState = Mode.off;
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
@@ -240,11 +233,10 @@ private void OnCollisionStay2D(Collision2D other)
         }
         else
         {
-
             currentState = Mode.chasing;
             StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
-            soundmanager.PlaySingle(hitClip, 1f);
+            soundmanager.PlaySingle(hitClip, 1.25f);
         }       
     }
 

@@ -20,11 +20,14 @@ public class EnemyMage : MonoBehaviour {
     public float playerArrowMultiplyer;
     public bool doNotAddToGC;
     public bool Upgraded;
+    public AudioClip hitClip;
+    public AudioClip deathClip;
+    public AudioClip MagicClip;
 
     private Transform player;
     private Vector3 lastPatrolPosition;
     private enum Mode { patrolling, chasing, returning, off };
-    private Mode currentState = Mode.patrolling;
+    private Mode currentState = Mode.off;
     private int patrolPoint = 0;
     private bool enemyIsHittable = true;
     private bool enemyCanMove = true;
@@ -33,6 +36,8 @@ public class EnemyMage : MonoBehaviour {
     private float currentStunTime;
     private Animator animator;
     private bool isAttacking = false;
+    private SoundManager soundmanager;
+
 
     void Start()
     {
@@ -40,6 +45,8 @@ public class EnemyMage : MonoBehaviour {
         transform.position = patrolPoints[patrolPoint];
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
     }
 
     void Update()
@@ -71,6 +78,7 @@ public class EnemyMage : MonoBehaviour {
             enemyCanMove = false;
             isAttacking = true;
             transform.FindChild("EnemyAttackMage").SendMessage("AttackPlayer", animator);
+            soundmanager.RandomizeSfx(MagicClip, 1f);
         }
         else
         {
@@ -225,7 +233,8 @@ public class EnemyMage : MonoBehaviour {
 
             animator.ResetTrigger("Resurrect");
             animator.SetTrigger("Death");
-            if(Upgraded)
+            soundmanager.PlaySingle(deathClip, 1f);
+            if (Upgraded)
                 transform.FindChild("EnemyAttackMage").SendMessage("DeathAttack");
             else
                 transform.FindChild("EnemyAttackMage").gameObject.SetActive(false);
@@ -237,6 +246,7 @@ public class EnemyMage : MonoBehaviour {
             currentState = Mode.chasing;
             StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
+            soundmanager.PlaySingle(hitClip, 1.25f);
         }
     }
 

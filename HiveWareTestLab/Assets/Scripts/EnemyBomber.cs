@@ -11,22 +11,25 @@ public class EnemyBomber : MonoBehaviour {
     public float explosionDelay;
     public float playerArrowMultiplyer;
     public bool doNotAddToGC;
+    public AudioClip deathClip;
 
     private Transform player;
     private Vector3 lastPatrolPosition;
     private enum Mode { patrolling, chasing, returning, off };
-    private Mode currentState = Mode.patrolling;
+    private Mode currentState = Mode.off;
     private int patrolPoint = 0;
     private bool enemyCanMove = true;
     private RaycastHit2D raycastToPlayer;
     private float currentStunTime;
     private Animator animator;
+    private SoundManager soundmanager;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = patrolPoints[patrolPoint];
         animator = GetComponent<Animator>();
+        soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     void Update()
@@ -182,6 +185,7 @@ public class EnemyBomber : MonoBehaviour {
         Color fromColor = Color.white;
         float severity = 0f;
         SpriteRenderer damagedsprite = transform.GetComponent<SpriteRenderer>();
+        soundmanager.PlaySingle(deathClip, 1f);
         transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer", animator);
         while (Time.time < waitTime)
         {

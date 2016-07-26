@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemySight : MonoBehaviour {
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
             gameObject.SendMessageUpwards("StartChase");

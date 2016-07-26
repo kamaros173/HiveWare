@@ -3,28 +3,33 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour {
 
-    public AudioSource efxSource;
     public AudioSource musicSource;
-    public float lowPitchRange = 0.90f;
-    public float highPitchRange = 1.10f;
+    public GameObject soundSource;
+    
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	public void PlaySingle(AudioClip clip, float pitch)
+	public void PlaySingle(AudioClip clip, float pitch, float vol = 1f)
     {
-        efxSource.pitch = pitch;
-        efxSource.clip = clip;
-        efxSource.Play();
+        GameObject temp =  (GameObject)Instantiate(soundSource, transform.position, transform.rotation);
+        temp.SendMessage("SetVol", vol);
+        temp.SendMessage("SetPitch", pitch);
+        temp.SendMessage("MakeNoise", clip);
     }
 
-    public void RandomizeSfx(AudioClip clip, float pitch)
+    public void RandomizeSfx(AudioClip clip, float pitch, float vol = 1f)
     {
-        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
-        efxSource.pitch = randomPitch * pitch;
-        efxSource.clip = clip;
-        efxSource.Play();
+        GameObject temp = (GameObject)Instantiate(soundSource, transform.position, transform.rotation);
+        temp.SendMessage("SetVol", vol);
+        temp.SendMessage("SetPitch", pitch);
+        temp.SendMessage("MakeNoiseRandom", clip);
+    }
+
+    public void TurnMusicOn()
+    {
+        musicSource.PlayDelayed(1f);
+    }
+
+    public void TurnMusicOff()
+    {
+        musicSource.Stop();
     }
 }

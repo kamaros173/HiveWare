@@ -71,7 +71,7 @@ public class Player : MonoBehaviour {
    
                     swordPivot.SetActive(true);
                     swordPivot.SendMessage("Swing", Globals.playerDirection);
-                    soundManager.RandomizeSfx(SwordClip, 0.85f);
+                    soundManager.RandomizeSfx(SwordClip, 0.90f);
                 }
             }
             else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A)) && Time.time > nextFire)
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
                     animator.SetBool("CanWalk", false);
                     animator.SetBool("IsShooting", true);
                     animator.SetTrigger("Shoot");
-                    soundManager.RandomizeSfx(ShootClip, 1f);
+                    soundManager.RandomizeSfx(ShootClip, 0.85f, 0.1f);
                     if (Globals.playerDirection == PlayerDirection.North)
                     {
                         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour {
                     animator.SetBool("IsDashing", true);
                     animator.SetTrigger("Dash");
                     StartCoroutine(Dash());
-                    soundManager.RandomizeSfx(DashClip, 1f);
+                    soundManager.RandomizeSfx(DashClip, 0.8f);
                 }
             }
             else if (Input.GetKey(KeyCode.S))
@@ -213,7 +213,7 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f);
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.05f);
                                 lastWalkSound = Time.time + 0.25f;
                             }
                         }
@@ -246,7 +246,7 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f);
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.05f);
                                 lastWalkSound = Time.time + 0.25f;
                             }
                         }
@@ -278,7 +278,7 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f);
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.05f);
                                 lastWalkSound = Time.time + 0.25f;
                             }
                         }
@@ -311,7 +311,7 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f);
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.05f);
                                 lastWalkSound = Time.time + 0.25f;
                             }
                         }
@@ -437,7 +437,7 @@ public class Player : MonoBehaviour {
     {
         StartCoroutine(PlayerIsImmuneToDamage());
         StartCoroutine(PushBackPlayer(direction));
-        soundManager.RandomizeSfx(HurtClip, 1f);       
+        soundManager.RandomizeSfx(HurtClip, 1.3f);       
     }
     
     private IEnumerator PlayerIsImmuneToDamage()
@@ -492,6 +492,7 @@ public class Player : MonoBehaviour {
 
     private void PlayerDeath()
     {
+        soundManager.RandomizeSfx(HurtClip, 1.3f);
         animator.SetTrigger("Death");
         animator.SetBool("IsDead", true);
         soundManager.PlaySingle(deathClip, 1f);
