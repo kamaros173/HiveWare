@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: 7280db8f256100244882e12e8ead896c
+timeCreated: 1469567705
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: WallsInner_0
+    21300002: WallsInner_1
+    21300004: WallsInner_2
+    21300006: WallsInner_3
+    21300008: WallsInner_4
+    21300010: WallsInner_5
+    21300012: WallsInner_6
+    21300014: WallsInner_7
+    21300016: WallsInner_8
+    21300018: WallsInner_9
+    21300020: WallsInner_10
+    21300022: WallsInner_11
+    21300024: WallsInner_12
+    21300026: WallsInner_13
+    21300028: WallsInner_14
+    21300030: WallsInner_15
+    21300032: WallsInner_16
+    21300034: WallsInner_17
+    21300036: WallsInner_18
+    21300038: WallsInner_19
+    21300040: WallsInner_20
+    21300042: WallsInner_21
+    21300044: WallsInner_22
+    21300046: WallsInner_23
+    21300048: WallsInner_24
+    21300050: WallsInner_25
+    21300052: WallsInner_26
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: WallsInner_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 314
+        width: 233
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105.5, y: 33}
+        - {x: -116.5, y: 22}
+        - {x: -116.5, y: -22}
+        - {x: -105.5, y: -33}
+        - {x: 116.5, y: -33}
+        - {x: 116.5, y: 33}
+    - name: WallsInner_1
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 310
+        width: 66
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallsInner_2
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 310
+        width: 66
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallsInner_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 77
+        width: 66
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 116.5}
+        - {x: -33, y: 105.5}
+        - {x: -33, y: -116.5}
+        - {x: 33, y: -116.5}
+        - {x: 33, y: 105.5}
+        - {x: 22, y: 116.5}
+    - name: WallsInner_4
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 77
+        width: 66
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 116.5}
+        - {x: -33, y: -105.5}
+        - {x: -22, y: -116.5}
+        - {x: 22, y: -116.5}
+        - {x: 33, y: -105.5}
+        - {x: 33, y: 116.5}
+    - name: WallsInner_5
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 118
+        width: 66
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 96.5}
+        - {x: -33, y: -96.5}
+        - {x: 33, y: -96.5}
+        - {x: 33, y: 96.5}
+    - name: WallsInner_6
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 182
+        width: 66
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 64.5}
+        - {x: -33, y: -64.5}
+        - {x: 33, y: -64.5}
+        - {x: 33, y: 64.5}
+    - name: WallsInner_7
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 247
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: WallsInner_8
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 276
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 16.5}
+        - {x: -33, y: -16.5}
+        - {x: 33, y: -16.5}
+        - {x: 33, y: 16.5}
+    - name: WallsInner_9
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 276
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 16.5}
+        - {x: -33, y: -16.5}
+        - {x: 33, y: -16.5}
+        - {x: 33, y: 16.5}
+    - name: WallsInner_10
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 211
+        width: 66
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 32}
+        - {x: -33, y: -32}
+        - {x: 33, y: -32}
+        - {x: 33, y: 32}
+    - name: WallsInner_11
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 211
+        width: 66
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 32}
+        - {x: -33, y: -32}
+        - {x: 33, y: -32}
+        - {x: 33, y: 32}
+    - name: WallsInner_12
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 177
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 16.5}
+        - {x: -33, y: -16.5}
+        - {x: 33, y: -16.5}
+        - {x: 33, y: 16.5}
+    - name: WallsInner_13
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 177
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 16.5}
+        - {x: -33, y: -16.5}
+        - {x: 33, y: -16.5}
+        - {x: 33, y: 16.5}
+    - name: WallsInner_14
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 147
+        width: 66
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallsInner_15
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 147
+        width: 66
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallsInner_16
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 233
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -116.5, y: 33}
+        - {x: -116.5, y: -33}
+        - {x: 105.5, y: -33}
+        - {x: 116.5, y: -22}
+        - {x: 116.5, y: 22}
+        - {x: 105.5, y: 33}
+    - name: WallsInner_17
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 71
+        width: 29
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallsInner_18
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 71
+        width: 33
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 33}
+        - {x: -16.5, y: -33}
+        - {x: 16.5, y: -33}
+        - {x: 16.5, y: 33}
+    - name: WallsInner_19
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 71
+        width: 64
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 33}
+        - {x: -32, y: -33}
+        - {x: 32, y: -33}
+        - {x: 32, y: 33}
+    - name: WallsInner_20
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 71
+        width: 33
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 33}
+        - {x: -16.5, y: -33}
+        - {x: 16.5, y: -33}
+        - {x: 16.5, y: 33}
+    - name: WallsInner_21
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 71
+        width: 29
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallsInner_22
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 1
+        width: 29
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: WallsInner_23
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 1
+        width: 33
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 33}
+        - {x: -16.5, y: -33}
+        - {x: 16.5, y: -33}
+        - {x: 16.5, y: 33}
+    - name: WallsInner_24
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 1
+        width: 64
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 33}
+        - {x: -32, y: -33}
+        - {x: 32, y: -33}
+        - {x: 32, y: 33}
+    - name: WallsInner_25
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 1
+        width: 33
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 33}
+        - {x: -16.5, y: -33}
+        - {x: 16.5, y: -33}
+        - {x: 16.5, y: 33}
+    - name: WallsInner_26
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 1
+        width: 29
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

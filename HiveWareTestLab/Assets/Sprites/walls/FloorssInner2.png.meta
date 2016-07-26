@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: c0364f6d0ab078945b49435f1f93da0c
+timeCreated: 1469567685
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: FloorssInner2_0
+    21300002: FloorssInner2_1
+    21300004: FloorssInner2_2
+    21300006: FloorssInner2_3
+    21300008: FloorssInner2_4
+    21300010: FloorssInner2_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: FloorssInner2_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 316
+        width: 207
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -95.5, y: 33}
+        - {x: -103.5, y: 24}
+        - {x: -103.5, y: -28}
+        - {x: -95.5, y: -33}
+        - {x: 103.5, y: -33}
+        - {x: 103.5, y: 33}
+    - name: FloorssInner2_1
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 316
+        width: 207
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 33}
+        - {x: -103.5, y: -33}
+        - {x: 95.5, y: -33}
+        - {x: 103.5, y: -24}
+        - {x: 103.5, y: 28}
+        - {x: 95.5, y: 33}
+    - name: FloorssInner2_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 249
+        width: 143
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.5, y: 33}
+        - {x: -71.5, y: 24}
+        - {x: -71.5, y: -28}
+        - {x: -63.5, y: -33}
+        - {x: 71.5, y: -33}
+        - {x: 71.5, y: 33}
+    - name: FloorssInner2_3
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 249
+        width: 143
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71.5, y: 33}
+        - {x: -71.5, y: -33}
+        - {x: 63.5, y: -33}
+        - {x: 71.5, y: -24}
+        - {x: 71.5, y: 28}
+        - {x: 63.5, y: 33}
+    - name: FloorssInner2_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 182
+        width: 79
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 33}
+        - {x: -39.5, y: 24}
+        - {x: -39.5, y: -28}
+        - {x: -31.5, y: -33}
+        - {x: 39.5, y: -33}
+        - {x: 39.5, y: 33}
+    - name: FloorssInner2_5
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 182
+        width: 79
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.5, y: 33}
+        - {x: -39.5, y: -33}
+        - {x: 31.5, y: -33}
+        - {x: 39.5, y: -24}
+        - {x: 39.5, y: 28}
+        - {x: 31.5, y: 33}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
