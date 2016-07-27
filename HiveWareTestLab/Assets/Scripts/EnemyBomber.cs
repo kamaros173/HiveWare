@@ -133,7 +133,7 @@ public class EnemyBomber : MonoBehaviour {
         lastPatrolPosition = patrolPoints[0];
         currentState = Mode.patrolling;
         enemyCanMove = true;
-        transform.FindChild("EnemyAttackChaser").gameObject.SetActive(true);
+        transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);
         transform.GetComponent<BoxCollider2D>().enabled = true;
 
     }
@@ -178,7 +178,7 @@ public class EnemyBomber : MonoBehaviour {
 
     private IEnumerator Explode()
     {
-
+        
         enemyCanMove = false;
         float waitTime = Time.time + explosionDelay;
         Color toColor = Color.red;
@@ -186,7 +186,7 @@ public class EnemyBomber : MonoBehaviour {
         float severity = 0f;
         SpriteRenderer damagedsprite = transform.GetComponent<SpriteRenderer>();
         soundmanager.PlaySingle(deathClip, 1f);
-        transform.FindChild("EnemyAttackChaser").SendMessage("AttackPlayer", animator);
+        transform.FindChild("EnemyAttackBomber").SendMessage("AttackPlayer", animator);
         while (Time.time < waitTime)
         {
                 damagedsprite.color = Color.Lerp(fromColor, toColor, severity);
@@ -206,14 +206,12 @@ public class EnemyBomber : MonoBehaviour {
 
     private void EnemyCanNowMove()
     {
-        animator.ResetTrigger("Resurrect");
-        animator.SetTrigger("Death");
         GetComponent<SpriteRenderer>().sortingOrder = -1;
         GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
         GameObject.Find("GameController").SendMessage("AddDeadEnemyToList", transform.gameObject);
         animator.ResetTrigger("Resurrect");
         transform.GetComponent<BoxCollider2D>().enabled = false;
-        transform.FindChild("EnemyAttackChaser").gameObject.SetActive(false);
+        transform.FindChild("EnemyAttackBomber").gameObject.SetActive(false);
     }
 
     private void StartChase()
@@ -222,6 +220,8 @@ public class EnemyBomber : MonoBehaviour {
         {
             currentState = Mode.chasing;
             lastPatrolPosition = transform.position;
+            animator.ResetTrigger("BomberWalk");
+            animator.SetTrigger("BomberRun");
         }
     }
 
@@ -230,6 +230,8 @@ public class EnemyBomber : MonoBehaviour {
         if (currentState != Mode.off)
         {
             currentState = Mode.returning;
+            animator.ResetTrigger("BomberRun");
+            animator.SetTrigger("BomberWalk");
         }
     }
 }
