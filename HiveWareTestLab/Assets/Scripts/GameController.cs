@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
     public float energyDelay;
     public Slider energyBar;
     public AudioClip playerFallClip;
+    public AudioClip enemyFallClip;
   
     private int playerHealth;
     private float playerEnergy;
@@ -166,6 +167,8 @@ public class GameController : MonoBehaviour {
     {
         AddDeadEnemyToList(points[1].gameObject);
         StartCoroutine(EnemyFallSpin(points));
+        soundManager.PlaySingle(enemyFallClip, 1f);
+
     }
 
     private IEnumerator EnemyFallSpin(Transform[] points)

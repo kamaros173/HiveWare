@@ -35,9 +35,6 @@ public class BigDoor : MonoBehaviour {
                 currentLock++;
                 if (currentLock == statues.Length)
                 {
-                    //Change sprite
-                    //Play Victory Sound
-
                     locked = false;
                     GetComponent<SpriteRenderer>().sprite = sprite;
                     GetComponent<BoxCollider2D>().enabled = false;

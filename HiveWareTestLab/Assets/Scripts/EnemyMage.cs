@@ -20,6 +20,7 @@ public class EnemyMage : MonoBehaviour {
     public float playerArrowMultiplyer;
     public bool doNotAddToGC;
     public bool Upgraded;
+    public bool WillChase = true;
     public AudioClip hitClip;
     public AudioClip deathClip;
     public AudioClip MagicClip;
@@ -82,7 +83,8 @@ public class EnemyMage : MonoBehaviour {
         }
         else
         {
-            Move(player.position, chaseSpeed);
+            if(WillChase)
+                Move(player.position, chaseSpeed);
         }
     }
 
