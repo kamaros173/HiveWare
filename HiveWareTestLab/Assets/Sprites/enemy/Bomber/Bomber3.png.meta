@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: fbdf4cbb38c25f342a5da9e32f295435
+timeCreated: 1469583796
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Bomber3_0
+    21300002: Bomber3_1
+    21300004: Bomber3_2
+    21300006: Bomber3_3
+    21300008: Bomber3_4
+    21300010: Bomber3_6
+    21300012: Bomber3_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Bomber3_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 84
+        width: 25
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.36348537}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber3_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 84
+        width: 25
+        height: 48
+      alignment: 9
+      pivot: {x: 0.4980342, y: 0.340278}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber3_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 84
+        width: 37
+        height: 56
+      alignment: 9
+      pivot: {x: 0.49838793, y: 0.29444328}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.440353, y: 39.511177}
+        - {x: -18.440353, y: -16.488823}
+        - {x: 18.559647, y: -16.488823}
+        - {x: 18.559647, y: 39.511177}
+    - name: Bomber3_3
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 84
+        width: 45
+        height: 59
+      alignment: 9
+      pivot: {x: 0.50146145, y: 0.2793213}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.565765, y: 42.520042}
+        - {x: -22.565765, y: -10.479958}
+        - {x: -16.565765, y: -16.479958}
+        - {x: 20.434235, y: -16.479958}
+        - {x: 22.434235, y: -7.4799576}
+        - {x: 22.434235, y: 42.520042}
+    - name: Bomber3_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1
+        width: 47
+        height: 60
+      alignment: 9
+      pivot: {x: 0.4999999, y: 0.27508777}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.499996, y: 43.494736}
+        - {x: -23.499996, y: -11.505266}
+        - {x: -15.499996, y: -16.505266}
+        - {x: 15.500004, y: -16.505266}
+        - {x: 23.500004, y: -11.505266}
+        - {x: 23.500004, y: 43.494736}
+    - name: Bomber3_6
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1
+        width: 25
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3453034}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber3_7
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1
+        width: 25
+        height: 24
+      alignment: 9
+      pivot: {x: 0.49706694, y: 0.6829472}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

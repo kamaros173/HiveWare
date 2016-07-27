@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: aa7a9c8cba3e87943874db4dac9612b5
+timeCreated: 1469584329
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Bomber4_0
+    21300002: Bomber4_1
+    21300004: Bomber4_2
+    21300006: Bomber4_3
+    21300008: Bomber4_4
+    21300010: Bomber4_5
+    21300012: Bomber4_6
+    21300014: Bomber4_7
+    21300016: Bomber4_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Bomber4_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 118
+        width: 25
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8643903}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber4_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 118
+        width: 25
+        height: 19
+      alignment: 9
+      pivot: {x: 0.49670318, y: 0.86872786}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber4_3
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 118
+        width: 25
+        height: 17
+      alignment: 9
+      pivot: {x: 0.49743348, y: 0.9671155}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber4_5
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 118
+        width: 25
+        height: 17
+      alignment: 9
+      pivot: {x: 0.503743, y: 0.9898565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber4_6
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 118
+        width: 24
+        height: 17
+      alignment: 9
+      pivot: {x: 0.4961017, y: 0.99536043}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber4_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 98
+        width: 20
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.98383915}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber4_8
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 98
+        width: 16
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.9943574}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
