@@ -1,0 +1,345 @@
+fileFormatVersion: 2
+guid: 2a90cfbbf5b5db046abda716075ba1fb
+timeCreated: 1469743981
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: KeysAnimatedV2_0
+    21300002: KeysAnimatedV2_1
+    21300004: KeysAnimatedV2_2
+    21300006: KeysAnimatedV2_3
+    21300008: KeysAnimatedV2_4
+    21300010: KeysAnimatedV2_5
+    21300012: KeysAnimatedV2_6
+    21300014: KeysAnimatedV2_7
+    21300016: KeysAnimatedV2_8
+    21300018: KeysAnimatedV2_9
+    21300020: KeysAnimatedV2_10
+    21300022: KeysAnimatedV2_11
+    21300024: KeysAnimatedV2_12
+    21300026: KeysAnimatedV2_13
+    21300028: KeysAnimatedV2_14
+    21300030: KeysAnimatedV2_15
+    21300032: KeysAnimatedV2_16
+    21300034: KeysAnimatedV2_17
+    21300036: KeysAnimatedV2_18
+    21300038: KeysAnimatedV2_19
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: KeysAnimatedV2_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 348
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: KeysAnimatedV2_1
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 348
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: KeysAnimatedV2_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 348
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: KeysAnimatedV2_3
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 348
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: KeysAnimatedV2_4
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 349
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: KeysAnimatedV2_5
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 349
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: KeysAnimatedV2_6
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 349
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: KeysAnimatedV2_7
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 349
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: KeysAnimatedV2_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 313
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KeysAnimatedV2_9
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 313
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KeysAnimatedV2_10
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 313
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KeysAnimatedV2_11
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 313
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KeysAnimatedV2_12
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 313
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KeysAnimatedV2_13
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 313
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KeysAnimatedV2_14
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 313
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KeysAnimatedV2_15
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 313
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KeysAnimatedV2_16
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 230
+        width: 217
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -108.5, y: 18.5}
+        - {x: -108.5, y: -18.5}
+        - {x: 108.5, y: -18.5}
+        - {x: 108.5, y: 18.5}
+    - name: KeysAnimatedV2_17
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 191
+        width: 215
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.5, y: 17.5}
+        - {x: -107.5, y: -17.5}
+        - {x: 107.5, y: -17.5}
+        - {x: 107.5, y: 17.5}
+    - name: KeysAnimatedV2_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 136
+        width: 217
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -108.5, y: 18.5}
+        - {x: -108.5, y: -18.5}
+        - {x: 108.5, y: -18.5}
+        - {x: 108.5, y: 18.5}
+    - name: KeysAnimatedV2_19
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 97
+        width: 215
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.5, y: 17.5}
+        - {x: -107.5, y: -17.5}
+        - {x: 107.5, y: -17.5}
+        - {x: 107.5, y: 17.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
