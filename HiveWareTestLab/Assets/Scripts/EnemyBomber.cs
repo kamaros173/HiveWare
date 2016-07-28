@@ -23,6 +23,7 @@ public class EnemyBomber : MonoBehaviour {
     private float currentStunTime;
     private Animator animator;
     private SoundManager soundmanager;
+    private bool isDead;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class EnemyBomber : MonoBehaviour {
         transform.position = patrolPoints[patrolPoint];
         animator = GetComponent<Animator>();
         soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        isDead = false;
     }
 
     void Update()
@@ -124,18 +126,42 @@ public class EnemyBomber : MonoBehaviour {
 
     private void Resurrect()
     {
-        patrolPoint = 0;
-        animator.ResetTrigger("Death");
-        animator.SetTrigger("Resurrect");
-        transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
-        transform.localScale = new Vector3(1f, 0.75f, 1f);
-        transform.position = patrolPoints[0];
-        lastPatrolPosition = patrolPoints[0];
-        currentState = Mode.patrolling;
-        enemyCanMove = true;
-        transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);
-        transform.GetComponent<BoxCollider2D>().enabled = true;
+        if (isDead)
+        {
+            isDead = false;
+            patrolPoint = 0;
+            animator.ResetTrigger("Death");
+            animator.SetTrigger("Resurrect");
+            transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+            transform.localScale = new Vector3(1f, 0.75f, 1f);
+            transform.position = patrolPoints[0];
+            lastPatrolPosition = patrolPoints[0];
+            currentState = Mode.patrolling;
+            enemyCanMove = true;
+            transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);
+            transform.GetComponent<BoxCollider2D>().enabled = true;
+        }
 
+    }
+
+    private void BossResurrect()
+    {
+        if (isDead)
+        {
+            isDead = false;
+            patrolPoint = 0;
+            animator.ResetTrigger("Death");
+            animator.SetTrigger("Resurrect");
+            currentState = Mode.patrolling;
+            enemyCanMove = true;
+            transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);
+            transform.GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
+
+    private void BossKill()
+    {
+        StartCoroutine(Explode());
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -212,6 +238,7 @@ public class EnemyBomber : MonoBehaviour {
         animator.ResetTrigger("Resurrect");
         transform.GetComponent<BoxCollider2D>().enabled = false;
         transform.FindChild("EnemyAttackBomber").gameObject.SetActive(false);
+        isDead = true;
     }
 
     private void StartChase()

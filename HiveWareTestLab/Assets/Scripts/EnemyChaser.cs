@@ -165,8 +165,8 @@ public class EnemyChaser : MonoBehaviour {
         transform.GetComponent<BoxCollider2D>().enabled = true;
     }
 
-//If the player keeps beating his face against the enmey
-private void OnCollisionStay2D(Collision2D other)
+    //If the player keeps beating his face against the enmey
+    private void OnCollisionStay2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player" && Globals.playerIsHittable && currentState != Mode.off)
         {
