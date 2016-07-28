@@ -58,7 +58,7 @@ public class ArrowHole : MonoBehaviour {
     //CALLED WHEN CAMERA ENTERS ROOM
     private void Load()
     {
-        nextShot = Time.time + timeBetweenShots;
+        nextShot = Time.time + delayStart;
         shooting = true;
     }
 }

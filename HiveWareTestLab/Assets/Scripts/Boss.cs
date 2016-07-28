@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour {
     public float timeBetweenAttacks;
     public float timeBetweenRaiseDead;
     public float lowHealthSpeedMuliplier;
+    public Color deathColor;
     public LayerMask playerLayer;
     public LayerMask wallLayer;
     public AudioClip hurtClip;
@@ -276,12 +277,35 @@ public class Boss : MonoBehaviour {
 
     private IEnumerator Death()
     {
-        Vector3 center = transform.position;
-        float timer = Time.time + 5f;
-        while(timer > Time.time)
+        Vector3 right = new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z);
+        Vector3 left = new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z);
+        float timer = Time.time + 7f;
+        Vector3 target = right;
+        Vector3 nextTarget = left;
+
+        float severity = 0f;
+
+        while (timer > Time.time)
         {
-            float randomX = 5f;
+            transform.position = Vector3.MoveTowards(transform.position, target, 0.1f);
+            sprite.color = Color.Lerp(sprite.color, deathColor, severity * Time.deltaTime);
+
+            if(Vector3.Distance(target, transform.position) < 0.1f)
+            {
+                severity += 0.005f;
+                if(severity > 0.5f)
+                {
+                    deathColor = new Color(deathColor.r, deathColor.g, deathColor.b, 0f);
+                }
+                Vector3 temp = target;
+                target = nextTarget;
+                nextTarget = temp;
+            }
+
             yield return null;
         }
+
+        sprite.color = deathColor;
+
     }
 }
