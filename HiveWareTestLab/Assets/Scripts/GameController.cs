@@ -96,6 +96,11 @@ public class GameController : MonoBehaviour {
         currentEnemies.Remove(enemy);
     }
 
+    public bool IsThereEnemies()
+    {
+        return currentEnemies.Count != 0;
+    }
+
     private void HurtPlayer(Vector3 direction)
     {
         if (!Globals.isPlayerDead)
