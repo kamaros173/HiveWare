@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: fc15fa7ddfb82694ca6599d981186128
+timeCreated: 1469755306
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Bomber2V3_0
+    21300002: Bomber2V3_1
+    21300004: Bomber2V3_2
+    21300006: Bomber2V3_3
+    21300008: Bomber2V3_4
+    21300010: Bomber2V3_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Bomber2V3_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 106
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.50000006, y: 0.4598236}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber2V3_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 106
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45833567}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber2V3_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 106
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.46096972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber2V3_3
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 106
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.50243956, y: 0.45679602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber2V3_4
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 106
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.4999997, y: 0.4599281}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Bomber2V3_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 68
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.49919987, y: 0.45666653}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
