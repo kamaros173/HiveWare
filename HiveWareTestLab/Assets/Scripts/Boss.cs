@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Boss : MonoBehaviour {
 
-    public int maxHealth;
+    public float maxHealth;
     public float moveSpeed;
     public float meleeRange;
     public float timeBetweenDamage;
@@ -15,17 +15,23 @@ public class Boss : MonoBehaviour {
     public LayerMask wallLayer;
     public AudioClip hurtClip;
     public AudioClip deathClip;
-    public GameObject[] deadEnemies;
+    public GameObject bomber1;
+    public GameObject bomber2;
+    public GameObject[] phase2Arrows;
+    public GameObject[] phase3Arrows;
+    public GameObject[] phase4Arrows;
 
 
-    private int currentHealth;
+    private float currentHealth;
     private float currentMoveSpeed;
     private float currentTimeBetweenAttacks;
     private bool isAttacking;
     private float timeToAttack;
     private float timeToRaiseDead;
-    private bool isActive;
+    //private bool isActive;
     private bool isRaisingDead;
+    private enum Phase { off, first, second, third, fourth }
+    private Phase currentPhase;
     
 
     private Transform player;
@@ -36,8 +42,6 @@ public class Boss : MonoBehaviour {
     private Vector3 startLocation;
     private SpriteRenderer sprite;
     private Color originalColor;
-    
-
 
     private void Start ()
     {
@@ -47,8 +51,9 @@ public class Boss : MonoBehaviour {
         currentTimeBetweenAttacks = timeBetweenAttacks;
         timeToAttack = Time.time + currentTimeBetweenAttacks;
         timeToRaiseDead = Time.time + timeBetweenRaiseDead;
-        isActive = false;
+        //isActive = false;
         isRaisingDead = false;
+        currentPhase = Phase.off;
 
         player = GameObject.Find("Player").transform;
         animator = GetComponent<Animator>();
@@ -61,11 +66,11 @@ public class Boss : MonoBehaviour {
 	
 	private void Update ()
     {
-        if (Globals.notFrozen && !isAttacking && isActive)
+        if (Globals.notFrozen && !isAttacking && currentPhase != Phase.off)
         {
             if (Time.time > timeToAttack)
                 Attack();
-            else if (Time.time > timeToRaiseDead && isRaisingDead)
+            else if (isRaisingDead && Time.time > timeToRaiseDead)
                 RaiseDead();
             else
                 Chase();
@@ -86,12 +91,18 @@ public class Boss : MonoBehaviour {
 
     private void RaiseDead()
     {
-        foreach (GameObject enemy in deadEnemies)
+        if(currentPhase != Phase.first)
         {
-            enemy.SetActive(true);
-            enemy.SendMessage("BossResurrect");
+            bomber1.SetActive(true);
+            bomber1.SendMessage("BossResurrect");
         }
-
+        
+        if(currentPhase == Phase.fourth)
+        {
+            bomber2.SetActive(true);
+            bomber2.SendMessage("BossResurrect");
+        }
+  
         timeToRaiseDead = Time.time + timeBetweenRaiseDead;
     }
 
@@ -140,22 +151,35 @@ public class Boss : MonoBehaviour {
     //CALLED WHEN CAMERA MOVES AWAY FROM SCENE
     private void Reset()
     {
-        isActive = false;
+        //isActive = false;
+        currentPhase = Phase.off;
         isAttacking = false;
         currentHealth = maxHealth;
         transform.position = startLocation;
         isRaisingDead = false;
         currentMoveSpeed = moveSpeed;
         currentTimeBetweenAttacks = timeBetweenAttacks;
+        foreach(GameObject arrow in phase2Arrows)
+        {
+            arrow.SetActive(false);
+        }
+        foreach (GameObject arrow in phase3Arrows)
+        {
+            arrow.SetActive(false);
+        }
+        foreach (GameObject arrow in phase4Arrows)
+        {
+            arrow.SetActive(false);
+        }
         //RESET TRIGGERS
     }
 
     //CALLED WHEN CAMERA ENTERS ROOM
     private void Load()
     {
-        isActive = true;
+        //isActive = true;
+        currentPhase = Phase.first;
         timeToAttack = Time.time + currentTimeBetweenAttacks;
-        timeToRaiseDead = Time.time + timeBetweenRaiseDead;
     }
 
     //If the player keeps beating his face against the enmey
@@ -207,7 +231,8 @@ public class Boss : MonoBehaviour {
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            isActive = false;
+            //isActive = false;
+            currentPhase = Phase.off;
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
 
@@ -227,12 +252,35 @@ public class Boss : MonoBehaviour {
             soundManager.PlaySingle(hurtClip, 1f);
             currentTimeBetweenAttacks = timeBetweenAttacks * lowHealthSpeedMuliplier;
             currentMoveSpeed = moveSpeed * lowHealthSpeedMuliplier;
+            Debug.Log(currentHealth);
+            Debug.Log(maxHealth);
+            Debug.Log(currentHealth / maxHealth);
 
-
-            if(currentHealth / maxHealth < 0.5f)
+            if((currentHealth / maxHealth) < 0.25f && currentPhase == Phase.third)
             {
+                currentPhase = Phase.fourth;
+                foreach (GameObject arrow in phase4Arrows)
+                {
+                    arrow.SetActive(true);
+                }
+            }
+            else if((currentHealth / maxHealth) < 0.50f && currentPhase == Phase.second)
+            {
+                currentPhase = Phase.third;
+                foreach (GameObject arrow in phase3Arrows)
+                {
+                    arrow.SetActive(true);
+                }
+            }
+            else if((currentHealth / maxHealth) < 0.75f && currentPhase == Phase.first)
+            {
+                currentPhase = Phase.second;
                 isRaisingDead = true;
                 timeToRaiseDead = Time.time + timeBetweenRaiseDead;
+                foreach(GameObject arrow in phase2Arrows)
+                {
+                    arrow.SetActive(true);
+                }
             }
         }
     }
