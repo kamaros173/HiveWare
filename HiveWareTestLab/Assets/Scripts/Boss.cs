@@ -57,12 +57,6 @@ public class Boss : MonoBehaviour {
         startLocation = transform.position;
         sprite = transform.GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
-
-        foreach (GameObject enemy in deadEnemies)
-        {
-            enemy.SendMessage("BossKill");
-        }
-
     }
 	
 	private void Update ()

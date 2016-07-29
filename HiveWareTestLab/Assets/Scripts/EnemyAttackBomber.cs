@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyAttackBomber : MonoBehaviour {
 
     private Transform player;
+    private Animator animator;
 
     public float attackDistance;
     public float attackSpeed;
@@ -14,14 +15,15 @@ public class EnemyAttackBomber : MonoBehaviour {
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = transform.parent.GetComponent<Animator>();
     }
 
-    private void AttackPlayer(Animator animator)
+    private void AttackPlayer()
     {
-        StartCoroutine(Attack(animator));
+        StartCoroutine(Attack());
     }
 
-    private IEnumerator Attack(Animator animator)
+    private IEnumerator Attack()
     {
         CircleCollider2D cir2d = gameObject.GetComponent<CircleCollider2D>();
 

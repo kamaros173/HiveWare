@@ -11,6 +11,7 @@ public class EnemyBomber : MonoBehaviour {
     public float explosionDelay;
     public float playerArrowMultiplyer;
     public bool doNotAddToGC;
+    public bool isBossMinion;
     public AudioClip deathClip;
 
     private Transform player;
@@ -32,6 +33,16 @@ public class EnemyBomber : MonoBehaviour {
         animator = GetComponent<Animator>();
         soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         isDead = false;
+
+        if (isBossMinion)
+        {
+            animator.SetTrigger("Attack");
+            animator.SetTrigger("Explode");
+            GetComponent<SpriteRenderer>().sortingOrder = -1;
+            transform.GetComponent<BoxCollider2D>().enabled = false;
+            transform.FindChild("EnemyAttackBomber").gameObject.SetActive(false);
+            isDead = true;
+        }     
     }
 
     void Update()
@@ -126,22 +137,18 @@ public class EnemyBomber : MonoBehaviour {
 
     private void Resurrect()
     {
-        if (isDead)
-        {
-            isDead = false;
-            patrolPoint = 0;
-            animator.ResetTrigger("Death");
-            animator.SetTrigger("Resurrect");
-            transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
-            transform.localScale = new Vector3(1f, 0.75f, 1f);
-            transform.position = patrolPoints[0];
-            lastPatrolPosition = patrolPoints[0];
-            currentState = Mode.patrolling;
-            enemyCanMove = true;
-            transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);
-            transform.GetComponent<BoxCollider2D>().enabled = true;
-        }
-
+        isDead = false;
+        patrolPoint = 0;
+        animator.ResetTrigger("Death");
+        animator.SetTrigger("Resurrect");
+        transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        transform.localScale = new Vector3(1f, 0.75f, 1f);
+        transform.position = patrolPoints[0];
+        lastPatrolPosition = patrolPoints[0];
+        currentState = Mode.patrolling;
+        enemyCanMove = true;
+        transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);
+        transform.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     private void BossResurrect()
@@ -157,11 +164,6 @@ public class EnemyBomber : MonoBehaviour {
             transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);
             transform.GetComponent<BoxCollider2D>().enabled = true;
         }
-    }
-
-    private void BossKill()
-    {
-        StartCoroutine(Explode());
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -183,7 +185,7 @@ public class EnemyBomber : MonoBehaviour {
             GameObject.Destroy(other.gameObject);
             StartCoroutine(Explode());
         }
-        else if (other.gameObject.tag == "MainCamera" && !doNotAddToGC)
+        else if (other.gameObject.tag == "MainCamera" && !doNotAddToGC && !isBossMinion)
         {
             GameObject.Find("GameController").SendMessage("AddEnemy", transform.gameObject);
             Load();
@@ -211,8 +213,8 @@ public class EnemyBomber : MonoBehaviour {
         Color fromColor = Color.white;
         float severity = 0f;
         SpriteRenderer damagedsprite = transform.GetComponent<SpriteRenderer>();
-        soundmanager.PlaySingle(deathClip, 1f);
-        transform.FindChild("EnemyAttackBomber").SendMessage("AttackPlayer", animator);
+        //soundmanager.PlaySingle(deathClip, 1f);
+        transform.FindChild("EnemyAttackBomber").SendMessage("AttackPlayer");
         while (Time.time < waitTime)
         {
                 damagedsprite.color = Color.Lerp(fromColor, toColor, severity);
@@ -233,8 +235,11 @@ public class EnemyBomber : MonoBehaviour {
     private void EnemyCanNowMove()
     {
         GetComponent<SpriteRenderer>().sortingOrder = -1;
-        GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
-        GameObject.Find("GameController").SendMessage("AddDeadEnemyToList", transform.gameObject);
+        if (!isBossMinion)
+        {
+            GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
+            GameObject.Find("GameController").SendMessage("AddDeadEnemyToList", transform.gameObject);
+        }
         animator.ResetTrigger("Resurrect");
         transform.GetComponent<BoxCollider2D>().enabled = false;
         transform.FindChild("EnemyAttackBomber").gameObject.SetActive(false);

@@ -11,13 +11,13 @@ public class ArrowHole : MonoBehaviour {
 
     private float nextShot;
     private bool shooting;
-    private Animator animator;
+    //private Animator animator;
     private SoundManager soundManager;
 
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         nextShot = Time.time + delayStart;
         if (doNotAddToGC)
             shooting = true;

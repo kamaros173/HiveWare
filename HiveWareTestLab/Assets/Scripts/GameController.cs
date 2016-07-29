@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
   
     private int playerHealth;
     private float playerEnergy;
-    private bool isEnergyDelayed = false;
+    //private bool isEnergyDelayed = false;
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
     private HashSet<GameObject> deadEnemies = new HashSet<GameObject>();
     private GameObject player;
@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour {
     private void PlayerInHole(Vector3 center)
     {
         StartCoroutine(PlayerFallSpin(center));
-        soundManager.PlaySingle(playerFallClip, 1f);       
+        //soundManager.PlaySingle(playerFallClip, 1f);       
     }
 
     private IEnumerator PlayerFallSpin(Vector3 center)
@@ -206,7 +206,7 @@ public class GameController : MonoBehaviour {
         }
         playerHealth = playerHealthMax;
         playerEnergy = playerEnergyMax;
-        isEnergyDelayed = false;
+        //isEnergyDelayed = false;
         player.SendMessage("Reset");
         player.transform.position = checkpoint.transform.position;
         player.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
