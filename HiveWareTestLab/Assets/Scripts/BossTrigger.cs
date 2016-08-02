@@ -11,6 +11,9 @@ public class BossTrigger : MonoBehaviour {
     public GameObject boss;
     public Slider BossHealthBar;
     public GameObject door;
+    public SoundManager soundManager;
+    public AudioClip bossMusic;
+    public AudioClip dungeonMusic;
     private bool activated = false;
 
 
@@ -27,6 +30,8 @@ public class BossTrigger : MonoBehaviour {
     {
         // Pause Game
         Globals.notFrozen = false;
+        soundManager.TurnMusicOff();
+        soundManager.gameObject.GetComponent<AudioSource>().clip = bossMusic;
         door.SetActive(true);
         float timer = Time.time + beforeBossEntranceTimer;
         while(Time.time < timer)
@@ -37,6 +42,7 @@ public class BossTrigger : MonoBehaviour {
         // Boss Enters
         boss.SetActive(true);
         boss.GetComponent<Animator>().enabled = true;
+        soundManager.TurnMusicOn();
         boss.SendMessage("EnemyDoneAttacking");
         timer = Time.time + bossEntranceTimer;
         while(Time.time < timer)
@@ -63,6 +69,9 @@ public class BossTrigger : MonoBehaviour {
         boss.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
         door.SetActive(false);
+        soundManager.TurnMusicOff();
+        soundManager.gameObject.GetComponent<AudioSource>().clip = dungeonMusic;
+        soundManager.TurnMusicOn();
 
     }
 }

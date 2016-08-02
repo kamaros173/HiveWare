@@ -24,7 +24,6 @@ public class Boss : MonoBehaviour {
     public GameObject[] phase3Arrows;
     public GameObject[] phase4Arrows;
 
-
     private float currentHealth;
     private float currentMoveSpeed;
     private float currentTimeBetweenAttacks;

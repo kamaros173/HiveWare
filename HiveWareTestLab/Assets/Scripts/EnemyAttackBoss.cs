@@ -79,7 +79,7 @@ public class EnemyAttackBoss : MonoBehaviour {
         {
             yield return null;
         }
-        // Begin Cast
+        animator.SetTrigger("Magic");
 
         remainingTime = Time.time + MagicAttackDelay;
         while (remainingTime > Time.time)

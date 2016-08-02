@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
     public AudioClip playerFallClip;
     public AudioClip enemyFallClip;
     public AudioClip heartPopClip;
+    public AudioClip playerIsDeadClip;
   
     private int playerHealth;
     private float playerEnergy;
@@ -99,7 +100,16 @@ public class GameController : MonoBehaviour {
 
     public bool IsThereEnemies()
     {
-        return currentEnemies.Count != 0;
+        bool isTrue = false;
+        foreach(GameObject e in currentEnemies)
+        {
+            if(e.tag == "Enemy")
+            {
+                isTrue = true;
+            }
+        }
+
+        return isTrue;
     }
 
     private void HurtPlayer(Vector3 direction)
@@ -218,7 +228,9 @@ public class GameController : MonoBehaviour {
 
     private void PlayerHasDied()
     {
+        soundManager.PlaySingle(playerIsDeadClip, 1f);
         deathMenu.SetActive(true);
+        soundManager.TurnMusicOff();
     }
 
     public void respawnAtCheckpoint()
@@ -238,6 +250,7 @@ public class GameController : MonoBehaviour {
         Camera.main.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y, Camera.main.transform.position.z);
         ReviveDeadEnemies();
         GameObject.Find("Boss").SendMessage("Reset");
+        soundManager.TurnMusicOn();
     }
 
     public void ShowPaused()

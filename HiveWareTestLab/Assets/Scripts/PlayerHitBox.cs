@@ -66,6 +66,10 @@ public class PlayerHitBox : MonoBehaviour {
             GameObject.Find("Main Camera").SendMessage("MoveCamera", Globals.playerDirection);
 
         }
+        else if (other.gameObject.tag == "Trigger")
+        {
+            other.gameObject.SendMessage("PlayerHasLeft");
+        }
     }
 
     private void Reset()
