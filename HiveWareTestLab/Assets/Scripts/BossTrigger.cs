@@ -10,7 +10,7 @@ public class BossTrigger : MonoBehaviour {
     public GameObject player;
     public GameObject boss;
     public Slider BossHealthBar;
-
+    public GameObject door;
     private bool activated = false;
 
 
@@ -27,6 +27,7 @@ public class BossTrigger : MonoBehaviour {
     {
         // Pause Game
         Globals.notFrozen = false;
+        door.SetActive(true);
         float timer = Time.time + beforeBossEntranceTimer;
         while(Time.time < timer)
         {
@@ -59,6 +60,7 @@ public class BossTrigger : MonoBehaviour {
         boss.GetComponent<Animator>().enabled = false;
         boss.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
+        door.SetActive(true);
 
 
     }
