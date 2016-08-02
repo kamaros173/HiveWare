@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+
 
 public class Boss : MonoBehaviour {
 
@@ -15,6 +17,7 @@ public class Boss : MonoBehaviour {
     public LayerMask wallLayer;
     public AudioClip hurtClip;
     public AudioClip deathClip;
+    public Slider BossHealthBar;
     public GameObject bomber1;
     public GameObject bomber2;
     public GameObject[] phase2Arrows;
@@ -75,6 +78,8 @@ public class Boss : MonoBehaviour {
             else
                 Chase();
         }
+
+        BossHealthBar.value = currentHealth;
     }
 
     private void Attack()
@@ -171,6 +176,7 @@ public class Boss : MonoBehaviour {
         {
             arrow.SetActive(false);
         }
+        GameObject.Find("BossTrigger").SendMessage("ResetTrigger");
         //RESET TRIGGERS
     }
 

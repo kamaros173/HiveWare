@@ -11,10 +11,16 @@ public class BossTrigger : MonoBehaviour {
     public GameObject boss;
     public Slider BossHealthBar;
 
+    private bool activated = false;
+
 
     private void PlayerHasBeenHit()
     {
-        StartCoroutine(Spawn());
+        if (!activated)
+        {
+            StartCoroutine(Spawn());
+            activated = true;
+        }
     }
 
     private IEnumerator Spawn()
@@ -37,7 +43,7 @@ public class BossTrigger : MonoBehaviour {
         }
 
         // Activate Boss Bar
-        BossHealthBar.enabled = true;
+        BossHealthBar.gameObject.SetActive(true);
         timer = Time.time + afterBossEntranceTimer;
         while (Time.time < timer)
         {
@@ -45,5 +51,15 @@ public class BossTrigger : MonoBehaviour {
         }
 
         Globals.notFrozen = true;
+    }
+
+    private void ResetTrigger()
+    {
+        activated = false;
+        boss.GetComponent<Animator>().enabled = false;
+        boss.SetActive(false);
+        BossHealthBar.gameObject.SetActive(false);
+
+
     }
 }
