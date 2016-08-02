@@ -60,7 +60,7 @@ public class BossTrigger : MonoBehaviour {
         boss.GetComponent<Animator>().enabled = false;
         boss.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
-        door.SetActive(true);
+        door.SetActive(false);
 
 
     }

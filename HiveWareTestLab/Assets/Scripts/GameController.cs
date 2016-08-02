@@ -271,7 +271,7 @@ public class GameController : MonoBehaviour {
     public void GoToMainMenu()
     {
         player.SendMessage("Reset");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameDungeonV6");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameDungeonV10");
     }
 
     public void AddDeadEnemyToList(GameObject enemy)
