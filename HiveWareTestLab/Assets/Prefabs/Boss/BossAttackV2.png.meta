@@ -1,0 +1,170 @@
+fileFormatVersion: 2
+guid: b698eb2bc242ed943b0d8f8c986f5fcf
+timeCreated: 1470177283
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BossAttackV2_0
+    21300002: BossAttackV2_1
+    21300004: BossAttackV2_2
+    21300006: BossAttackV2_3
+    21300008: BossAttackV2_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BossAttackV2_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 274
+        width: 51
+        height: 56
+      alignment: 9
+      pivot: {x: 0.66088337, y: 0.4204614}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.70505, y: 32.454163}
+        - {x: -33.70505, y: 30.454163}
+        - {x: -33.70505, y: 14.454163}
+        - {x: -30.705051, y: 11.454163}
+        - {x: -28.705051, y: 11.454163}
+        - {x: -27.705051, y: 14.454163}
+        - {x: -28.705051, y: 18.454163}
+        - {x: -4.7050514, y: -19.545837}
+        - {x: -0.7050514, y: -23.545837}
+        - {x: 12.294949, y: -23.545837}
+        - {x: 17.294949, y: -16.545837}
+        - {x: 17.294949, y: 23.454163}
+        - {x: 15.294949, y: 32.454163}
+    - name: BossAttackV2_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 273
+        width: 37
+        height: 75
+      alignment: 9
+      pivot: {x: 0.6374493, y: 0.32662922}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.585625, y: 50.502808}
+        - {x: -23.585625, y: 48.502808}
+        - {x: -23.585625, y: 32.502808}
+        - {x: -9.585625, y: -10.497192}
+        - {x: -7.5856247, y: -12.497192}
+        - {x: -6.5856247, y: -12.497192}
+        - {x: -3.5856247, y: -8.497192}
+        - {x: -3.5856247, y: -3.4971924}
+        - {x: -3.5856247, y: -14.497192}
+        - {x: -4.5856247, y: -15.497192}
+        - {x: -7.5856247, y: -23.497192}
+        - {x: -7.5856247, y: -24.497192}
+        - {x: 13.414375, y: -24.497192}
+        - {x: 13.414375, y: 29.502808}
+        - {x: -5.5856247, y: 50.502808}
+    - name: BossAttackV2_2
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 273
+        width: 44
+        height: 80
+      alignment: 9
+      pivot: {x: 0.4034833, y: 0.30742186}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2.2467346, y: 55.40625}
+        - {x: -17.753265, y: 23.40625}
+        - {x: -17.753265, y: -8.59375}
+        - {x: -10.753265, y: -24.59375}
+        - {x: 16.246735, y: -24.59375}
+        - {x: 26.246735, y: 14.40625}
+        - {x: 26.246735, y: 55.40625}
+    - name: BossAttackV2_3
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 275
+        width: 81
+        height: 68
+      alignment: 9
+      pivot: {x: 0.72106296, y: 0.30214286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45.406097, y: 47.454285}
+        - {x: -58.406097, y: 35.454285}
+        - {x: -58.406097, y: 0.45428467}
+        - {x: -49.406097, y: -16.545715}
+        - {x: -21.406097, y: -20.545715}
+        - {x: 8.593903, y: -20.545715}
+        - {x: 22.593903, y: 0.45428467}
+        - {x: 22.593903, y: 39.454285}
+        - {x: 2.5939026, y: 47.454285}
+    - name: BossAttackV2_4
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 273
+        width: 81
+        height: 68
+      alignment: 9
+      pivot: {x: 0.72284275, y: 0.30657464}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.4497375, y: 47.152924}
+        - {x: -40.550262, y: 47.152924}
+        - {x: -58.550262, y: 32.152924}
+        - {x: -58.550262, y: -2.8470764}
+        - {x: -35.550262, y: -20.847076}
+        - {x: 6.4497375, y: -20.847076}
+        - {x: 22.449738, y: 5.1529236}
+        - {x: 22.449738, y: 26.152924}
+        - {x: 6.4497375, y: 46.152924}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
