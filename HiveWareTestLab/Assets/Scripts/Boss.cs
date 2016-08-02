@@ -128,11 +128,11 @@ public class Boss : MonoBehaviour {
 
         if (vectorToTarget.x > 0f)
         {// LOOK RIGHT
-            GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (vectorToTarget.x < 0f)
         {// LOOK LEFT
-            GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<SpriteRenderer>().flipX = false;
         }
 
         if (vectorToTarget.y > 0f)

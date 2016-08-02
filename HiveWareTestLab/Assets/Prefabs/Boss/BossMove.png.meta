@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 3a45cba9c2302dd4fa0f9c7f875ee64f
+timeCreated: 1470169242
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BossMove_0
+    21300002: BossMove_1
+    21300004: BossMove_2
+    21300006: BossMove_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BossMove_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 69
+        width: 51
+        height: 57
+      alignment: 9
+      pivot: {x: 0.6567839, y: 0.4285368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.49598, y: 32.573402}
+        - {x: -33.49598, y: 12.573402}
+        - {x: -31.49598, y: 8.573402}
+        - {x: -28.49598, y: 11.573402}
+        - {x: -27.49598, y: 14.573402}
+        - {x: -28.49598, y: 18.573402}
+        - {x: -3.4959793, y: -24.426598}
+        - {x: 16.50402, y: -24.426598}
+        - {x: 17.50402, y: -23.426598}
+        - {x: 17.50402, y: 31.573402}
+        - {x: 14.504021, y: 32.573402}
+    - name: BossMove_1
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 69
+        width: 51
+        height: 57
+      alignment: 9
+      pivot: {x: 0.6575875, y: 0.42914942}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.536964, y: 32.538483}
+        - {x: -33.536964, y: 14.538483}
+        - {x: -30.536964, y: 11.538483}
+        - {x: -28.536964, y: 11.538483}
+        - {x: -27.536964, y: 14.538483}
+        - {x: -28.536964, y: 18.538483}
+        - {x: -7.5369644, y: -22.461517}
+        - {x: -2.5369644, y: -24.461517}
+        - {x: 15.463036, y: -24.461517}
+        - {x: 17.463036, y: -20.461517}
+        - {x: 17.463036, y: 32.538483}
+    - name: BossMove_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 7
+        width: 51
+        height: 57
+      alignment: 9
+      pivot: {x: 0.65723336, y: 0.44876066}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.5189, y: 31.420643}
+        - {x: -33.5189, y: 11.420643}
+        - {x: -31.518902, y: 7.420643}
+        - {x: -28.518902, y: 10.420643}
+        - {x: -27.518902, y: 13.420643}
+        - {x: -28.518902, y: 17.420643}
+        - {x: -3.5189018, y: -25.579357}
+        - {x: 16.481098, y: -25.579357}
+        - {x: 17.481098, y: -24.579357}
+        - {x: 17.481098, y: 30.420643}
+        - {x: 14.481098, y: 31.420643}
+    - name: BossMove_3
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 7
+        width: 51
+        height: 57
+      alignment: 9
+      pivot: {x: 0.6556341, y: 0.44965315}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.43734, y: 31.36977}
+        - {x: -33.43734, y: 29.36977}
+        - {x: -33.43734, y: 13.36977}
+        - {x: -30.43734, y: 10.36977}
+        - {x: -28.43734, y: 10.36977}
+        - {x: -27.43734, y: 13.36977}
+        - {x: -28.43734, y: 17.36977}
+        - {x: -7.43734, y: -23.63023}
+        - {x: -2.4373398, y: -25.63023}
+        - {x: 15.56266, y: -25.63023}
+        - {x: 17.56266, y: -21.63023}
+        - {x: 17.56266, y: 30.36977}
+        - {x: 14.56266, y: 31.36977}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

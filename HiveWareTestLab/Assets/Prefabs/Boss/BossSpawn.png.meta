@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: 43739b084b4f8514faa1b3af2c92cca3
+timeCreated: 1470169482
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BossSpawn_0
+    21300002: BossSpawn_1
+    21300004: BossSpawn_2
+    21300006: BossSpawn_3
+    21300008: BossSpawn_4
+    21300010: BossSpawn_5
+    21300012: BossSpawn_6
+    21300014: BossSpawn_7
+    21300016: BossSpawn_8
+    21300018: BossSpawn_9
+    21300020: BossSpawn_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BossSpawn_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 116
+        width: 10
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 116
+        width: 19
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 116
+        width: 25
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_3
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 74
+        width: 25
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2
+        width: 25
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_5
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 2
+        width: 25
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_6
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 3
+        width: 23
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_7
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 117
+        width: 6
+        height: 3
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_8
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 117
+        width: 5
+        height: 3
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_9
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 117
+        width: 4
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: BossSpawn_10
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 117
+        width: 2
+        height: 2
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
