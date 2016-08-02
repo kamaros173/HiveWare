@@ -237,6 +237,7 @@ public class GameController : MonoBehaviour {
         player.transform.localScale = new Vector3(1f, 0.75f, 1f);
         Camera.main.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y, Camera.main.transform.position.z);
         ReviveDeadEnemies();
+        GameObject.Find("Boss").SendMessage("Reset");
     }
 
     public void ShowPaused()

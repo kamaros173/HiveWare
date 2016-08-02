@@ -37,6 +37,7 @@ public class BossTrigger : MonoBehaviour {
         // Boss Enters
         boss.SetActive(true);
         boss.GetComponent<Animator>().enabled = true;
+        boss.SendMessage("EnemyDoneAttacking");
         timer = Time.time + bossEntranceTimer;
         while(Time.time < timer)
         {
@@ -45,6 +46,7 @@ public class BossTrigger : MonoBehaviour {
 
         // Activate Boss Bar
         BossHealthBar.gameObject.SetActive(true);
+        boss.SendMessage("EnemyDoneAttacking");
         timer = Time.time + afterBossEntranceTimer;
         while (Time.time < timer)
         {
@@ -61,7 +63,6 @@ public class BossTrigger : MonoBehaviour {
         boss.SetActive(false);
         BossHealthBar.gameObject.SetActive(false);
         door.SetActive(false);
-
 
     }
 }
