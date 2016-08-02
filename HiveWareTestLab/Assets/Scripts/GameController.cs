@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
     public Slider energyBar;
     public AudioClip playerFallClip;
     public AudioClip enemyFallClip;
+    public AudioClip heartPopClip;
   
     private int playerHealth;
     private float playerEnergy;
@@ -127,12 +128,30 @@ public class GameController : MonoBehaviour {
 
     private void HealPlayer()
     {
+        StartCoroutine(HeartPop()); 
+    }
 
+    private IEnumerator HeartPop()
+    {
         playerHealth = playerHealthMax;
-        foreach(Image h in hearts)
+
+        float timer = Time.time + 1f;
+        foreach (Image h in hearts)
         {
-            h.sprite = heart;
-        }       
+            while(Time.time < timer)
+            {
+                yield return null;
+            }
+
+            if(h.sprite != heart)
+            {
+                timer = Time.time + 0.75f;
+                h.sprite = heart;
+                soundManager.RandomizeSfx(heartPopClip, 1f);
+            }
+
+            yield return null;
+        }
     }
 
     public bool DrainPlayerEnergy(float amount)
