@@ -41,15 +41,15 @@ public class BigDoor : MonoBehaviour {
                     soundManager.PlaySingle(openClip, 1f);
                 }
             }
-            else
-            {
-                //Play Wrong Sound
-                foreach(GameObject s in statues)
-                {
-                    s.SendMessage("Wrong");
-                }
-                currentLock = 0;
-            }
+            //else
+            //{
+            //    //Play Wrong Sound
+            //    foreach(GameObject s in statues)
+            //    {
+            //        s.SendMessage("Wrong");
+            //    }
+            //    currentLock = 0;
+            //}
         }
     }
 }
