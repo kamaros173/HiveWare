@@ -216,7 +216,7 @@ public class Boss : MonoBehaviour {
         else if (other.gameObject.tag == "Projectile")
         {
             GameObject.Destroy(other.gameObject);
-            HitEnemy(Globals.playerArrowDamage);
+            HitEnemy(Globals.playerArrowDamage/2);
             if (!isAttacking)
             {
                 isAttacking = true;
@@ -234,6 +234,7 @@ public class Boss : MonoBehaviour {
     private void HitEnemy(int damage)
     {
         currentHealth -= damage;
+        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             //isActive = false;
@@ -257,9 +258,7 @@ public class Boss : MonoBehaviour {
             soundManager.PlaySingle(hurtClip, 1f);
             currentTimeBetweenAttacks = timeBetweenAttacks * lowHealthSpeedMuliplier;
             currentMoveSpeed = moveSpeed * lowHealthSpeedMuliplier;
-            Debug.Log(currentHealth);
-            Debug.Log(maxHealth);
-            Debug.Log(currentHealth / maxHealth);
+            
 
             if((currentHealth / maxHealth) < 0.25f && currentPhase == Phase.third)
             {

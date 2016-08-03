@@ -157,8 +157,8 @@ public class EnemyBomber : MonoBehaviour {
         {
             isDead = false;
             patrolPoint = 0;
-            animator.ResetTrigger("Death");
-            animator.SetTrigger("Resurrect");
+            animator.ResetTrigger("BomberExplosion");
+            animator.SetTrigger("BomberResurrect");
             currentState = Mode.patrolling;
             enemyCanMove = true;
             transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);

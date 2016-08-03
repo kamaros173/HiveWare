@@ -68,7 +68,7 @@ public class PlayerHitBox : MonoBehaviour {
         }
         else if (other.gameObject.tag == "Trigger")
         {
-            other.gameObject.SendMessage("PlayerHasLeft");
+            other.gameObject.SendMessage("PlayerHasLeft",SendMessageOptions.DontRequireReceiver);
         }
     }
 
