@@ -27,8 +27,6 @@ public class DoorLockTrigger : MonoBehaviour {
 
     private void PlayerHasBeenHit()
     {
-        Debug.Log("PlayerHasBeenHit");
-        Debug.Log(gc.IsThereEnemies());
         if (gc.IsThereEnemies())
         {
             activated = true;
@@ -36,7 +34,6 @@ public class DoorLockTrigger : MonoBehaviour {
             {
                
                 door.SetActive(true);
-                Debug.Log(door.transform);
             }
         }
     }

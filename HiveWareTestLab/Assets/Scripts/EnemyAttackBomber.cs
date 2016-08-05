@@ -5,17 +5,22 @@ public class EnemyAttackBomber : MonoBehaviour {
 
     private Transform player;
     private Animator animator;
+    private SoundManager soundmanager;
+
 
     public float attackDistance;
     public float attackSpeed;
     public float beforeAttackDelay;
     public float damageDelay;
     public float afterAttackDelay;
+    public AudioClip deathClip;
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = transform.parent.GetComponent<Animator>();
+        soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     private void AttackPlayer()
@@ -39,6 +44,7 @@ public class EnemyAttackBomber : MonoBehaviour {
         {
             yield return null;
         }
+        soundmanager.PlaySingle(deathClip, 1.25f, 1f);
         animator.SetTrigger("Explode");
         cir2d.enabled = true;
         while (cir2d.radius < attackDistance)

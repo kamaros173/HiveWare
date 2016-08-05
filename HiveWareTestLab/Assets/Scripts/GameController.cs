@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
     private HashSet<GameObject> currentEnemies = new HashSet<GameObject>();
     private HashSet<GameObject> deadEnemies = new HashSet<GameObject>();
     private GameObject player;
+    private GameObject playerHitBox;
     private GameObject checkpoint;
     private GameObject[] pauseObjects;
     private SoundManager soundManager;
@@ -33,10 +34,10 @@ public class GameController : MonoBehaviour {
 
     void Start()
     {
-        Debug.Log("Start");
         playerHealth = playerHealthMax;
         playerEnergy = playerEnergyMax;
         player = GameObject.Find("Player");
+        playerHitBox = GameObject.Find("PlayerHitBox");
         checkpoint = GameObject.Find("Checkpoint");
         delayedTime = 0f;
 
@@ -155,9 +156,9 @@ public class GameController : MonoBehaviour {
 
             if(h.sprite != heart)
             {
-                timer = Time.time + 0.75f;
+                timer = Time.time + 0.5f;
                 h.sprite = heart;
-                soundManager.RandomizeSfx(heartPopClip, 1f);
+                soundManager.PlaySingle(heartPopClip, 2.9f, 0.1f);
             }
 
             yield return null;
@@ -166,13 +167,13 @@ public class GameController : MonoBehaviour {
 
     public bool DrainPlayerEnergy(float amount)
     {
-        delayedTime += energyDelay;
+        
         if((playerEnergy - amount) < 0)
         {
-            Debug.Log("Not Enough Energy: " + playerEnergy + " left");
             return false;
         }
 
+        delayedTime += energyDelay;
         playerEnergy -= amount;
         energyBar.value = playerEnergy;
         return true;
@@ -181,27 +182,29 @@ public class GameController : MonoBehaviour {
     private void PlayerInHole(Vector3 center)
     {
         StartCoroutine(PlayerFallSpin(center));
-        //soundManager.PlaySingle(playerFallClip, 1f);       
+        playerHitBox.SetActive(false);
+        soundManager.PlaySingle(playerFallClip, 0.9f, 0.15f);       
     }
 
     private IEnumerator PlayerFallSpin(Vector3 center)
     {
-        while(player.transform.localScale.y > 0.05)
+        while (player.transform.localScale.y > 0.05)
         {
             player.transform.localScale = Vector3.Lerp(player.transform.localScale, Vector3.zero, Time.deltaTime);
-            player.transform.Rotate(0f,0f,5f);
+            player.transform.Rotate(0f,0f,10f);
             player.transform.position = Vector3.Lerp(player.transform.position, center, 2f * Time.deltaTime);
             yield return null;
         }
-
         PlayerHasDied();
+        player.transform.Rotate(0f, 90f, 0f);
+        
     }
 
     private void EnemyInHole(Transform[] points)
     {
         AddDeadEnemyToList(points[1].gameObject);
         StartCoroutine(EnemyFallSpin(points));
-        soundManager.PlaySingle(enemyFallClip, 1f);
+        soundManager.PlaySingle(enemyFallClip, 0.9f , 0.15f);
 
     }
 
@@ -210,7 +213,7 @@ public class GameController : MonoBehaviour {
         while (points[1].transform.localScale.y > 0.05)
         {
             points[1].transform.localScale = Vector3.Lerp(points[1].transform.localScale, Vector3.zero, Time.deltaTime);
-            points[1].transform.Rotate(0f, 0f, 5f);
+            points[1].transform.Rotate(0f, 0f, 10f);
             points[1].position = Vector3.Lerp(points[1].position, points[0].position, 2f * Time.deltaTime);
             yield return null;
         }
@@ -228,7 +231,7 @@ public class GameController : MonoBehaviour {
 
     private void PlayerHasDied()
     {
-        soundManager.PlaySingle(playerIsDeadClip, 1f);
+        soundManager.PlaySingle(playerIsDeadClip, 0.9f, 0.25f);
         deathMenu.SetActive(true);
         soundManager.TurnMusicOff();
     }
@@ -242,15 +245,18 @@ public class GameController : MonoBehaviour {
         }
         playerHealth = playerHealthMax;
         playerEnergy = playerEnergyMax;
-        //isEnergyDelayed = false;
+        playerHitBox.SetActive(true);
         player.SendMessage("Reset");
         player.transform.position = checkpoint.transform.position;
         player.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         player.transform.localScale = new Vector3(1f, 0.75f, 1f);
         Camera.main.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y, Camera.main.transform.position.z);
-        ReviveDeadEnemies();
-        GameObject.Find("Boss").SendMessage("Reset");
+        if(deadEnemies.Count != 0)
+            ReviveDeadEnemies();
+        if(GameObject.Find("Boss"))
+            GameObject.Find("Boss").SendMessage("Reset");
         soundManager.TurnMusicOn();
+        
     }
 
     public void ShowPaused()

@@ -13,7 +13,7 @@ public class PlaySound : MonoBehaviour {
     {
         efxSource = transform.GetComponent<AudioSource>();
         efxSource.volume = defaultVol;
-        efxSource.pitch = 1f;
+        efxSource.pitch = defaultPitch;
         efxSource.clip = clip;
         efxSource.Play();
         StartCoroutine(Waiting());

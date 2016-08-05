@@ -23,13 +23,24 @@ public class SoundManager : MonoBehaviour {
         temp.SendMessage("MakeNoiseRandom", clip);
     }
 
-    public void TurnMusicOn()
+    public void TurnMusicOn(/*AudioClip clip, float vol*/)
     {
-        musicSource.PlayDelayed(1f);
+        musicSource.Play();
     }
 
     public void TurnMusicOff()
     {
         musicSource.Stop();
+    }
+
+    public IEnumerator TransitionSong(AudioClip clip, float vol)
+    {
+        float timer = Time.time + 1f;
+
+        while(Time.time < timer)
+        {
+            yield return null;
+            
+        }
     }
 }

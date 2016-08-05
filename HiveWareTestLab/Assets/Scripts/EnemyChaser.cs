@@ -226,7 +226,7 @@ public class EnemyChaser : MonoBehaviour {
 
             animator.ResetTrigger("Resurrect");
             animator.SetTrigger("Death");
-            soundmanager.PlaySingle(deathClip, 1f);
+            soundmanager.PlaySingle(deathClip, 1f, 0.25f);
             transform.GetComponent<BoxCollider2D>().enabled = false;
             
             transform.FindChild("EnemyAttackChaser").gameObject.SetActive(false);         
@@ -236,7 +236,7 @@ public class EnemyChaser : MonoBehaviour {
             currentState = Mode.chasing;
             StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
-            soundmanager.PlaySingle(hitClip, 1.25f);
+            soundmanager.RandomizeSfx(hitClip, 1f, 0.15f);
         }       
     }
 

@@ -79,7 +79,7 @@ public class EnemyMage : MonoBehaviour {
             enemyCanMove = false;
             isAttacking = true;
             transform.FindChild("EnemyAttackMage").SendMessage("AttackPlayer", animator);
-            soundmanager.RandomizeSfx(MagicClip, 1f);
+            soundmanager.RandomizeSfx(MagicClip, 1f, 0.05f);
         }
         else
         {
@@ -235,7 +235,7 @@ public class EnemyMage : MonoBehaviour {
 
             animator.ResetTrigger("Resurrect");
             animator.SetTrigger("Death");
-            soundmanager.PlaySingle(deathClip, 1f);
+            soundmanager.PlaySingle(deathClip, 1f, 0.25f);
             if (Upgraded)
                 transform.FindChild("EnemyAttackMage").SendMessage("DeathAttack");
             else
@@ -248,7 +248,7 @@ public class EnemyMage : MonoBehaviour {
             currentState = Mode.chasing;
             StartCoroutine(EnemyIsImmuneToDamage());
             StartCoroutine(PushBackEnemy(direction));
-            soundmanager.PlaySingle(hitClip, 1.25f);
+            soundmanager.RandomizeSfx(hitClip, 1f, 0.05f);
         }
     }
 

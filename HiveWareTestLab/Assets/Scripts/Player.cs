@@ -71,7 +71,7 @@ public class Player : MonoBehaviour {
    
                     swordPivot.SetActive(true);
                     swordPivot.SendMessage("Swing", Globals.playerDirection);
-                    soundManager.RandomizeSfx(SwordClip, 0.90f);
+                    soundManager.RandomizeSfx(SwordClip, 1f, 0.25f);
                 }
             }
             else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A)) && Time.time > nextFire)
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
                     animator.SetBool("CanWalk", false);
                     animator.SetBool("IsShooting", true);
                     animator.SetTrigger("Shoot");
-                    soundManager.RandomizeSfx(ShootClip, 0.85f, 0.1f);
+                    soundManager.RandomizeSfx(ShootClip, 0.95f, 0.15f);
                     if (Globals.playerDirection == PlayerDirection.North)
                     {
                         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -127,15 +127,15 @@ public class Player : MonoBehaviour {
                     animator.SetBool("IsDashing", true);
                     animator.SetTrigger("Dash");
                     StartCoroutine(Dash());
-                    soundManager.RandomizeSfx(DashClip, 0.8f);
+                    soundManager.RandomizeSfx(DashClip, 1.2f, 0.15f);
                 }
             }
             else if (Input.GetKey(KeyCode.S))
             {// SHIELD
                 if (!isSwinging && !isShooting && !isDashing)
                 {
-                    if (gameController.DrainPlayerEnergy(energyToUseShield))
-                    {
+                    //if (gameController.DrainPlayerEnergy(energyToUseShield))
+                    //{
                         if (!isShielding)
                         {
                             isShielding = true;
@@ -144,17 +144,17 @@ public class Player : MonoBehaviour {
                             animator.SetBool("IsShieldUp", true);
                             animator.SetTrigger("ShieldUp");
                             shieldDirection.SetActive(true);
-                            soundManager.PlaySingle(ShieldClip, 1f);
+                            soundManager.PlaySingle(ShieldClip, 1f, 0.05f);
                         }
-                    }
-                    else
-                    {
-                        isShielding = false;
-                        animator.SetBool("CanWalk", true);
-                        animator.SetBool("IsShieldUp", false);
-                        animator.ResetTrigger("ShieldUp");
-                        shieldDirection.SetActive(false);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    isShielding = false;
+                    //    animator.SetBool("CanWalk", true);
+                    //    animator.SetBool("IsShieldUp", false);
+                    //    animator.ResetTrigger("ShieldUp");
+                    //    shieldDirection.SetActive(false);
+                    //}
                 }               
             }
 
@@ -213,7 +213,7 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.05f);
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.02f);
                                 lastWalkSound = Time.time + 0.25f;
                             }
                         }
@@ -246,7 +246,7 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.05f);
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.02f);
                                 lastWalkSound = Time.time + 0.25f;
                             }
                         }
@@ -278,7 +278,7 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.05f);
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.02f);
                                 lastWalkSound = Time.time + 0.25f;
                             }
                         }
@@ -311,7 +311,7 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.05f);
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.02f);
                                 lastWalkSound = Time.time + 0.25f;
                             }
                         }
@@ -437,7 +437,7 @@ public class Player : MonoBehaviour {
     {
         StartCoroutine(PlayerIsImmuneToDamage());
         StartCoroutine(PushBackPlayer(direction));
-        soundManager.RandomizeSfx(HurtClip, 1.3f);       
+        soundManager.RandomizeSfx(HurtClip, 1.35f, 0.75f);       
     }
     
     private IEnumerator PlayerIsImmuneToDamage()
@@ -492,10 +492,10 @@ public class Player : MonoBehaviour {
 
     private void PlayerDeath()
     {
-        soundManager.RandomizeSfx(HurtClip, 1.3f);
+        soundManager.RandomizeSfx(HurtClip, 1.35f, 0.75f);
         animator.SetTrigger("Death");
         animator.SetBool("IsDead", true);
-        soundManager.PlaySingle(deathClip, 1f);
+        soundManager.PlaySingle(deathClip, 1f, 0.05f);
     }
 
     private void PlayerCanSwing()

@@ -12,7 +12,6 @@ public class EnemyBomber : MonoBehaviour {
     public float playerArrowMultiplyer;
     public bool doNotAddToGC;
     public bool isBossMinion;
-    public AudioClip deathClip;
 
     private Transform player;
     private Vector3 lastPatrolPosition;
@@ -31,7 +30,6 @@ public class EnemyBomber : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = patrolPoints[patrolPoint];
         animator = GetComponent<Animator>();
-        soundmanager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         isDead = false;
 
         if (isBossMinion)
