@@ -1,0 +1,345 @@
+fileFormatVersion: 2
+guid: a9df39492c6ac6747bf12d99ba89ab8a
+timeCreated: 1470346729
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: KnightMoveV4_0
+    21300002: KnightMoveV4_1
+    21300004: KnightMoveV4_2
+    21300006: KnightMoveV4_3
+    21300008: KnightMoveV4_4
+    21300010: KnightMoveV4_5
+    21300012: KnightMoveV4_6
+    21300014: KnightMoveV4_7
+    21300016: KnightMoveV4_8
+    21300018: KnightMoveV4_9
+    21300020: KnightMoveV4_10
+    21300022: KnightMoveV4_11
+    21300024: KnightMoveV4_12
+    21300026: KnightMoveV4_13
+    21300028: KnightMoveV4_14
+    21300030: KnightMoveV4_15
+    21300032: KnightMoveV4_16
+    21300034: KnightMoveV4_17
+    21300036: KnightMoveV4_18
+    21300038: KnightMoveV4_19
+    21300040: KnightMoveV4_20
+    21300042: KnightMoveV4_21
+    21300044: KnightMoveV4_22
+    21300046: KnightMoveV4_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: KnightMoveV4_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 82
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 111
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_2
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 111
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_3
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 111
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_4
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 81
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_5
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 81
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 45
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_7
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 46
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 46
+        width: 17
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_9
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 46
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_10
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 46
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_11
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 46
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_12
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 46
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_13
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 46
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_14
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 3
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_15
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 3
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_16
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 3
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_17
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 6
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_18
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 17
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_19
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 5
+        width: 11
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_20
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 7
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 109
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_22
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 110
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightMoveV4_23
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 82
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 7c45d29363955bc4ebc1d6f3c32a4e98
-timeCreated: 1468869430
+guid: 0cfd56af7b37be846b98b7ba027bd0de
+timeCreated: 1470350993
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: a2dbd32b7b66017be61e849b60652255_0
-    21300002: a2dbd32b7b66017be61e849b60652255_1
-    21300004: a2dbd32b7b66017be61e849b60652255_2
-    21300006: a2dbd32b7b66017be61e849b60652255_3
-    21300008: a2dbd32b7b66017be61e849b60652255_4
+    21300000: KnightAttackBowV5_0
+    21300002: KnightAttackBowV5_1
+    21300004: KnightAttackBowV5_2
+    21300006: KnightAttackBowV5_3
+    21300008: KnightAttackBowV5_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -49,69 +49,65 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: a2dbd32b7b66017be61e849b60652255_0
+    - name: KnightAttackBowV5_0
       rect:
         serializedVersion: 2
-        x: 363
-        y: 0
-        width: 237
-        height: 308
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -118.5, y: 154}
-        - {x: -118.5, y: -154}
-        - {x: 118.5, y: -154}
-        - {x: 118.5, y: 154}
-    - name: a2dbd32b7b66017be61e849b60652255_1
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 101
-        width: 26
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 2
+        y: 106
+        width: 17
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: a2dbd32b7b66017be61e849b60652255_2
+    - name: KnightAttackBowV5_1
       rect:
         serializedVersion: 2
-        x: 104
-        y: 101
-        width: 26
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 25
+        y: 106
+        width: 17
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: a2dbd32b7b66017be61e849b60652255_3
+    - name: KnightAttackBowV5_2
       rect:
         serializedVersion: 2
-        x: 132
-        y: 101
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 49
+        y: 106
+        width: 17
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: a2dbd32b7b66017be61e849b60652255_4
+    - name: KnightAttackBowV5_3
       rect:
         serializedVersion: 2
-        x: 100
-        y: 46
-        width: 254
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 2
+        y: 60
+        width: 27
+        height: 39
+      alignment: 9
+      pivot: {x: 0.31503037, y: -0.0050217067}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightAttackBowV5_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 60
+        width: 22
+        height: 39
+      alignment: 9
+      pivot: {x: 0.37949526, y: 0.0000001956255}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []
