@@ -144,7 +144,7 @@ public class EnemyMage : MonoBehaviour {
         currentState = Mode.off;
         transform.position = patrolPoints[0];
         patrolPoint = 0;
-        transform.FindChild("EnemySightMage").gameObject.SetActive(false);
+        //transform.FindChild("EnemySightMage").gameObject.SetActive(false);
         Move(patrolPoints[patrolPoint], moveSpeed);
     }
 
@@ -152,7 +152,7 @@ public class EnemyMage : MonoBehaviour {
     private void Load()
     {
         currentState = Mode.patrolling;
-        transform.FindChild("EnemySightMage").gameObject.SetActive(true);
+       // transform.FindChild("EnemySightMage").gameObject.SetActive(true);
     }
 
     private void Resurrect()
