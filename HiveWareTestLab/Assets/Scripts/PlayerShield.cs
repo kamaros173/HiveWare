@@ -10,7 +10,6 @@ public class PlayerShield : MonoBehaviour {
     {
         if (other.gameObject.tag == "Projectile")
         {
-            Debug.Log("HIT");
             soundManager.RandomizeSfx(shieldHitClip, 1f);
             Destroy(other.gameObject);
         }

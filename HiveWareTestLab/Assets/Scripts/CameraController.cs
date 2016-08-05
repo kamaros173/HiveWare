@@ -33,12 +33,12 @@ public class CameraController : MonoBehaviour {
             if (xfinal > 0)
             {
                 cameraTarget.x += cameraViewWidth;
-                playerTarget.x += 0.5f;
+                playerTarget.x += 0.75f;
             }
             else
             {
                 cameraTarget.x -= cameraViewWidth;
-                playerTarget.x -= 0.5f;
+                playerTarget.x -= 0.75f;
             }
         }
         else
@@ -46,12 +46,12 @@ public class CameraController : MonoBehaviour {
             if (yfinal > 0)
             {
                 cameraTarget.y += cameraViewHeight;
-                playerTarget.y += 0.5f;
+                playerTarget.y += 0.75f;
             }
             else
             {
                 cameraTarget.y -= cameraViewHeight;
-                playerTarget.y -= 0.5f;
+                playerTarget.y -= 0.75f;
             }
         }
 
@@ -78,5 +78,35 @@ public class CameraController : MonoBehaviour {
         {
             GameObject.Destroy(other.gameObject);
         }
+    }
+
+    private IEnumerator Shake(float length)
+    {
+        Vector3 posCenter = transform.position;
+        Vector3 posRight = posCenter + new Vector3(0.1f, 0f, 0f);
+        Vector3 posLeft = posCenter + new Vector3(-0.1f, 0f, 0f);
+        float timer = Time.time + length;
+        bool goingRight = true;
+
+
+        while(timer > Time.time)
+        {
+            if (goingRight)
+            {
+                transform.Translate(Vector3.right * 0.1f);
+                if (transform.position.x >= posRight.x)
+                    goingRight = false;
+            }
+            else
+            {
+                transform.Translate(Vector3.left * 0.1f);
+                if (transform.position.x <= posLeft.x)
+                    goingRight = true;
+            }
+
+            yield return null;
+        }
+
+        transform.position = posCenter;
     }
 }

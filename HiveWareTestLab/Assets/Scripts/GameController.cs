@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour {
     private SoundManager soundManager;
     private float delayedTime;
     private GameObject deathMenu;
+    private GameObject endMenu;
 
 
     void Start()
@@ -43,10 +44,13 @@ public class GameController : MonoBehaviour {
 
         Time.timeScale = 1;
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        endMenu = GameObject.Find("EndMenu");
         deathMenu = GameObject.Find("DeathMenu");
+        endMenu.SetActive(false);
         deathMenu.SetActive(false);
         HidePaused();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        Globals.notFrozen = false;
 
     }
 
@@ -89,7 +93,7 @@ public class GameController : MonoBehaviour {
     private void ClearEnemies()
     {
         foreach(GameObject enemy in currentEnemies)
-            enemy.SendMessage("Reset");
+            enemy.SendMessage("Reset", SendMessageOptions.DontRequireReceiver);
 
         currentEnemies.Clear();
     }
@@ -221,7 +225,7 @@ public class GameController : MonoBehaviour {
         points[1].gameObject.SetActive(false);
     }
 
-    private void UnfreezePlayer()
+    public void UnfreezePlayer()
     {
         if (!Globals.isPlayerDead)
         {
@@ -313,6 +317,12 @@ public class GameController : MonoBehaviour {
     public void ClearDeadEnemies()
     {
         deadEnemies.Clear();
+    }
+
+    public void ShowEndMenu()
+    {
+        Globals.notFrozen = false;
+        endMenu.SetActive(true);
     }
 
 }

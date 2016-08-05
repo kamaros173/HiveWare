@@ -83,7 +83,7 @@ public class Boss : MonoBehaviour {
 
     private void Attack()
     {
-        Vector2 dir = Vector3.Normalize(player.position - transform.position);
+        Vector2 dir = Vector3.Normalize((player.position + new Vector3(0f, 1f, 0f)) - transform.position);
         raycastToPlayer = Physics2D.Raycast(transform.position, dir, meleeRange, playerLayer);
         isAttacking = true;
 
@@ -209,7 +209,7 @@ public class Boss : MonoBehaviour {
             if(!isAttacking)
             {
                 isAttacking = true;
-                bossAttack.SendMessage("SwingSword", animator);
+                bossAttack.SendMessage("SwingSword", animator, SendMessageOptions.DontRequireReceiver);
             }
                 
         }
@@ -234,28 +234,39 @@ public class Boss : MonoBehaviour {
     private void HitEnemy(int damage)
     {
         currentHealth -= damage;
-        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
+            Globals.notFrozen = false;
             //isActive = false;
             currentPhase = Phase.off;
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             GameObject.Find("GameController").SendMessage("RemoveEnemy", transform.gameObject);
 
-            animator.ResetTrigger("Resurrect");
-            animator.SetTrigger("Death");
-            soundManager.PlaySingle(deathClip, 1f);
+            //animator.ResetTrigger("Resurrect");
+            //animator.SetTrigger("Death");
             transform.GetComponent<BoxCollider2D>().enabled = false;
 
             transform.FindChild("EnemyAttackBoss").gameObject.SetActive(false);
             StartCoroutine(Death());
+            foreach (GameObject arrow in phase2Arrows)
+            {
+                arrow.SetActive(false);
+            }
+            foreach (GameObject arrow in phase3Arrows)
+            {
+                arrow.SetActive(false);
+            }
+            foreach (GameObject arrow in phase4Arrows)
+            {
+                arrow.SetActive(false);
+            }
         }
         else
         {
             StopCoroutine(EnemyDamageFlash());
             sprite.color = originalColor;
             StartCoroutine(EnemyDamageFlash());
-            soundManager.PlaySingle(hurtClip, 1f);
+            soundManager.PlaySingle(hurtClip, 0.85f, 0.5f);
             currentTimeBetweenAttacks = timeBetweenAttacks * lowHealthSpeedMuliplier;
             currentMoveSpeed = moveSpeed * lowHealthSpeedMuliplier;
             
@@ -325,7 +336,8 @@ public class Boss : MonoBehaviour {
     {
         Vector3 right = new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z);
         Vector3 left = new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z);
-        float timer = Time.time + 7f;
+        float timer = Time.time + 10f;
+        Camera.main.SendMessage("Shake", 10f);
         Vector3 target = right;
         Vector3 nextTarget = left;
 
@@ -338,9 +350,11 @@ public class Boss : MonoBehaviour {
 
             if(Vector3.Distance(target, transform.position) < 0.1f)
             {
+                soundManager.RandomizeSfx(deathClip, 1f, 0.5f - severity/3f);
                 severity += 0.005f;
                 if(severity > 0.5f)
                 {
+                    
                     deathColor = new Color(deathColor.r, deathColor.g, deathColor.b, 0f);
                 }
                 Vector3 temp = target;
@@ -352,6 +366,7 @@ public class Boss : MonoBehaviour {
         }
 
         sprite.color = deathColor;
+        GameObject.Find("GameController").SendMessage("ShowEndMenu");
 
     }
 }

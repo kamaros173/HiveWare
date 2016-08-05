@@ -34,13 +34,13 @@ public class Sword : MonoBehaviour {
     {
         if(dir == PlayerDirection.North)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, startAngle);
-            mySpeed = speed;
+            transform.rotation = Quaternion.Euler(0f, 0f, 180f + startAngle);
+            mySpeed = -speed;
         }
         else if (dir == PlayerDirection.South)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 180f + startAngle);
-            mySpeed = speed;
+            transform.rotation = Quaternion.Euler(0f, 0f, startAngle);
+            mySpeed = -speed;
         }
         else if (dir == PlayerDirection.West)
         {

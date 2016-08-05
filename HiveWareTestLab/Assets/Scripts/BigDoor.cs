@@ -35,21 +35,42 @@ public class BigDoor : MonoBehaviour {
                 currentLock++;
                 if (currentLock == statues.Length)
                 {
-                    locked = false;
-                    GetComponent<SpriteRenderer>().sprite = sprite;
-                    GetComponent<BoxCollider2D>().enabled = false;
-                    soundManager.PlaySingle(openClip, 1f);
+                    StartCoroutine(Unlock());
                 }
             }
             else
             {
-                //Play Wrong Sound
-                foreach (GameObject s in statues)
-                {
-                    s.SendMessage("Wrong");
-                }
-                //currentLock = 0;
+                statue.SendMessage("Wrong");
+                
             }
         }
+    }
+
+    private IEnumerator Unlock()
+    {
+
+        locked = false;
+        GetComponent<SpriteRenderer>().sprite = sprite;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        Globals.notFrozen = false;
+        Camera.main.SendMessage("Shake", 3f);
+
+
+        float timer = Time.time + 1.5f;
+        while(timer > Time.time)
+        {
+            yield return null;
+        }
+
+        soundManager.PlaySingle(openClip, 0.75f, 0.5f);
+
+        timer += 1.5f;
+        while(timer > Time.time)
+        {
+            yield return null;
+        }
+
+        Globals.notFrozen = true;
     }
 }

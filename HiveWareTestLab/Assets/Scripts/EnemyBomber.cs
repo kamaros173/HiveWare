@@ -64,7 +64,7 @@ public class EnemyBomber : MonoBehaviour {
 
     private void Chase()
     {
-        Move(player.position, chaseSpeed);       
+        Move(player.position + new Vector3(0f, 1f, 0f), chaseSpeed);       
     }
 
     private void ReturningToPatrol()
@@ -137,7 +137,7 @@ public class EnemyBomber : MonoBehaviour {
     {
         isDead = false;
         patrolPoint = 0;
-        animator.ResetTrigger("Death");
+        animator.ResetTrigger("Explode");
         animator.SetTrigger("Resurrect");
         transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         transform.localScale = new Vector3(1f, 0.75f, 1f);
@@ -155,8 +155,8 @@ public class EnemyBomber : MonoBehaviour {
         {
             isDead = false;
             patrolPoint = 0;
-            animator.ResetTrigger("BomberExplosion");
-            animator.SetTrigger("BomberResurrect");
+            animator.ResetTrigger("Explode");
+            animator.SetTrigger("Resurrect");
             currentState = Mode.patrolling;
             enemyCanMove = true;
             transform.FindChild("EnemyAttackBomber").gameObject.SetActive(true);

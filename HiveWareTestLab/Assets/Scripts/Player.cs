@@ -127,7 +127,7 @@ public class Player : MonoBehaviour {
                     animator.SetBool("IsDashing", true);
                     animator.SetTrigger("Dash");
                     StartCoroutine(Dash());
-                    soundManager.RandomizeSfx(DashClip, 1.2f, 0.15f);
+                    soundManager.RandomizeSfx(DashClip, 1.2f, 0.05f);
                 }
             }
             else if (Input.GetKey(KeyCode.S))
@@ -213,8 +213,8 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.02f);
-                                lastWalkSound = Time.time + 0.25f;
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.03f);
+                                lastWalkSound = Time.time + 0.5f;
                             }
                         }
 
@@ -246,8 +246,8 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.02f);
-                                lastWalkSound = Time.time + 0.25f;
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.03f);
+                                lastWalkSound = Time.time + 0.5f;
                             }
                         }
                     }             
@@ -278,8 +278,8 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.02f);
-                                lastWalkSound = Time.time + 0.25f;
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.03f);
+                                lastWalkSound = Time.time + 0.5f;
                             }
                         }
 
@@ -311,8 +311,8 @@ public class Player : MonoBehaviour {
                             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
                             if (Time.time > lastWalkSound)
                             {
-                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.02f);
-                                lastWalkSound = Time.time + 0.25f;
+                                soundManager.RandomizeSfx(WalkClip, 0.5f, 0.03f);
+                                lastWalkSound = Time.time + 0.5f;
                             }
                         }
                     }                              
@@ -417,9 +417,9 @@ public class Player : MonoBehaviour {
         {
             oldDis = Vector3.Distance(transform.position, target);
 
-            hit = Physics2D.Raycast(transform.position, dir, oldDis, wallLayer);
+            hit = Physics2D.Raycast((transform.position + new Vector3(0f,1f,0f)), dir, oldDis, wallLayer);
             if (hit.collider != null)
-                transform.position = Vector3.Lerp(transform.position, hit.point, dashSmooth * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, (hit.point - new Vector2(0f, 1f)), dashSmooth * Time.deltaTime);
             else
                 transform.position = Vector3.Lerp(transform.position, target, dashSmooth * Time.deltaTime);
 
@@ -437,7 +437,7 @@ public class Player : MonoBehaviour {
     {
         StartCoroutine(PlayerIsImmuneToDamage());
         StartCoroutine(PushBackPlayer(direction));
-        soundManager.RandomizeSfx(HurtClip, 1.35f, 0.75f);       
+        soundManager.RandomizeSfx(HurtClip, 1.35f, 0.5f);       
     }
     
     private IEnumerator PlayerIsImmuneToDamage()

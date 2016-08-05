@@ -48,6 +48,12 @@ public class PlaySound : MonoBehaviour {
             yield return null;
         }
 
+        float timer = Time.time + 3f;
+        while (timer > Time.time)
+        {
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 

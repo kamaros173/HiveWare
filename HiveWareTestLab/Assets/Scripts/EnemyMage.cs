@@ -71,7 +71,7 @@ public class EnemyMage : MonoBehaviour {
 
     private void Chase()
     {
-        Vector2 dir = Vector3.Normalize((player.position+new Vector3(0f,0.5f,0f)) - transform.position);
+        Vector2 dir = Vector3.Normalize((player.position+new Vector3(0f,1f,0f)) - transform.position);
         raycastToPlayer = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
         //Debug.DrawRay(transform.position, dir*5, Color.red, 5f);
 
@@ -256,28 +256,32 @@ public class EnemyMage : MonoBehaviour {
     private IEnumerator EnemyIsImmuneToDamage()
     {
         float waitTime = Time.time + timeBetweenDamage;
-        Color toColor = Color.red;
-        Color fromColor = Color.white;
-        float severity = 0f;
         SpriteRenderer damagedsprite = transform.GetComponent<SpriteRenderer>();
+        Color original = damagedsprite.color;
+        Color toColor = Color.red;
+        Color fromColor = damagedsprite.color;
+        float severity = 0f;
+
         while (Time.time < waitTime)
         {
-            if (currentState != Mode.off)
+            //if (currentState != Mode.off)
+            //{
+            damagedsprite.color = Color.Lerp(fromColor, toColor, severity);
+            severity += 0.05f;
+            if (severity >= 0.9f)
             {
-                damagedsprite.color = Color.Lerp(fromColor, toColor, severity);
-                severity += 0.05f;
-                if (severity >= 0.9f)
-                {
-                    Color temp = fromColor;
-                    fromColor = toColor;
-                    toColor = temp;
-                    severity = 0f;
-                }               
+                Color temp = fromColor;
+                fromColor = toColor;
+                toColor = temp;
+                severity = 0f;
             }
+
+
+            //}
             yield return null;
         }
 
-        damagedsprite.color = Color.white;
+        damagedsprite.color = original;
         enemyIsHittable = true;
     }
 

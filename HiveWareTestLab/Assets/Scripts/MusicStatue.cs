@@ -44,12 +44,12 @@ public class MusicStatue : MonoBehaviour {
     private void Correct()
     {
         sprite.color = Color.white;
-        soundManager.PlaySingle(rightClip, 1f);
+        soundManager.PlaySingle(rightClip, 1f, 0.25f);
     }
 
     private void Wrong()
     {
         sprite.color = unactiveColor;
-        soundManager.PlaySingle(wrongClip, 1f);
+        soundManager.PlaySingle(wrongClip, 1f, 0.25f);
     }
 }

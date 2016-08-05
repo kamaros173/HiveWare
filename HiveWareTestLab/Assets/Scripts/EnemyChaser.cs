@@ -66,7 +66,7 @@ public class EnemyChaser : MonoBehaviour {
 
     private void Chase()
     {
-        Vector2 dir = Vector3.Normalize(player.position - transform.position);
+        Vector2 dir = Vector3.Normalize((player.position + new Vector3(0f, 1f, 0f)) - transform.position);
         raycastToPlayer = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
 
         if (raycastToPlayer.collider != null) 

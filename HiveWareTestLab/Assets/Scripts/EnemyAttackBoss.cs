@@ -16,15 +16,18 @@ public class EnemyAttackBoss : MonoBehaviour {
     public int MagicAmount;
 
     public AudioClip SwingClip;
+    public AudioClip SwingClip2;
     public AudioClip RangeClip;
 
     private int deathAttackAngle;
     private Transform player;
+    private SoundManager soundManager;
 
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         deathAttackAngle = 360 / MagicAmount;
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     private void SwingSword(Animator animator)
@@ -49,6 +52,8 @@ public class EnemyAttackBoss : MonoBehaviour {
             yield return null;
         }
 
+        soundManager.RandomizeSfx(SwingClip, 2.5f, 0.25f);
+        soundManager.RandomizeSfx(SwingClip2, 0.5f, 0.5f);
         cir2d.enabled = true;
         while (cir2d.radius < meleeAttackDistance)
         {
@@ -80,12 +85,15 @@ public class EnemyAttackBoss : MonoBehaviour {
             yield return null;
         }
         animator.SetTrigger("Magic");
+        
+
 
         remainingTime = Time.time + MagicAttackDelay;
         while (remainingTime > Time.time)
         {
             yield return null;
         }
+        soundManager.RandomizeSfx(RangeClip, 0.7f, 0.25f);
 
         // Finish Cast
         for (int i = 0; i < MagicAmount; i++)
