@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: daefe785dbf1f39408af545e298ce911
-timeCreated: 1467161288
+timeCreated: 1470362414
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -101,7 +101,7 @@ TextureImporter:
         width: 15
         height: 34
       alignment: 9
-      pivot: {x: 0.567113, y: 0.4830806}
+      pivot: {x: 0.23461081, y: 0.03713664}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_4
@@ -112,7 +112,7 @@ TextureImporter:
         width: 31
         height: 26
       alignment: 9
-      pivot: {x: 0.56262845, y: 0.44192123}
+      pivot: {x: 0.56262845, y: 0.046841107}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_5
@@ -123,7 +123,7 @@ TextureImporter:
         width: 32
         height: 26
       alignment: 9
-      pivot: {x: 0.61684823, y: 0.47510895}
+      pivot: {x: 0.6287372, y: 0.075151294}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_6
@@ -134,7 +134,7 @@ TextureImporter:
         width: 51
         height: 26
       alignment: 9
-      pivot: {x: 0.7738704, y: 0.44278777}
+      pivot: {x: 0.7804697, y: 0.03501687}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_7
@@ -145,7 +145,7 @@ TextureImporter:
         width: 70
         height: 26
       alignment: 9
-      pivot: {x: 0.83537054, y: 0.44006333}
+      pivot: {x: 0.83777463, y: 0.05170991}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_8
@@ -156,7 +156,7 @@ TextureImporter:
         width: 51
         height: 26
       alignment: 9
-      pivot: {x: 0.7746034, y: 0.44041333}
+      pivot: {x: 0.7863388, y: 0.072103575}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: StarryKnightDash_9
@@ -167,7 +167,7 @@ TextureImporter:
         width: 32
         height: 26
       alignment: 9
-      pivot: {x: 0.6417613, y: 0.44225854}
+      pivot: {x: 0.67916775, y: 0.058602553}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []

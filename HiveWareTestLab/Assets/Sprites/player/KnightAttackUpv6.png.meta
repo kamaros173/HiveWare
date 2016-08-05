@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 646ff9242c907be498f6dc3b2228d30d
+timeCreated: 1470361749
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: KnightAttackUpv6_0
+    21300002: KnightAttackUpv6_1
+    21300004: KnightAttackUpv6_2
+    21300006: KnightAttackUpv6_3
+    21300008: KnightAttackUpv6_4
+    21300010: KnightAttackUpv6_5
+    21300012: KnightAttackUpv6_6
+    21300014: KnightAttackUpv6_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: KnightAttackUpv6_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 91
+        width: 33
+        height: 37
+      alignment: 9
+      pivot: {x: 0.26506147, y: 0.00000020619986}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.747028, y: 36.999992}
+        - {x: -8.747028, y: -0.0000076293945}
+        - {x: 15.252972, y: -0.0000076293945}
+        - {x: 24.252972, y: 13.999992}
+        - {x: 24.252972, y: 32.999992}
+        - {x: 11.252972, y: 36.999992}
+    - name: KnightAttackUpv6_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 91
+        width: 34
+        height: 44
+      alignment: 9
+      pivot: {x: 0.51894623, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.6441727, y: 44}
+        - {x: -17.644173, y: 28}
+        - {x: -17.644173, y: 9}
+        - {x: -12.644173, y: 2}
+        - {x: -10.644173, y: 0}
+        - {x: 14.355827, y: 0}
+        - {x: 16.355827, y: 11}
+        - {x: 16.355827, y: 39}
+        - {x: 12.355827, y: 44}
+    - name: KnightAttackUpv6_2
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 91
+        width: 36
+        height: 52
+      alignment: 9
+      pivot: {x: 0.58962417, y: -0.00096951996}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.226471, y: 52.050415}
+        - {x: -21.22647, y: 49.050415}
+        - {x: -21.22647, y: 7.050415}
+        - {x: -12.226471, y: 0.05041504}
+        - {x: 14.773529, y: 0.05041504}
+        - {x: 14.773529, y: 43.050415}
+        - {x: 7.773529, y: 52.050415}
+    - name: KnightAttackUpv6_3
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 2
+        width: 36
+        height: 34
+      alignment: 9
+      pivot: {x: 0.3618358, y: -0.000000063110804}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.9739113, y: 11.000002}
+        - {x: 3.9739113, y: 17.000002}
+        - {x: 3.9739113, y: 14.000002}
+        - {x: 4.9739113, y: 11.000002}
+        - {x: 14.973911, y: 4.000002}
+        - {x: 17.973911, y: 3.000002}
+        - {x: 22.973911, y: 13.000002}
+        - {x: 22.973911, y: 34}
+        - {x: -12.026089, y: 34}
+        - {x: -13.026089, y: 33}
+        - {x: -13.026089, y: 2.000002}
+        - {x: -9.026089, y: 0.0000019073486}
+        - {x: 6.9739113, y: 0.0000019073486}
+        - {x: 9.973911, y: 3.000002}
+        - {x: 9.973911, y: 5.000002}
+    - name: KnightAttackUpv6_4
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 36
+        width: 46
+        height: 44
+      alignment: 9
+      pivot: {x: 0.42811286, y: 0.002087593}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.693192, y: 43.908146}
+        - {x: -19.693192, y: 30.908146}
+        - {x: -19.693192, y: 3.908146}
+        - {x: -13.693192, y: -0.091854095}
+        - {x: 14.306808, y: -0.091854095}
+        - {x: 26.306808, y: 8.908146}
+        - {x: 26.306808, y: 32.908146}
+        - {x: 13.306808, y: 43.908146}
+    - name: KnightAttackUpv6_5
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 36
+        width: 43
+        height: 35
+      alignment: 9
+      pivot: {x: 0.39472055, y: 0.009949602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5.0270157, y: 10.651764}
+        - {x: 5.0270157, y: 16.651764}
+        - {x: 5.0270157, y: 13.651764}
+        - {x: 6.0270157, y: 10.651764}
+        - {x: 15.027016, y: 1.6517639}
+        - {x: 26.027016, y: 7.651764}
+        - {x: 26.027016, y: 34.651764}
+        - {x: -13.972984, y: 34.651764}
+        - {x: -16.972984, y: 27.651764}
+        - {x: -16.972984, y: 8.651764}
+        - {x: -7.9729843, y: -0.34823608}
+        - {x: 8.027016, y: -0.34823608}
+        - {x: 11.027016, y: 2.651764}
+        - {x: 11.027016, y: 4.651764}
+    - name: KnightAttackUpv6_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2
+        width: 28
+        height: 33
+      alignment: 9
+      pivot: {x: 0.33736065, y: -0.0018903342}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: KnightAttackUpv6_8
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 36
+        width: 39
+        height: 52
+      alignment: 9
+      pivot: {x: 0.53612983, y: 0.000000073359566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.090937, y: 51.999996}
+        - {x: -9.909063, y: 51.999996}
+        - {x: -20.909063, y: 44.999996}
+        - {x: -20.909063, y: 15.999996}
+        - {x: -15.909063, y: -0.0000038146973}
+        - {x: 9.090937, y: -0.0000038146973}
+        - {x: 10.090937, y: 2.9999962}
+        - {x: 18.090937, y: 17.999996}
+        - {x: 18.090937, y: 46.999996}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

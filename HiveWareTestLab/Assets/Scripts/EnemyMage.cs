@@ -71,8 +71,9 @@ public class EnemyMage : MonoBehaviour {
 
     private void Chase()
     {
-        Vector2 dir = Vector3.Normalize(player.position - transform.position);
+        Vector2 dir = Vector3.Normalize((player.position+new Vector3(0f,0.5f,0f)) - transform.position);
         raycastToPlayer = Physics2D.Raycast(transform.position, dir, hitRange, playerLayer);
+        //Debug.DrawRay(transform.position, dir*5, Color.red, 5f);
 
         if (raycastToPlayer.collider != null)
         {         
@@ -144,7 +145,7 @@ public class EnemyMage : MonoBehaviour {
         currentState = Mode.off;
         transform.position = patrolPoints[0];
         patrolPoint = 0;
-        //transform.FindChild("EnemySightMage").gameObject.SetActive(false);
+        transform.FindChild("EnemySightMage").gameObject.SetActive(false);
         Move(patrolPoints[patrolPoint], moveSpeed);
     }
 
@@ -152,7 +153,7 @@ public class EnemyMage : MonoBehaviour {
     private void Load()
     {
         currentState = Mode.patrolling;
-       // transform.FindChild("EnemySightMage").gameObject.SetActive(true);
+       transform.FindChild("EnemySightMage").gameObject.SetActive(true);
     }
 
     private void Resurrect()
